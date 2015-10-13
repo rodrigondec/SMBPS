@@ -38,13 +38,13 @@
 
             <link rel="stylesheet" href="/smbps/estaticos/bootstrap-sweetalert/lib/sweet-alert.css">
             
-        <title>SMBPS</title>
+        <title>Sistema de Monitoramento de Boas Práticas em Saúde</title>
     </head>
     <body>
         <div class='wrapper'>
             <div class='header'>
         <?php  
-            include_once(TEMPLATES.'/geral/menu.php');
+            incluir_menu();
         ?>
             </div>
             <div class='content'>

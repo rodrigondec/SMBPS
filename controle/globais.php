@@ -25,11 +25,13 @@
 	define('CONFIGS', ARQUIVOS.'/'.BASE.'/configs/configs.php');
 	define('PHPMYADMIN', ARQUIVOS.'/'.BASE.'/admin/index.php');
 	
-	define('DB_NAME', 'smbps-mysql');
+	define('DB_NAME', 'smbps');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');
 	define('DB_HOST', 'localhost'); //Windows
 
+	define('LINK', mysql_connect(DB_HOST, DB_USER, DB_PASS));
+	mysql_select_db(DB_NAME, LINK);
 
 	ob_start(); //Criando Buffer
 	session_start();

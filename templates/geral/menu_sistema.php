@@ -8,17 +8,17 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="/smbps/">Página inicial</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/index.php/sobre">Sobre</a></li>
-                <li><a href="/index.php/cne/home">CNE</a></li>
+                <li><a href="/smbps/index.php/sistema/sobre">Sobre</a></li>
+                <li><a href="/smbps/index.php/sistema/contato">Contato</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">login</a></li>
+                <li><a href="/smbps/index.php/login">login</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
