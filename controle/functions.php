@@ -1,7 +1,7 @@
 <?php 
 	function incluir_menu(){
 		if(isset($_SESSION['email'])){
-			
+			include_once(TEMPLATES.'/geral/menu.php');
 		}
 		else{
 			include_once(TEMPLATES.'/geral/menu_sistema.php');
