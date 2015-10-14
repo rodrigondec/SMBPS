@@ -4,10 +4,10 @@
 <div class='form-boot-40'>
 	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
 			<div class='form-group'>
-			<input type='text' name='email' class='form-control' id='input_email' placeholder='Email' required />
+			<input type='text' name='email' class='form-control' id='input_email' placeholder='Email' onblur="if(this.value != ''){validar_email(this)}" required />
 			<input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' style='margin-top: 10px;' required />
 			</div>
-			<div id='buttons' align='center'>
+			<div id='buttons' class='text-center'>
 				<button type='submit' class='btn btn-default'>Submit</button>
 			</div>
 		</form>
@@ -21,7 +21,7 @@
 			$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
 			ob_clean();
-			header('LOCATION: /index.php/admin/listar_times');
+			header('LOCATION: /smbps/');
 		}
 	}
 ?>

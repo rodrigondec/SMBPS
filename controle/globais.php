@@ -23,7 +23,6 @@
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'/templates/');
 	define('LOGIN', ARQUIVOS.'/'.BASE.'/login.php');
 	define('CONFIGS', ARQUIVOS.'/'.BASE.'/configs/configs.php');
-	define('PHPMYADMIN', ARQUIVOS.'/'.BASE.'/admin/index.php');
 	
 	define('DB_NAME', 'smbps');
 	define('DB_USER', 'root');

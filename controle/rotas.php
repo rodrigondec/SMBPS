@@ -18,7 +18,7 @@
         $uri = rtrim($uri, '/'); //Removendo última barra da URI
         $partes = explode('/', $uri);
 
-        if(count($partes) >= 3) { //Tenha mais de 4 partes
+        if(count($partes) >= 3) { //Tenha mais de 3 partes
             $arquivo = array_pop($partes); //Último elemento
             $pasta = array_pop($partes); //Penúltimo elemento
 
@@ -28,9 +28,16 @@
 
             // END VERIFICAÇÃO
         } 
-        else {
-            $pasta = 'sistema';
-            $arquivo = 'home';            
+        else{
+            if(isset($_SESSION['privilegio'])){
+                if($_SESSION['privilegio'] == '1'){
+                    $pasta = 'admin';
+                }
+            }
+            else{
+                $pasta = 'sistema';        
+            }
+            $arquivo = 'home';  
         }
         $caminho = montar_include($pasta, $arquivo);
         include_once($caminho);   

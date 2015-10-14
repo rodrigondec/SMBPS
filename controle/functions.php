@@ -1,7 +1,9 @@
 <?php 
 	function incluir_menu(){
-		if(isset($_SESSION['email'])){
-			include_once(TEMPLATES.'/geral/menu.php');
+		if(isset($_SESSION['privilegio'])){
+			if($_SESSION['privilegio'] == '1'){
+				include_once(TEMPLATES.'/geral/menu_admin.php');
+			}
 		}
 		else{
 			include_once(TEMPLATES.'/geral/menu_sistema.php');

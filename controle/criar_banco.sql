@@ -1,6 +1,4 @@
-drop database d77afd63eaba34a8b9811a269b7f4b3fd;
-create database d77afd63eaba34a8b9811a269b7f4b3fd;
-USE d77afd63eaba34a8b9811a269b7f4b3fd;
+
 
 drop database smbps;
 create database smbps;
@@ -42,7 +40,7 @@ CREATE TABLE hospital(
 CREATE TABLE formulario(
 	id int NOT NULL auto_increment,
 	id_hosp int NOT NULL,
-	data_preenchimento varchar (10) NOT NULL, 
+	data_recebimento varchar (10) NOT NULL, 
 	mes_avaliacao varchar (10) NOT NULL,
 	nome_responsavel varchar (35) NOT NULL,
 	email_responsavel varchar (35) NOT NULL,
