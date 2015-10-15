@@ -4,6 +4,9 @@
 			if($_SESSION['privilegio'] == '1'){
 				include_once(TEMPLATES.'/geral/menu_admin.php');
 			}
+			if($_SESSION['privilegio'] == '2'){
+				include_once(TEMPLATES.'/geral/menu_hospital.php');
+			}
 		}
 		else{
 			include_once(TEMPLATES.'/geral/menu_sistema.php');

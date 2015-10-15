@@ -49,8 +49,8 @@
 
     // função que executa SQL para SELECT
     // SELECT $campo FROM $tabela
-    function select_many($campo, $tabela, $link){
-        $sql = 'SELECT '.$campo.' from '.$tabela.';';
+    function select_many($campo, $tabela, $link, $where = ''){
+        $sql = 'SELECT '.$campo.' from '.$tabela.' '.$where.';';
         $resultado = mysql_query($sql, $link);
         if(!$resultado) return array();
         $objetos = array();
