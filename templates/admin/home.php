@@ -1,1 +1,1 @@
-admin home
+home admin
