@@ -4,19 +4,46 @@ drop database smbps;
 create database smbps;
 USE smbps;
 
+CREATE TABLE pais(
+  id int NOT NULL auto_increment,
+  nome varchar(60) NOT NULL,
+  sigla varchar(10) NOT NULL,
+  PRIMARY KEY (id),
+  UNIQUE (nome),
+  UNIQUE (sigla)
+);
+
+CREATE TABLE estado(
+  id int NOT NULL auto_increment,
+  id_pais int NOT NULL,
+  nome varchar(75) DEFAULT NULL,
+  uf varchar(5) DEFAULT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_pais) REFERENCES pais(id),
+  UNIQUE (nome),
+  UNIQUE (uf)
+);
+
+CREATE TABLE cidade(
+  id int NOT NULL auto_increment,
+  id_estado int NOT NULL,
+  nome varchar(120) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (id_estado) REFERENCES estado(id)
+);
+
 CREATE TABLE hospital(
 	id int NOT NULL auto_increment,
+	id_cidade int NOT NULL,
 	sigla varchar(10) NOT NULL,
 	nome varchar(35) NOT NULL,
 	cnpj varchar(14) NOT NULL,
 	telefone varchar(11) NOT NULL,
-	regiao varchar(30) NOT NULL,
-	estado varchar(30) NOT NULL,
-	cidade varchar(30) NOT NULL,
 	endereco varchar(40) NOT NULL,
 	complemento varchar(20) NOT NULL,
 	cep varchar(8) NOT NULL,
 	PRIMARY KEY (id),
+	FOREIGN KEY (id_cidade) REFERENCES cidade(id),
 	UNIQUE (CNPJ)
 );
 
@@ -51,17 +78,6 @@ CREATE TABLE formulario(
 	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
 );
 
-insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep) values ('HT', 'Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250');
-
-insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep) values ('HT2', 'Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250');
-
-insert into papel (nome) values ('Administrador Geral'), ('Gestor Hospitalar');
-
-insert into usuario (nome, email, senha, id_papel, id_hospital) values ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
-
-insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (1, '15102015', '10', 'jhon', 'jhon@hospital.com');
-
-insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (2, '15102015', '10', 'jhon', 'jhon@hospital.com');
 
 
 
@@ -72,58 +88,6 @@ insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_respo
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CREATE TABLE pais(
-  id int NOT NULL auto_increment,
-  nome varchar(60) NOT NULL,
-  sigla varchar(10) NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE (nome),
-  UNIQUE (sigla)
-);
-
-CREATE TABLE estado(
-  id int NOT NULL auto_increment,
-  id_pais int NOT NULL,
-  nome varchar(75) DEFAULT NULL,
-  uf varchar(5) DEFAULT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_pais) REFERENCES pais(id),
-  UNIQUE (nome),
-  UNIQUE (uf)
-);
-
-CREATE TABLE cidade(
-  id int NOT NULL auto_increment,
-  id_estado int NOT NULL,
-  nome varchar(120) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_estado) REFERENCES estado(id)
-);
 
 
 
@@ -5740,3 +5704,27 @@ INSERT INTO cidade (id, nome, id_estado) VALUES
 (5562, "Tupiratins", 27),
 (5563, "Wanderlândia", 27),
 (5564, "Xambioá", 27);
+
+
+
+
+
+
+
+
+
+
+insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('HT', 'Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
+
+insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('HT2', 'Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
+
+insert into papel (nome) values ('Administrador Geral'), ('Gestor Hospitalar');
+
+insert into usuario (nome, email, senha, id_papel, id_hospital) values ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
+
+insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (1, '15102015', '10', 'jhon', 'jhon@hospital.com');
+
+insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (2, '15102015', '10', 'jhon', 'jhon@hospital.com');
+
+
+	

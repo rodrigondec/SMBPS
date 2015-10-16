@@ -6,6 +6,7 @@
 	<thead>
 		<tr>
 			<th>Id</th>
+			<th>Id Cidade</th>
 			<th>Sigla</th>
 			<th>Nome</th>
 			<th>CNPJ</th>
@@ -21,6 +22,9 @@
 		<tr>
 			<td>
 				<?php echo $hospitais[$key]['id']; ?>
+			</td>
+			<td>
+				<?php echo $hospitais[$key]['id_cidade']; ?>
 			</td>
 			<td>
 				<?php echo $hospitais[$key]['sigla']; ?>
