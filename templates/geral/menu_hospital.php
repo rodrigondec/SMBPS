@@ -28,10 +28,10 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Hospital<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/hospital/alterar">Meus Índices</a>
+                            <a href="/smbps/index.php/hospital/meus_indices">Meus Índices</a>
                         </li>
                         <li>
-                            <a href="/smbps/index.php/hospital/alterar">Índices Gerais</a>
+                            <a href="/smbps/index.php/hospital/indices_gerais">Índices Gerais</a>
                         </li>
                     </ul>
                 </li>
