@@ -72,3 +72,15 @@
 .ident {
 	text-indent: 3em;
 }
+
+/*.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+   background-color: #f3f3f3;
+}*/
+
+/*.table-striped > tbody > tr:nth-child(odd) > td{
+   background-color: #f3f3f3;
+}*/
+
+.table-striped > tbody > tr:hover > td {
+    background-color: #eaeaea;
+}

@@ -40,7 +40,7 @@
 			<td>
 				<?php echo $hospitais[$key]['cep']; ?>
 			</td>
-			<td>
+			<td class='text-right col-md-1'>
 				<a class='btn btn-info' href="/smbps/index.php/admin/alterar_hospital?id='<?php echo $hospitais[$key]["id"]; ?>'">
 					Alterar
 				</a>

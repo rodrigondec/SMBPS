@@ -28,15 +28,10 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Hospital<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/hospital/alterar">Alterar Dados</a>
+                            <a href="/smbps/index.php/hospital/alterar">Meus Índices</a>
                         </li>
-                    </ul>
-                </li>
-                <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Formulário<span class="caret"></span></a>
-                    <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/hospital/listar_formularios">Listar</a>
+                            <a href="/smbps/index.php/hospital/alterar">Índices Gerais</a>
                         </li>
                     </ul>
                 </li>

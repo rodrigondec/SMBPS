@@ -49,6 +49,22 @@
                         </li>
                     </ul>
                 </li>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Usuarios<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <a href="/smbps/index.php/admin/listar_usuarios">Listar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Papéis<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <a href="/smbps/index.php/admin/listar_papeis">Listar</a>
+                        </li>
+                    </ul>
+                </li>
                 <!-- <li><a href="/smbps/index.php/admin/home">Sobre</a></li> -->
                 <!-- <li><a href="/smbps/index.php/sistema/contato">Contato</a></li> -->
             </ul>
