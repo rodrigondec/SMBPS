@@ -46,6 +46,7 @@
                     <ul class='dropdown-menu'>
                         <li>
                             <a href="/smbps/index.php/admin/listar_formularios">Listar</a>
+                            <a href="/smbps/index.php/admin/formulario">Cadastrar</a>
                         </li>
                     </ul>
                 </li>
