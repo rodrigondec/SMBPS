@@ -8,7 +8,7 @@
 			<input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' style='margin-top: 10px;' required />
 			</div>
 			<div id='buttons' class='text-center'>
-				<button type='submit' class='btn btn-default'>Submit</button>
+				<button type='submit' class='btn btn-default'>Entrar</button>
 			</div>
 		</form>
 	</div>
