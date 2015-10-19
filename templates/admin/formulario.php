@@ -138,6 +138,25 @@
 			<div><input type='radio' name='avaliacao_risco_ulceras' value='true' required /> Sim</div>
 			<div><input type='radio' name='avaliacao_risco_ulceras' value='false' required /> Não</div>
 			<input type='radio' name='avaliacao_risco_ulceras' value='n/a' required /> Não se aplica
+
+
+
+
+
+
+
+
+			<!-- 17 grupos com numero de prontuario, data de alta e se foi feito ou não a avaliação -->
+		
+
+
+
+
+
+
+
+
+
 		</div>
 
 		<div>

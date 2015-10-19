@@ -15,23 +15,26 @@
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Sistema<span class="caret"></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/sistema/home">Home</a>
-                            <a href="/smbps/index.php/sistema/sobre">Sobre</a>
-                            <a href="/smbps/index.php/sistema/contato">Contato</a>
+                            <a href="/smbps/index.php/sistema/home">Quedas</a>
+                            <a href="/smbps/index.php/sistema/sobre">Ulcera por pressão</a>
+                            <a href="/smbps/index.php/sistema/contato">Higiena das mãos</a>
+                            <a href="/smbps/index.php/sistema/home">Medicação</a>
+                            <a href="/smbps/index.php/sistema/sobre">Cirurgia segura</a>
+                            <a href="/smbps/index.php/sistema/contato">Identificação</a>
                         </li>
                     </ul>
                 </li>
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Hospital<span class="caret"></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Relatório<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/hospital/meus_indices">Meus Índices</a>
+                            <a href="/smbps/index.php/hospital/meus_indices">Meu hospital</a>
                         </li>
                         <li>
-                            <a href="/smbps/index.php/hospital/indices_gerais">Índices Gerais</a>
+                            <a href="/smbps/index.php/hospital/indices_gerais">Estatísticas gerais</a>
                         </li>
                     </ul>
                 </li>

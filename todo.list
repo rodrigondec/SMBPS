@@ -1,0 +1,18 @@
+notificação para atualizar dados de protocolos inseridos pelos hospitais
+
+formulario input realizar avaliacao
+
+categorização do 'rendimento' do hospital com níveis de conformidade (vermelho, amarelo, verde){
+	15 indicadores.
+	contar 1 indicador estrutural = anexar protocolo e a data de emissão estiver ok (menos de 2 anos)
+	contar 1 indicador de processo = pelo menos 12 conformidades {avaliar 12 casos de risco dos prontuarios}
+}
+
+tela de "ajuda" para melhorar indicadores
+
+pagina inicial = sobre (?)
+
+hospital {
+	coleta de indicadores (formulario para preencher com os 17 casos)
+	alterar os dados e protocolos que o hospital possui
+}
