@@ -21,8 +21,7 @@
 			$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
 			if($_SESSION['privilegio'] == '2'){
-				$hospital = select('id_hosp', 'acesso', 'id', $usuario['id_acesso'], LINK);
-				$_SESSION['hospital'] = $hospital['id_hosp'];
+				$_SESSION['hospital'] = $usuario['id_hospital'];
 				var_dump($_SESSION);
 			}
 			ob_clean();
