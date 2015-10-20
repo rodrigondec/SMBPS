@@ -31,10 +31,16 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Relatório<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/hospital/meus_indices">Meu hospital</a>
+                            <a href="/smbps/index.php/hospital/meu_hospital">Meu hospital</a>
                         </li>
                         <li>
-                            <a href="/smbps/index.php/hospital/indices_gerais">Estatísticas gerais</a>
+                            <a href="/smbps/index.php/hospital/estatisticas_gerais">Estatísticas gerais</a>
+                        </li>
+                        <li>
+                            <a href="/smbps/index.php/hospital/imagem">imagem</a>
+                        </li>
+                        <li>
+                            <a href="/smbps/index.php/hospital/mostrar_imagem">mostrar imagem</a>
                         </li>
                     </ul>
                 </li>
