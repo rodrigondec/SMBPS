@@ -32,6 +32,18 @@ CREATE TABLE cidade(
   FOREIGN KEY (id_estado) REFERENCES estado(id)
 );
 
+CREATE TABLE indicador(
+	id int NOT NULL auto_increment,
+	nome varchar(35) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE imagem(
+	id int NOT NULL auto_increment,
+	nome varchar(50) NOT NULL,
+	PRIMARY KEY (id)
+);
+
 CREATE TABLE hospital(
 	id int NOT NULL auto_increment,
 	id_cidade int NOT NULL,
@@ -45,6 +57,18 @@ CREATE TABLE hospital(
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_cidade) REFERENCES cidade(id),
 	UNIQUE (CNPJ)
+);
+
+CREATE TABLE protocolo(
+	id int NOT NULL auto_increment,
+	id_indicador int NOT NULL,
+	id_imagem int NOT NULL,
+	id_hospital int NOT NULL,
+	data date NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_indicador) REFERENCES indicador(id),
+	FOREIGN KEY (id_imagem) REFERENCES imagem(id),
+	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
 );
 
 CREATE TABLE papel(
@@ -70,7 +94,7 @@ CREATE TABLE usuario(
 CREATE TABLE formulario(
 	id int NOT NULL auto_increment,
 	id_hospital int NOT NULL,
-	data_recebimento varchar(8) NOT NULL, 
+	data_recebimento date NOT NULL, 
 	mes_avaliacao varchar(2) NOT NULL,
 	nome_responsavel varchar(35) NOT NULL,
 	email_responsavel varchar(35) NOT NULL,
@@ -5726,5 +5750,5 @@ insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_respo
 
 insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (2, '15102015', '10', 'jhon', 'jhon@hospital.com');
 
-
+insert into indicador (nome) values ('Quedas'), ('Úlcera por pressão'), ('Higiene das mãos'), ('Medicação'), ('Cirurgia segura'), ('Identificação');
 	
