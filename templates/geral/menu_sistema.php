@@ -14,7 +14,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/smbps/index.php/sistema/sobre">Sobre</a></li>
                 <li><a href="/smbps/index.php/sistema/contato">Contato</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
