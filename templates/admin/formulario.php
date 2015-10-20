@@ -311,7 +311,7 @@
 </div>
 
 <?php 
-    if($_POST > 0){
+    if(count($_POST) > 0){
     	echo 'post antes json: ';
     	var_dump($_POST);
 
