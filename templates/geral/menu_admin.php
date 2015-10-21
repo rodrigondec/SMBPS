@@ -84,7 +84,13 @@
                 <!-- <li><a href="/smbps/index.php/sistema/contato">Contato</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#" onclick="log_out()">logout</a></li>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li><a href="#" onclick="log_out()">Sair</a></li>
+                        <li><a href="/smbps/index.php/sistema/trocar_session?type=2">Trocar Sessão</a></li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
