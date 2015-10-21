@@ -57,6 +57,14 @@
                     </ul>
                 </li>
                 <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <a href="/smbps/index.php/admin/listar_indicadores">Listar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Protocolos<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>

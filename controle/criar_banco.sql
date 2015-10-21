@@ -5751,5 +5751,5 @@ insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_respo
 
 insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (2, '15102015', '10', 'jhon', 'jhon@hospital.com');
 
-insert into indicador (nome) values ('Quedas'), ('Úlcera por pressão'), ('Higiene das mãos'), ('Medicação'), ('Cirurgia segura'), ('Identificação');
+insert into indicador (nome) values ('Quedas'), ('Ulcera por pressao'), ('Higiene das maos'), ('Medicacao'), ('Cirurgia segura'), ('Identificacao');
 	
