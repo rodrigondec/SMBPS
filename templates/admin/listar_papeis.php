@@ -58,7 +58,11 @@
 </table>
 <?php 
     if(count($_POST) > 0){
-    	$dados['nome'] = $_POST['nome'];
+    	foreach ($_POST as $key => $value){
+    		if($key != 'id'){
+    			$dados[$key] = $value;
+    		}
+    	}
     	update($dados, 'papel', 'id', $_POST['id'], LINK);
     	ob_clean();
     	header('LOCATION: /smbps/index.php/admin/listar_papeis');
