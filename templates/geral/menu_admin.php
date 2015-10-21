@@ -15,16 +15,6 @@
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Sistema<span class="caret"></span></a>
-                    <ul class='dropdown-menu'>
-                        <li>
-                            <a href="/smbps/index.php/sistema/home">Home</a>
-                            <a href="/smbps/index.php/sistema/sobre">Sobre</a>
-                            <a href="/smbps/index.php/sistema/contato">Contato</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
@@ -63,6 +53,22 @@
                     <ul class='dropdown-menu'>
                         <li>
                             <a href="/smbps/index.php/admin/listar_papeis">Listar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Protocolos<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <a href="/smbps/index.php/admin/listar_protocolos">Listar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Imagens<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li>
+                            <a href="/smbps/index.php/admin/listar_imagens">Listar</a>
                         </li>
                     </ul>
                 </li>

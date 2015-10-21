@@ -60,15 +60,18 @@
             if(isset($_SESSION['privilegio'])){
                 if($_SESSION['privilegio'] == '1'){
                     $pasta = 'admin';
+                    $arquivo = 'listar_hospitais'; 
                 }
                 if($_SESSION['privilegio'] == '2'){
                     $pasta = 'hospital';
+                    $arquivo = 'home'; 
                 }
             }
             else{
-                $pasta = 'sistema';        
+                $pasta = 'sistema';    
+                $arquivo = 'home';     
             }
-            $arquivo = 'home';  
+             
         }
         $caminho = montar_include($pasta, $arquivo);
         if($include){
