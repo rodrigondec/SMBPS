@@ -1,5 +1,3 @@
-mysql -uroot -p
-
 
 drop database smbps;
 create database smbps;
@@ -5739,9 +5737,9 @@ INSERT INTO cidade (id, nome, id_estado) VALUES
 
 
 
-insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('HT', 'Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
+insert into hospital (nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
 
-insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('HT2', 'Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
+insert into hospital (nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
 
 insert into papel (nome) values ('Administrador Geral'), ('Gestor Hospitalar');
 
