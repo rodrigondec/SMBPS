@@ -17,7 +17,7 @@
                 <li><a href="/smbps/index.php/sistema/contato">Contato</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="/smbps/index.php/login">login</a></li>
+                <li><a href="/smbps/index.php/login">Entrar</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
