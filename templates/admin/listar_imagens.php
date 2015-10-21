@@ -22,11 +22,11 @@
 				<?php echo $imagens[$key]['nome']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal">
+				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $imagens[$key]['id']; ?>">
 					visualizar
 				</a>
 				<!-- Modal -->
-				<div id="myModal" class="modal fade" role="dialog">
+				<div id="myModal<?php echo $imagens[$key]['id']; ?>" class="modal fade" role="dialog">
 			  		<div class="modal-dialog modal-lg">
 					    <!-- Modal content-->
 					    <div class="modal-content">
