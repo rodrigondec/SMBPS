@@ -1,3 +1,4 @@
+mysql -uroot -p
 
 
 drop database smbps;
@@ -5744,7 +5745,7 @@ insert into hospital (sigla, nome, cnpj, telefone, endereco, complemento, cep, i
 
 insert into papel (nome) values ('Administrador Geral'), ('Gestor Hospitalar');
 
-insert into usuario (nome, email, senha, id_papel, id_hospital) values ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
+insert into usuario (nome, email, senha, id_papel, id_hospital) values ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1), ('Admin', 'admin@admin.com', md5('admin'), 1, NULL);
 
 insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (1, '15102015', '10', 'jhon', 'jhon@hospital.com');
 
