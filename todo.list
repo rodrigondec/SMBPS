@@ -10,9 +10,17 @@ categorização do 'rendimento' do hospital com níveis de conformidade (vermelh
 
 tela de "ajuda" para melhorar indicadores
 
-pagina inicial = sobre (?)
-
 hospital {
 	coleta de indicadores (formulario para preencher com os 17 casos)
 	alterar os dados e protocolos que o hospital possui
 }
+
+
+
+
+--------------------------------------------------------------------------------
+
+Criar a página dos indicadores
+	Separar informações do formulário por indicador
+	Criar página de alteração dos protocolos dos indicadores
+	Criar gráficos dos indicadores
