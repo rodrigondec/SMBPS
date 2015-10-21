@@ -32,16 +32,16 @@
 			<td>
 				<?php echo $hospitais[$key]['nome']; ?>
 			</td>
-			<td>
+			<td data-mask='00.000.000/0000-00'>
 				<?php echo $hospitais[$key]['cnpj']; ?>
 			</td>
-			<td>
+			<td data-mask='(00) 0000-0000'>
 				<?php echo $hospitais[$key]['telefone']; ?>
 			</td>
 			<td>
 				<?php echo $hospitais[$key]['endereco']; ?>
 			</td>
-			<td>
+			<td data-mask='00.000-000'>
 				<?php echo $hospitais[$key]['cep']; ?>
 			</td>
 			<td class='text-right col-md-1'>
