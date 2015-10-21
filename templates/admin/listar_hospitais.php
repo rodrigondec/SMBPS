@@ -84,7 +84,7 @@
 </table>
 <?php 
     if(count($_POST) > 0){
-    	foreach ($_POST as $key => $value) {
+    	foreach ($_POST as $key => $value){
     		if($key != 'id'){
     			if($key == 'cnpj'){
     				$value = str_replace('.', '', $value);
