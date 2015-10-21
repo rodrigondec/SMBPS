@@ -35,8 +35,8 @@
 							</div>
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
-									<input type='number' name='id' value="<?php echo $papeis[$key]['id']; ?>" hidden />
-									<input class='form-control' type='text' name='nome' value="<?php echo $papeis[$key]['nome']; ?>" />
+									<input type='number' name='id' value="<?php echo $papeis[$key]['id']; ?>" hidden required />
+									<input class='form-control' type='text' name='nome' value="<?php echo $papeis[$key]['nome']; ?>" placeholder='Nome' required />
 								<div class='text-right'>
 									<button class='btn btn-default '>Alterar</button>
 								</div>
