@@ -27,9 +27,6 @@
 				<?php echo $hospitais[$key]['id_cidade']; ?>
 			</td>
 			<td>
-				<?php echo $hospitais[$key]['sigla']; ?>
-			</td>
-			<td>
 				<?php echo $hospitais[$key]['nome']; ?>
 			</td>
 			<td data-mask='00.000.000/0000-00'>
@@ -45,9 +42,39 @@
 				<?php echo $hospitais[$key]['cep']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' href="/smbps/index.php/admin/alterar_hospital?id='<?php echo $hospitais[$key]["id"]; ?>'">
+				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $hospitais[$key]['id']; ?>">
 					Alterar
 				</a>
+				<!-- Modal -->
+				<div id="myModal<?php echo $hospitais[$key]['id']; ?>" class="modal fade" role="dialog">
+			  		<div class="modal-dialog modal-sm">
+					    <!-- Modal content-->
+					    <div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title text-left">Alterar Hopistal</h4>
+							</div>
+							<div class="modal-body text-center">
+								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
+									<input type='number' name='id' value="<?php echo $hospitais[$key]['id']; ?>" hidden placeholder='' required />
+									<input class='form-control' type='number' name='id_cidade' value="<?php echo $hospitais[$key]['id_cidade']; ?>" placeholder='Id cidade' required />
+									<input class='form-control' type='text' name='nome' value="<?php echo $hospitais[$key]['nome']; ?>" placeholder='Nome' required />
+									<input class='form-control' type='text' name='cnpj' value="<?php echo $hospitais[$key]['cnpj']; ?>" data-mask='00.000.000/0000-00' placeholder='CNPJ' required />
+									<input class='form-control' type='text' name='telefone' value="<?php echo $hospitais[$key]['telefone']; ?>" data-mask='(00) 0000-0000' placeholder='Telefone' required />
+									<input class='form-control' type='text' name='endereco' value="<?php echo $hospitais[$key]['endereco']; ?>" placeholder='Endereço' required />
+									<input class='form-control' type='text' name='cep' value="<?php echo $hospitais[$key]['cep']; ?>" data-mask='00.000-000' placeholder='CEP' required />
+								<div class='text-right'>
+									<button class='btn btn-default '>Alterar</button>
+								</div>
+									
+								</form>
+							</div>
+<!-- 							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							</div> -->
+					    </div>
+				  </div>
+				</div>
 			</td>
 		</tr>
 	<?php
@@ -55,3 +82,31 @@
 	?>
 	</tbody>
 </table>
+<?php 
+    if(count($_POST) > 0){
+    	foreach ($_POST as $key => $value) {
+    		if($key != 'id'){
+    			if($key == 'cnpj'){
+    				$value = str_replace('.', '', $value);
+    				$value = str_replace('/', '', $value);
+    				$value = str_replace('-', '', $value);
+    			}
+    			else if($key == 'telefone'){
+    				$value = str_replace('(', '', $value);
+					$value = str_replace(')', '', $value);
+					$value = str_replace(' ', '', $value);
+					$value = str_replace('-', '', $value);
+    			}
+    			else if($key == 'cep'){
+    				$value = str_replace('.', '', $value);
+					$value = str_replace('-', '', $value);
+    			} 
+    			$dados[$key] = $value;
+    		}
+    	}
+    	var_dump($dados);
+    	update($dados, 'hospital', 'id', $_POST['id'], LINK);
+    	ob_clean();
+    	header('LOCATION: /smbps/index.php/admin/listar_hospitais');
+    }
+?>
