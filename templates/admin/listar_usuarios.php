@@ -5,9 +5,9 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Id Papel</th>
-			<th>Id Hospital</th>
+			<th class='col-md-1'>Id</th>
+			<th class='col-md-1'>Id Papel</th>
+			<th class='col-md-1'>Id Hospital</th>
 			<th>Nome</th>
 			<th>Email</th>
 		</tr>
@@ -17,13 +17,13 @@
 	    foreach ($usuarios as $key => $value):
 	?>
 		<tr>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $usuarios[$key]['id']; ?>
 			</td>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $usuarios[$key]['id_papel']; ?>
 			</td>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $usuarios[$key]['id_hospital']; ?>
 			</td>
 			<td>

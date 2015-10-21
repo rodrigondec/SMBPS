@@ -5,13 +5,15 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Id_hospital</th>
+			<th class='col-md-1'>Id</th>
+			<th class='col-md-1'>Id hospital</th>
 			<th>Nome Hospital</th>
 			<th>Data de Recebimento</th>
 			<th>Mês da Avaliação</th>
 			<th>Nome Responsável</th>
 			<th>Email Responsável</th>
+			<th class='col-md-1'></th>
+			<th class='col-md-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,10 +21,10 @@
 	    foreach ($formularios as $key => $value):
 	?>
 		<tr>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $formularios[$key]['id']; ?>
 			</td>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $formularios[$key]['id_hospital']; ?>
 			</td>
 			<td>NOME HOSPITAL X</td>

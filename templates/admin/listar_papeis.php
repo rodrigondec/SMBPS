@@ -5,7 +5,7 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Id</th>
+			<th class='col-md-1'>Id</th>
 			<th>Papel</th>
 		</tr>
 	</thead>
@@ -14,7 +14,7 @@
 	    foreach ($papeis as $key => $value):
 	?>
 		<tr>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $papeis[$key]['id']; ?>
 			</td>
 			<td>

@@ -5,8 +5,8 @@
 <table class="table table-striped">
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Id Cidade</th>
+			<th class='col-md-1'>Id</th>
+			<th class='col-md-1'>Id Cidade</th>
 			<th>Sigla</th>
 			<th>Nome</th>
 			<th>CNPJ</th>
@@ -20,10 +20,10 @@
 	    foreach ($hospitais as $key => $value):
 	?>
 		<tr>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $hospitais[$key]['id']; ?>
 			</td>
-			<td>
+			<td class='col-md-1'>
 				<?php echo $hospitais[$key]['id_cidade']; ?>
 			</td>
 			<td>
