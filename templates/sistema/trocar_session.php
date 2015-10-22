@@ -9,6 +9,7 @@
     		// hospital para admin
 
     		$usuario = select('*', 'usuario', 'email', 'admin@admin.com', LINK);
+            $_SESSION['id_usuario'] = $usuario['id'];
     		$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
     	}
@@ -16,6 +17,7 @@
     		// admin para hospital
 
     		$usuario = select('*', 'usuario', 'email', 'gestor@hospital.com', LINK);
+            $_SESSION['id_usuario'] = $usuario['id'];
     		$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
 			$_SESSION['hospital'] = $usuario['id_hospital'];
