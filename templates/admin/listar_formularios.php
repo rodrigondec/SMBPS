@@ -1,7 +1,7 @@
 <?php 
     $formularios = select_many('*', 'formulario', LINK);
 ?>
-<div class='text-center'><h2>formularios</h2></div>
+<div class='text-center'><h2>Formularios</h2></div>
 <table class="table table-striped">
 	<thead>
 		<tr>

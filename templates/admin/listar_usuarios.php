@@ -54,10 +54,9 @@
 										<?php 
 										    foreach ($papeis as $key2 => $value):
 										?>
-										<option value='<?php echo $papeis[$key]['id']; ?>' <?php if($usuarios[$key]['id_papel'] == $papeis[$key2]['id']){echo 'selected';} ?>>
+										<option value='<?php echo $papeis[$key2]['id']; ?>' <?php if($usuarios[$key]['id_papel'] == $papeis[$key2]['id']){echo 'selected';} ?>>
 											<?php echo $papeis[$key2]['nome']?>
 										</option>
-
 										<?php
 										    endforeach;
 										?>
@@ -69,12 +68,8 @@
 								<div class='text-right'>
 									<button class='btn btn-default '>Alterar</button>
 								</div>
-									
 								</form>
 							</div>
-<!-- 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div> -->
 					    </div>
 				  </div>
 				</div>

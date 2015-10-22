@@ -1,7 +1,7 @@
 <?php 
     $indicadores = select_many('*', 'indicador', LINK);
 ?>
-<div class='text-center'><h2>indicadores</h2></div>
+<div class='text-center'><h2>Indicadores</h2></div>
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -41,12 +41,8 @@
 								<div class='text-right'>
 									<button class='btn btn-default '>Alterar</button>
 								</div>
-									
 								</form>
 							</div>
-<!-- 							<div class="modal-footer">
-								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							</div> -->
 					    </div>
 				  </div>
 				</div>
