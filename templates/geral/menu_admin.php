@@ -84,13 +84,10 @@
                 <!-- <li><a href="<?php echo SISTEMA; ?>contato">Contato</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-
-
             <?php 
                 $notificacoes = select_many('*', 'notificacao', LINK, 'where (id_usuario, ativa) =('.$_SESSION['id_usuario'].', 1)');
                 if(count($notificacoes) > 0):
             ?>
-
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-o"></i>&nbsp;Notificações<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
@@ -100,7 +97,6 @@
                         <li>
                             <a data-toggle="modal" data-target="#myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>"><?php echo $notificacoes[$key]['titulo']; ?></a>
                         </li>
-                        
                     <?php 
                         endforeach;
                     ?>
