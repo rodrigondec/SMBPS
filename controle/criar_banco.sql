@@ -101,6 +101,15 @@ CREATE TABLE formulario(
 	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
 );
 
+CREATE TABLE notificacao(
+	id int NOT NULL auto_increment,
+	id_usuario int NOT NULL,
+	ativa varchar(1) NOT NULL DEFAULT '1',
+	titulo varchar(20) NOT NULL,
+	texto varchar(255) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+);
 
 
 
@@ -5743,11 +5752,12 @@ insert into hospital (nome, cnpj, telefone, endereco, complemento, cep, id_cidad
 
 insert into papel (nome) values ('Administrador Geral'), ('Gestor Hospitalar');
 
-insert into usuario (nome, email, senha, id_papel, id_hospital) values ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1), ('Admin', 'admin@admin.com', md5('admin'), 1, NULL);
+insert into usuario (nome, email, senha, id_papel, id_hospital) values ('Admin', 'admin@admin.com', md5('admin'), 1, NULL), ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
 
 insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (1, '15102015', '10', 'jhon', 'jhon@hospital.com');
 
 insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (2, '15102015', '10', 'jhon', 'jhon@hospital.com');
 
 insert into indicador (nome) values ('Quedas'), ('Ulcera por pressao'), ('Higiene das maos'), ('Medicacao'), ('Cirurgia segura'), ('Identificacao');
-	
+
+insert into notificacao (id_usuario, titulo, texto) values (1, 'Notificacao teste', 'Este é o exemplo de uma notificação!'), (2, 'Notificacao teste', 'Este é o exemplo de uma notificação!'), (3, 'Notificacao teste', 'Este é o exemplo de uma notificação!');
