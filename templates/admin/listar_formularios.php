@@ -2,6 +2,7 @@
     $formularios = select_many('*', 'formulario', LINK);
 ?>
 <div class='text-center'><h2>Formularios</h2></div>
+<div class="table-responsive">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -56,3 +57,4 @@
 	?>
 	</tbody>
 </table>
+</div>

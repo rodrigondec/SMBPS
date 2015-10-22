@@ -3,6 +3,7 @@
     $papeis = select_many('*', 'papel', LINK);
 ?>
 <div class='text-center'><h2>Usuários</h2></div>
+<div class="table-responsive">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -80,6 +81,7 @@
 	?>
 	</tbody>
 </table>
+</div>
 <?php 
     if(count($_POST) > 0){
     	if($_POST['id_hospital'] == ''){

@@ -2,6 +2,7 @@
     $imagens = select_many('*', 'imagem', LINK);
 ?>
 <div class='text-center'><h2>Imagens</h2></div>
+<div class="table-responsive">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -50,3 +51,4 @@
 	?>
 	</tbody>
 </table>
+</div>

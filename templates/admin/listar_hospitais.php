@@ -2,6 +2,7 @@
     $hospitais = select_many('*', 'hospital', LINK);
 ?>
 <div class='text-center'><h2>Hospitais</h2></div>
+<div class="table-responsive">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -78,6 +79,7 @@
 	?>
 	</tbody>
 </table>
+</div>
 <?php 
     if(count($_POST) > 0){
     	foreach ($_POST as $key => $value){
