@@ -105,6 +105,6 @@
     	var_dump($dados);
     	update($dados, 'usuario', 'id', $_POST['id'], LINK);
     	ob_clean();
-    	header('LOCATION: /smbps/index.php/admin/listar_usuarios');
+    	header('LOCATION: '.ADMIN.'listar_usuarios');
     }
 ?>

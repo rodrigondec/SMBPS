@@ -41,12 +41,12 @@
 				<?php echo $formularios[$key]['email_responsavel']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-success' href="/sbmps/index.php/admin/ver_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
+				<a class='btn btn-success' href="<?php echo ADMIN; ?>ver_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
 					Visualizar
 				</a>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' href="/smbps/index.php/admin/alterar_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
+				<a class='btn btn-info' href="<?php echo ADMIN; ?>alterar_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
 					Alterar
 				</a>
 			</td>

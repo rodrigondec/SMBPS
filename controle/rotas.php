@@ -51,7 +51,7 @@
                     $mensagem = 'Você não possui privilégio para utilizar essa funcionalidade!';
                     $tipo = 'error';
                 }
-                swal('Acesso Negado!', $mensagem, $tipo, '/smbps/');
+                swal('Acesso Negado!', $mensagem, $tipo, '/'.BASE);
                 
             }
             // END VERIFICAÇÃO

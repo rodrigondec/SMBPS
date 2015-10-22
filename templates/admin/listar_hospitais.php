@@ -107,6 +107,6 @@
     	var_dump($dados);
     	update($dados, 'hospital', 'id', $_POST['id'], LINK);
     	ob_clean();
-    	header('LOCATION: /smbps/index.php/admin/listar_hospitais');
+    	header('LOCATION: '.ADMIN.'listar_hospitais');
     }
 ?>

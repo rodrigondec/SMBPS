@@ -2,5 +2,5 @@
 	var_dump($_SESSION);
 	include('controle/globais.php');
 	session_destroy();
-	header('LOCATION: /smbps/');	
+	header('LOCATION: /'.BASE);	
 ?>

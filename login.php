@@ -11,7 +11,7 @@
 				var_dump($_SESSION);
 			}
 			ob_clean();
-			header('LOCATION: /smbps/');
+			header('LOCATION: /'.BASE);
 		}
 	}
 ?>

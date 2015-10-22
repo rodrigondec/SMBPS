@@ -19,13 +19,19 @@
 
 	//XAMPP
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
-	define('BASE', 'smbps');
-	define('TEMPLATES', ARQUIVOS.'/'.BASE.'/templates/');
-	define('SOURCE', ARQUIVOS.'/'.BASE.'/estaticos/source/');
-	define('IMGS', '/'.BASE.'/estaticos/source/imgs/');
-	define('LOGIN', ARQUIVOS.'/'.BASE.'/login.php');
-	define('CONFIGS', ARQUIVOS.'/'.BASE.'/configs/configs.php');
+	define('BASE', 'smbps/');
+	define('TEMPLATES', ARQUIVOS.'/'.BASE.'templates/');
+	define('SOURCE', ARQUIVOS.'/'.BASE.'estaticos/source/');
+	define('IMGS', '/'.BASE.'estaticos/source/imgs/');
+	define('LOGIN', ARQUIVOS.'/'.BASE.'login.php');
+	define('CONFIGS', ARQUIVOS.'/'.BASE.'configs/configs.php');
 	
+	define('ADMIN', '/'.BASE.'index.php/admin/');
+	define('HOSPITAL', '/'.BASE.'index.php/hospital/');
+	define('SISTEMA', '/'.BASE.'index.php/sistema/');
+
+
+
 	define('DB_NAME', 'smbps');
 	define('DB_USER', 'root');
 	define('DB_PASS', '');

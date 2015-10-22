@@ -65,6 +65,6 @@
     	}
     	update($dados, 'papel', 'id', $_POST['id'], LINK);
     	ob_clean();
-    	header('LOCATION: /smbps/index.php/admin/listar_papeis');
+    	header('LOCATION: '.ADMIN.'listar_papeis');
     }
 ?>

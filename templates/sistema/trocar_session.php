@@ -24,5 +24,5 @@
     	echo 'session: ';var_dump($_SESSION);echo '<br /><br />';
     }
     ob_clean();
-	header('LOCATION: /smbps/');
+	header('LOCATION: /'.BASE);
 ?>
