@@ -21,6 +21,7 @@
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
 	define('BASE', 'smbps/');
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'templates/');
+	
 	define('SOURCE', ARQUIVOS.'/'.BASE.'estaticos/source/');
 	define('IMGS', '/'.BASE.'estaticos/source/imgs/');
 	define('LOGIN', ARQUIVOS.'/'.BASE.'login.php');

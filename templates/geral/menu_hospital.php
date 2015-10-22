@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/smbps/">Página inicial</a>
+            <a class="navbar-brand" href="/<?php echo BASE; ?>">Página inicial</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,12 +18,12 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/sistema/home">Quedas</a>
-                            <a href="/smbps/index.php/sistema/sobre">Ulcera por pressão</a>
-                            <a href="/smbps/index.php/sistema/contato">Higiena das mãos</a>
-                            <a href="/smbps/index.php/sistema/home">Medicação</a>
-                            <a href="/smbps/index.php/sistema/sobre">Cirurgia segura</a>
-                            <a href="/smbps/index.php/sistema/contato">Identificação</a>
+                            <a href="<?php echo HOSPITAL; ?>home">Quedas</a>
+                            <a href="<?php echo HOSPITAL; ?>sobre">Ulcera por pressão</a>
+                            <a href="<?php echo HOSPITAL; ?>contato">Higiena das mãos</a>
+                            <a href="<?php echo HOSPITAL; ?>home">Medicação</a>
+                            <a href="<?php echo HOSPITAL; ?>sobre">Cirurgia segura</a>
+                            <a href="<?php echo HOSPITAL; ?>contato">Identificação</a>
                         </li>
                     </ul>
                 </li>
@@ -31,21 +31,19 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Relatório<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/hospital/meu_hospital">Meu hospital</a>
+                            <a href="<?php echo HOSPITAL; ?>meu_hospital">Meu hospital</a>
                         </li>
                         <li>
-                            <a href="/smbps/index.php/hospital/estatisticas_gerais">Estatísticas gerais</a>
+                            <a href="<?php echo HOSPITAL; ?>estatisticas_gerais">Estatísticas gerais</a>
                         </li>
                         <li>
-                            <a href="/smbps/index.php/hospital/imagem">imagem</a>
+                            <a href="<?php echo HOSPITAL; ?>imagem">imagem</a>
                         </li>
                         <li>
-                            <a href="/smbps/index.php/hospital/mostrar_imagem">mostrar imagem</a>
+                            <a href="<?php echo HOSPITAL; ?>mostrar_imagem">mostrar imagem</a>
                         </li>
                     </ul>
                 </li>
-                <!-- <li><a href="/smbps/index.php/admin/home">Sobre</a></li> -->
-                <!-- <li><a href="/smbps/index.php/sistema/contato">Contato</a></li> -->
             </ul>
             
             <ul class="nav navbar-nav navbar-right">
@@ -53,7 +51,7 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="#" onclick="log_out()">Sair</a></li>
-                        <li><a href="/smbps/index.php/sistema/trocar_session?type=1">Trocar Sessão</a></li>
+                        <li><a href="<?php echo SISTEMA; ?>trocar_session?type=1">Trocar Sessão</a></li>
                     </ul>
                 </li>
             </ul>

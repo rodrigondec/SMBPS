@@ -8,13 +8,13 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/smbps/">Página inicial</a>
+            <a class="navbar-brand" href="<?php echo BASE; ?>">Página inicial</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="/smbps/index.php/sistema/contato">Contato</a></li>
+                <li><a href="<?php echo SISTEMA; ?>contato">Contato</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>

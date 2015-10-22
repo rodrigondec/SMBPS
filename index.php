@@ -9,7 +9,7 @@
 
             <meta name="viewport" content="width=device-width, initial-scale=1">
             
-            <link rel="icon" href="<?php echo SOURCE; ?>imgs/"><!-- IMAGEM FALTANDO -->
+            <link rel="icon" href="<?php echo IMGS; ?>"><!-- IMAGEM FALTANDO -->
 
             <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/estilo.css">
 

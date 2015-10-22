@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/smbps/">Página inicial</a>
+            <a class="navbar-brand" href="/<?php echo BASE; ?>">Página inicial</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -18,8 +18,8 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/admin/">PHPMyAdmin</a>
-                            <a href="/smbps/index.php/configs">Configurações</a>
+                            <a href="/<?php echo BASE; ?>admin/">PHPMyAdmin</a>
+                            <a href="/<?php echo BASE; ?>index.php/configs">Configurações</a>
                         </li>
                     </ul>
                 </li>
@@ -27,7 +27,7 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Hospital<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_hospitais">Listar</a>
+                            <a href="<?php echo ADMIN; ?>listar_hospitais">Listar</a>
                         </li>
                     </ul>
                 </li>
@@ -35,8 +35,8 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Formulário<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_formularios">Listar</a>
-                            <a href="/smbps/index.php/admin/formulario">Cadastrar</a>
+                            <a href="<?php echo ADMIN; ?>listar_formularios">Listar</a>
+                            <a href="<?php echo ADMIN; ?>formulario">Cadastrar</a>
                         </li>
                     </ul>
                 </li>
@@ -44,7 +44,7 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Usuarios<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_usuarios">Listar</a>
+                            <a href="<?php echo ADMIN; ?>listar_usuarios">Listar</a>
                         </li>
                     </ul>
                 </li>
@@ -52,7 +52,7 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Papéis<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_papeis">Listar</a>
+                            <a href="<?php echo ADMIN; ?>listar_papeis">Listar</a>
                         </li>
                     </ul>
                 </li>
@@ -60,7 +60,7 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_indicadores">Listar</a>
+                            <a href="<?php echo ADMIN; ?>listar_indicadores">Listar</a>
                         </li>
                     </ul>
                 </li>
@@ -68,7 +68,7 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Protocolos<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_protocolos">Listar</a>
+                            <a href="<?php echo ADMIN; ?>listar_protocolos">Listar</a>
                         </li>
                     </ul>
                 </li>
@@ -76,19 +76,19 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Imagens<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="/smbps/index.php/admin/listar_imagens">Listar</a>
+                            <a href="<?php echo ADMIN; ?>listar_imagens">Listar</a>
                         </li>
                     </ul>
                 </li>
-                <!-- <li><a href="/smbps/index.php/admin/home">Sobre</a></li> -->
-                <!-- <li><a href="/smbps/index.php/sistema/contato">Contato</a></li> -->
+                <!-- <li><a href="<?php echo ADMIN; ?>home">Sobre</a></li> -->
+                <!-- <li><a href="<?php echo SISTEMA; ?>contato">Contato</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="#" onclick="log_out()">Sair</a></li>
-                        <li><a href="/smbps/index.php/sistema/trocar_session?type=2">Trocar Sessão</a></li>
+                        <li><a href="<?php echo SISTEMA; ?>trocar_session?type=2">Trocar Sessão</a></li>
                     </ul>
                 </li>
             </ul>
