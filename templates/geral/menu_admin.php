@@ -84,6 +84,40 @@
                 <!-- <li><a href="<?php echo SISTEMA; ?>contato">Contato</a></li> -->
             </ul>
             <ul class="nav navbar-nav navbar-right">
+
+
+            <?php 
+                $notificacoes = select_many('*', 'notificacao', LINK, 'where (id_usuario, ativa) =('.$_SESSION['id_usuario'].', 1)');
+                if(count($notificacoes) > 0):
+            ?>
+
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-o"></i>&nbsp;Notificações<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                    <?php 
+                        foreach ($notificacoes as $key => $value):
+                    ?>
+                        <li>
+                            <a data-toggle="modal" data-target="#myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>"><?php echo $notificacoes[$key]['titulo']; ?></a>
+                        </li>
+                        
+                    <?php 
+                        endforeach;
+                    ?>
+                    </ul>
+                </li>
+            <?php 
+                else:
+            ?>
+                <li class='dropdown'>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações<span class="caret"></span></a>
+                    <ul class='dropdown-menu'>
+                        <li><a href="#">Não há notificações ativas</a></li>
+                    </ul>
+                </li>
+            <?php 
+                endif;
+            ?>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
@@ -95,3 +129,34 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+<?php 
+    if(count($notificacoes) > 0):
+        foreach ($notificacoes as $key => $value):
+?>
+<!-- Modal -->
+<div id="myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-left">Notificação</h4>
+            </div>
+            <div class="modal-body text-center">
+                <p>
+                    <?php 
+                        echo $notificacoes[$key]['texto'];
+                    ?>
+                </p>
+                <form action="<?php echo SISTEMA?>desativar_notificacao" method='post'>
+                    <input type='number' name='id' value='<?php echo $notificacoes[$key]['id']; ?>' hidden required />
+                    <button class="btn btn-success">Desativar Notificação</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<?php 
+        endforeach;
+    endif;
+?>

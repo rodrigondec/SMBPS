@@ -68,7 +68,7 @@
 				<?php echo $protocolos[$key]['data']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $protocolos[$key]['id']; ?>">
+				<a class='btn btn-info' data-toggle="modal" data-target="#myModal<?php echo $protocolos[$key]['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
