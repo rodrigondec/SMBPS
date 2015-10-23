@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top" role='navigation'>
     <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class='dropdown'>
+                <li class='dropdown active'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
@@ -26,7 +26,7 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Hospital<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li>
+                        <li class='dropdown'>
                             <a href="<?php echo ADMIN; ?>listar_hospitais">Listar</a>
                         </li>
                     </ul>
@@ -49,7 +49,7 @@
                     </ul>
                 </li>
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Papéis<span class="caret"></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Papéis<span class="caret"></span></i></a>
                     <ul class='dropdown-menu'>
                         <li>
                             <a href="<?php echo ADMIN; ?>listar_papeis">Listar</a>
@@ -59,6 +59,22 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Second Level Menu ! <i class="fa fa-caret-right"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="#">Link 1</a></li> 
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">third Level Menu ! <i class="fa fa-caret-right"></i></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a tabindex="-1" href="#">Link 1</a></li>                           
+                                      <li><a href="#">Lik 2</a></li>
+                                      <li><a href="#">Link 3</a></li>
+                                    </ul>
+                                </li>                            
+                                <li><a href="#">Lik 2</a></li>
+                                <li><a href="#">Link 3</a></li>
+                            </ul>
+                        </li>  
                         <li>
                             <a href="<?php echo ADMIN; ?>listar_indicadores">Listar</a>
                         </li>
