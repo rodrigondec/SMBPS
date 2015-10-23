@@ -286,7 +286,7 @@
 				Qual a quantidade de pacientes indentificados?
 				<h5>Colocar a quantidade de paciente identificados em observação direta após seleção de lote de pacientes internados em um dia do mês. Selecionar 17 pacientes entre aqueles internados no dia de avaliação através de amostragem sistemática.</h5>
 			</p>
-			<input type='num' name='numero_pacientes_identificados' required />
+			<input type='number' name='numero_pacientes_identificados' required />
 		</div>
 
 
