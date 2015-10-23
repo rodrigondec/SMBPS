@@ -31,10 +31,17 @@ CREATE TABLE cidade(
   FOREIGN KEY (id_estado) REFERENCES estado(id)
 );
 
+CREATE TABLE tipo_indicador(
+	id int NOT NULL auto_increment,
+	nome varchar(10) NOT NULL,
+);
+
 CREATE TABLE indicador(
 	id int NOT NULL auto_increment,
+	id_tipo_indicador int NOT NULL,
 	nome varchar(35) NOT NULL,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES tipo_indicador(id)
 );
 
 CREATE TABLE imagem(
@@ -70,6 +77,46 @@ CREATE TABLE protocolo(
 	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
 );
 
+CREATE TABLE pergunta(
+	id int NOT NULL auto_increment,
+	id_indicador int NOT NULL,
+	pergunta varchar(35) NOT NULL,
+	observacao varchar(35),
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_indicador) REFERENCES indicador(id)
+);
+
+CREATE TABLE input(
+	id int NOT NULL auto_increment,
+	id_pergunta int NOT NULL,
+	nome varchar(50) NOT NULL,
+	tipo varchar(6) NOT NULL,
+	Value varchar(15),
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id)
+);
+
+CREATE TABLE resposta(
+	id int NOT NULL auto_increment,
+	id_pergunta int NOT NULL,
+	id_formulario int NOT NULL,
+	resposta varchar(30) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id),
+	FOREIGN KEY (id_formulario) REFERENCES formulario(id)
+);
+
+CREATE TABLE formulario(
+	id int NOT NULL auto_increment,
+	id_hospital int NOT NULL,
+	data_recebimento date NOT NULL, 
+	mes_avaliacao varchar(2) NOT NULL,
+	nome_responsavel varchar(35) NOT NULL,
+	email_responsavel varchar(35) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
+);
+
 CREATE TABLE papel(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
@@ -88,17 +135,6 @@ CREATE TABLE usuario(
 	FOREIGN KEY (id_papel) REFERENCES papel(id),
 	FOREIGN KEY (id_hospital) REFERENCES hospital(id),
 	UNIQUE (email)
-);
-
-CREATE TABLE formulario(
-	id int NOT NULL auto_increment,
-	id_hospital int NOT NULL,
-	data_recebimento date NOT NULL, 
-	mes_avaliacao varchar(2) NOT NULL,
-	nome_responsavel varchar(35) NOT NULL,
-	email_responsavel varchar(35) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
 );
 
 CREATE TABLE notificacao(
