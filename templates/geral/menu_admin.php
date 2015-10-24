@@ -38,6 +38,19 @@
                             <a href="<?php echo ADMIN; ?>listar_formularios">Listar</a>
                             <a href="<?php echo ADMIN; ?>formulario">Cadastrar</a>
                         </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Perguntas<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_perguntas">listar</a></li>                             
+                                <li><a href="#">Cadastrar</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Respostas<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_respostas">listar</a></li>                             
+                            </ul>
+                        </li>
                     </ul>
                 </li>
                 <li class='dropdown'>
@@ -45,38 +58,23 @@
                     <ul class='dropdown-menu'>
                         <li>
                             <a href="<?php echo ADMIN; ?>listar_usuarios">Listar</a>
+                            <li><a href="#">Cadastrar</a></li>
                         </li>
-                    </ul>
-                </li>
-                <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Papéis<span class="caret"></span></i></a>
-                    <ul class='dropdown-menu'>
-                        <li>
-                            <a href="<?php echo ADMIN; ?>listar_papeis">Listar</a>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Papeis<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_papeis">Listar</a></li>
+                                <li><a href="#">Cadastrar</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </li>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
-                    <ul class='dropdown-menu'>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Second Level Menu ! <i class="fa fa-caret-right"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a tabindex="-1" href="#">Link 1</a></li> 
-                                <li class="dropdown-submenu">
-                                    <a tabindex="-1" href="#">third Level Menu ! <i class="fa fa-caret-right"></i></a>
-                                    <ul class="dropdown-menu">
-                                      <li><a tabindex="-1" href="#">Link 1</a></li>                           
-                                      <li><a href="#">Lik 2</a></li>
-                                      <li><a href="#">Link 3</a></li>
-                                    </ul>
-                                </li>                            
-                                <li><a href="#">Lik 2</a></li>
-                                <li><a href="#">Link 3</a></li>
-                            </ul>
-                        </li>  
+                    <ul class='dropdown-menu'>  
                         <li>
                             <a href="<?php echo ADMIN; ?>listar_indicadores">Listar</a>
+                            <li><a href="#">Cadastrar</a></li>
                         </li>
                     </ul>
                 </li>
@@ -86,13 +84,12 @@
                         <li>
                             <a href="<?php echo ADMIN; ?>listar_protocolos">Listar</a>
                         </li>
-                    </ul>
-                </li>
-                <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Imagens<span class="caret"></span></a>
-                    <ul class='dropdown-menu'>
-                        <li>
-                            <a href="<?php echo ADMIN; ?>listar_imagens">Listar</a>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Imagens<span style='float:right;margin-top:3px;'><i class="fa fa-caret-right" style=''></i></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_imagens">Listar</a></li>                           
+
+                            </ul>
                         </li>
                     </ul>
                 </li>
