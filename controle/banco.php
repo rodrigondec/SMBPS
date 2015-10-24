@@ -1,7 +1,7 @@
 <?php
     // função que executa SQL para insert
     // INSERT INTO $tabela ($chaves,...) VALUES ($valores)
-    function insert($dados, $tabela, $link) {
+    function insert($dados, $tabela) {
         $sql = 'INSERT INTO '.$tabela;
         $chaves = array();
         $valores = array();
@@ -14,20 +14,20 @@
 
         $sql .= ' ('.$str_chaves.') VALUES ('.$str_valores.');';
         // var_dump($sql);
-        return mysql_query($sql, $link);
+        return mysql_query($sql, LINK);
     }
 
     // função que executa SQL para DELETE
     // DELETE FROM $tabela WHERE id=$id
-    function delete($id, $tabela, $link) {
+    function delete($id, $tabela) {
         $sql = 'DELETE FROM '.$tabela.' WHERE id='.$id.';';
-        return mysql_query($sql, $link);
+        return mysql_query($sql, LINK);
         // var_dump($sql);
     }
 
     // função que executa SQL para UPDATE
     // UPDATE $tabela SET $chave=$valor,... WHERE id=$id
-    function update($dados, $tabela, $restricao, $id, $link) {
+    function update($dados, $tabela, $restricao, $id) {
         $sql = 'UPDATE '.$tabela.' SET ';
         $alteracoes = array();
         foreach ($dados as $chave => $valor) {
