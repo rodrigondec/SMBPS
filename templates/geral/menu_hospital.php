@@ -47,7 +47,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <?php 
-                $notificacoes = select_many('*', 'notificacao', LINK, 'where (id_usuario, ativa) =('.$_SESSION['id_usuario'].', 1)');
+                $notificacoes = select_many('*', 'notificacao', '(id_usuario, ativa)', '('.$_SESSION['id_usuario'].', 1)', false);
                 if(count($notificacoes) > 0):
             ?>
                 <li class='dropdown'>

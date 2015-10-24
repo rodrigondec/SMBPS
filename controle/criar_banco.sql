@@ -100,7 +100,7 @@ CREATE TABLE resposta(
 	id int NOT NULL auto_increment,
 	id_pergunta int NOT NULL,
 	id_formulario int NOT NULL,
-	resposta varchar(30) NOT NULL,
+	texto varchar(30) NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id),
 	FOREIGN KEY (id_formulario) REFERENCES formulario(id)

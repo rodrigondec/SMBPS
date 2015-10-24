@@ -1,5 +1,5 @@
 <?php 
-    $imagem = select('nome', 'imagem', 'id', '1', LINK);
+    $imagem = select('nome', 'imagem', 'id', '1');
     var_dump($imagem);
 ?>
 <div align='center'>
