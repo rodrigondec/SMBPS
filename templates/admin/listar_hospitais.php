@@ -1,5 +1,5 @@
 <?php 
-    $hospitais = select_many('*', 'hospital', LINK);
+    $hospitais = select_many('*', 'hospital');
 ?>
 <div class='text-center'><h2>Hospitais</h2></div>
 <div class="table-responsive">
@@ -8,12 +8,12 @@
 		<tr>
 			<th class='col-md-1'>Id</th>
 			<th class='col-md-1'>Id Cidade</th>
-			<th>Sigla</th>
 			<th>Nome</th>
 			<th>CNPJ</th>
 			<th>Telefone</th>
 			<th>Endereço</th>
 			<th>CEP</th>
+			<th class='col-md-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -43,7 +43,7 @@
 				<?php echo $hospitais[$key]['cep']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $hospitais[$key]['id']; ?>">
+				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $hospitais[$key]['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
@@ -65,7 +65,7 @@
 									<input class='form-control' type='text' name='endereco' value="<?php echo $hospitais[$key]['endereco']; ?>" placeholder='Endereço' required />
 									<input class='form-control' type='text' name='cep' value="<?php echo $hospitais[$key]['cep']; ?>" data-mask='00.000-000' placeholder='CEP' required />
 								<div class='text-right'>
-									<button class='btn btn-default '>Alterar</button>
+									<button class='btn btn-primary'>Alterar</button>
 								</div>
 								</form>
 							</div>
@@ -103,7 +103,7 @@
     		}
     	}
     	var_dump($dados);
-    	update($dados, 'hospital', 'id', $_POST['id'], LINK);
+    	update($dados, 'hospital', 'id', $_POST['id']);
     	ob_clean();
     	header('LOCATION: '.ADMIN.'listar_hospitais');
     }

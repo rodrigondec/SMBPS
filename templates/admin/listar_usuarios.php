@@ -12,6 +12,7 @@
 			<th class='col-md-1'>Id Hospital</th>
 			<th>Nome</th>
 			<th>Email</th>
+			<th class='col-md-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -35,7 +36,7 @@
 				<?php echo $usuarios[$key]['email']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $usuarios[$key]['id']; ?>">
+				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $usuarios[$key]['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
@@ -51,7 +52,7 @@
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $usuarios[$key]['id']; ?>" hidden placeholder='' required />
 									<select class='form-control' name='id_papel' required>
-										<option>Papel</option>
+										<option value='' disabled>Selecione o papel</option>
 										<?php 
 										    foreach ($papeis as $key2 => $value):
 										?>
@@ -100,7 +101,7 @@
     	}
     	var_dump($_POST);echo '<br /><br />';
     	var_dump($dados);
-    	update($dados, 'usuario', 'id', $_POST['id'], LINK);
+    	update($dados, 'usuario', 'id', $_POST['id']);
     	ob_clean();
     	header('LOCATION: '.ADMIN.'listar_usuarios');
     }

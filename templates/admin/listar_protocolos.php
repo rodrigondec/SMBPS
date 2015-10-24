@@ -1,7 +1,7 @@
 <?php 
-    $protocolos = select_many('*', 'protocolo', LINK);
-    $indicadores = select_many('*', 'indicador', LINK);
-    $hospitais = select_many('*', 'hospital', LINK);
+    $protocolos = select_many('*', 'protocolo');
+    $indicadores = select_many('*', 'indicador');
+    $hospitais = select_many('*', 'hospital');
 ?>
 <div class='text-center'><h2>Protocolos</h2></div>
 <div class="table-responsive">
@@ -30,21 +30,21 @@
 			</td>
 			<td>
 				<?php 
-					$hospital = select('nome', 'hospital', 'id', $protocolos[$key]['id_hospital'], LINK)['nome'];
+					$hospital = select('nome', 'hospital', 'id', $protocolos[$key]['id_hospital'])['nome'];
 					echo $hospital;
 				?>
 			</td>
 			<td class='col-md-2'>
 				<?php 
 					echo $protocolos[$key]['id_indicador']; 
-					$nome_indicador = select('nome', 'indicador', 'id', $protocolos[$key]['id_indicador'], LINK)['nome'];
+					$nome_indicador = select('nome', 'indicador', 'id', $protocolos[$key]['id_indicador'])['nome'];
 					echo ' ('.$nome_indicador.')';
 				?>
 			</td>
 			<td class='col-md-2'>
 				<?php 
 					echo $protocolos[$key]['id_imagem']; 
-					$nome_imagem = select('nome', 'imagem', 'id', $protocolos[$key]['id_imagem'], LINK)['nome'];
+					$nome_imagem = select('nome', 'imagem', 'id', $protocolos[$key]['id_imagem'])['nome'];
 				?>&nbsp;&nbsp;&nbsp;&nbsp;
 				<a class='btn btn-info' data-toggle="modal"  data-target="#myModalimg<?php echo $protocolos[$key]['id_imagem']; ?>">
 					Visualizar
@@ -69,7 +69,7 @@
 				<?php echo $protocolos[$key]['data']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal" data-target="#myModal<?php echo $protocolos[$key]['id']; ?>">
+				<a class='btn btn-primary' data-toggle="modal" data-target="#myModal<?php echo $protocolos[$key]['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
@@ -111,7 +111,7 @@
 									</select>
 									<input class='form-control' type='date' name='data' value="<?php echo $protocolos[$key]['data']; ?>"placeholder='Data' required />
 								<div class='text-right'>
-									<button class='btn btn-default '>Alterar</button>
+									<button class='btn btn-primary'>Alterar</button>
 								</div>
 								</form>
 							</div>
@@ -135,7 +135,7 @@
     	}
     	var_dump($_POST);echo '<br /><br />';
     	var_dump($dados);
-    	update($dados, 'protocolo', 'id', $_POST['id'], LINK);
+    	update($dados, 'protocolo', 'id', $_POST['id']);
     	ob_clean();
     	header('LOCATION: '.ADMIN.'listar_protocolos');
     }

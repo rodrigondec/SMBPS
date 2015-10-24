@@ -1,5 +1,5 @@
 <?php 
-    $imagens = select_many('*', 'imagem', LINK);
+    $imagens = select_many('*', 'imagem');
 ?>
 <div class='text-center'><h2>Imagens</h2></div>
 <div class="table-responsive">

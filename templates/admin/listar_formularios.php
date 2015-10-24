@@ -1,5 +1,5 @@
 <?php 
-    $formularios = select_many('*', 'formulario', LINK);
+    $formularios = select_many('*', 'formulario');
 ?>
 <div class='text-center'><h2>Formularios</h2></div>
 <div class="table-responsive">
@@ -42,12 +42,12 @@
 				<?php echo $formularios[$key]['email_responsavel']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-success' href="<?php echo ADMIN; ?>ver_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
+				<a class='btn btn-info' href="<?php echo ADMIN; ?>ver_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
 					Visualizar
 				</a>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' href="<?php echo ADMIN; ?>alterar_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
+				<a class='btn btn-primary' href="<?php echo ADMIN; ?>alterar_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
 					Alterar
 				</a>
 			</td>

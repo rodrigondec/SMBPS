@@ -1,5 +1,5 @@
 <?php 
-    $papeis = select_many('*', 'papel', LINK);
+    $papeis = select_many('*', 'papel');
 ?>
 <div class='text-center'><h2>Papéis</h2></div>
 <div class="table-responsive">
@@ -8,6 +8,7 @@
 		<tr>
 			<th class='col-md-1'>Id</th>
 			<th>Papel</th>
+			<th class='col-md-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -22,7 +23,7 @@
 				<?php echo $papeis[$key]['nome']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $papeis[$key]['id']; ?>">
+				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $papeis[$key]['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
@@ -39,7 +40,7 @@
 									<input type='number' name='id' value="<?php echo $papeis[$key]['id']; ?>" hidden required />
 									<input class='form-control' type='text' name='nome' value="<?php echo $papeis[$key]['nome']; ?>" placeholder='Nome' required />
 								<div class='text-right'>
-									<button class='btn btn-default '>Alterar</button>
+									<button class='btn btn-primary'>Alterar</button>
 								</div>
 								</form>
 							</div>
@@ -61,7 +62,7 @@
     			$dados[$key] = $value;
     		}
     	}
-    	update($dados, 'papel', 'id', $_POST['id'], LINK);
+    	update($dados, 'papel', 'id', $_POST['id']);
     	ob_clean();
     	header('LOCATION: '.ADMIN.'listar_papeis');
     }

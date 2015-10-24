@@ -1,5 +1,5 @@
 <?php 
-    $indicadores = select_many('*', 'indicador', LINK);
+    $indicadores = select_many('*', 'indicador');
 ?>
 <div class='text-center'><h2>Indicadores</h2></div>
 <div class="table-responsive">
@@ -8,7 +8,7 @@
 		<tr>
 			<th class='col-md-1'>Id</th>
 			<th>Nome</th>
-			<th></th>
+			<th class='col-md-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,7 +23,7 @@
 				<?php echo $indicadores[$key]['nome']; ?>
 			</td>
 			<td class='text-right col-md-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $indicadores[$key]['id']; ?>">
+				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $indicadores[$key]['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
@@ -40,7 +40,7 @@
 									<input type='number' name='id' value="<?php echo $indicadores[$key]['id']; ?>" hidden required />
 									<input class='form-control' type='text' name='nome' value="<?php echo $indicadores[$key]['nome']; ?>" placeholder='Nome' required />
 								<div class='text-right'>
-									<button class='btn btn-default '>Alterar</button>
+									<button class='btn btn-primary'>Alterar</button>
 								</div>
 								</form>
 							</div>
@@ -62,7 +62,7 @@
     			$dados[$key] = $value;
     		}
     	}
-    	update($dados, 'indicador', 'id', $_POST['id'], LINK);
+    	update($dados, 'indicador', 'id', $_POST['id']);
     	ob_clean();
     	header('LOCATION: '.ADMIN.'listar_indicadores');
     }
