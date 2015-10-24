@@ -119,6 +119,7 @@
             <?php 
                 else:
             ?>
+                <li><a href="#" onclick="sa('Não há notificações ativas', '', 'success', '', 'btn-info');"><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações</a></li>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
@@ -160,7 +161,7 @@
                 </p>
                 <form action="<?php echo SISTEMA?>desativar_notificacao" method='post'>
                     <input type='number' name='id' value='<?php echo $notificacoes[$key]['id']; ?>' hidden required />
-                    <button class="btn btn-success">Desativar Notificação</button>
+                    <button class="btn btn-danger">Remover Notificação</button>
                 </form>
             </div>
         </div>
