@@ -34,6 +34,7 @@ CREATE TABLE cidade(
 CREATE TABLE tipo_indicador(
 	id int NOT NULL auto_increment,
 	nome varchar(10) NOT NULL,
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE indicador(
