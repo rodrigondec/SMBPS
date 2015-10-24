@@ -1,6 +1,7 @@
 <?php 
-    $usuarios = select_many('*', 'usuario', LINK);
-    $papeis = select_many('*', 'papel', LINK);
+    $usuarios = select_many('*', 'usuario');
+    $papeis = select_many('*', 'papel');
+    $max_id_hospital = intval(select('max(id)', 'hospital')['max(id)']);    
 ?>
 <div class='text-center'><h2>Usuários</h2></div>
 <div class="table-responsive">
@@ -63,12 +64,12 @@
 										    endforeach;
 										?>
 									</select>
-									<input class='form-control' type='number' name='id_hospital' value="<?php echo $usuarios[$key]['id_hospital']; ?>" placeholder='Id hospital' />
+									<input class='form-control' type='number' name='id_hospital' value="<?php echo $usuarios[$key]['id_hospital']; ?>" placeholder='Id hospital' min='1' max='<?php echo $max_id_hospital; ?>' />
 									<input class='form-control' type='text' name='nome' value="<?php echo $usuarios[$key]['nome']; ?>" placeholder='Nome' required />
 									<input class='form-control' type='email' name='email' value="<?php echo $usuarios[$key]['email']; ?>"placeholder='Email' required />
 									<input class='form-control' type='password' name='senha' placeholder='senha' />
 								<div class='text-right'>
-									<button class='btn btn-default '>Alterar</button>
+									<button class='btn btn-primary'>Alterar</button>
 								</div>
 								</form>
 							</div>
