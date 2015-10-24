@@ -13,8 +13,8 @@
 		}
 	}
 
-	function swal($title, $text, $type = '', $location = ''){
-		echo "<button hidden id='clickButton' onClick='sa(\"".$title."\", \"".$text."\", \"".$type."\", \"".$location."\");'>teste</button>
+	function swal($title, $text, $type = '', $location = '', $btn = ''){
+		echo "<button hidden id='clickButton' onClick='sa(\"".$title."\", \"".$text."\", \"".$type."\", \"".$location."\", \"".$btn."\");'>button</button>
 	    		<script type='text/javascript'>
 	    			window.onload = function(){
 	    				document.getElementById('clickButton').click();

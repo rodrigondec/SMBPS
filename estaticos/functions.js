@@ -14,9 +14,16 @@ function log_out(){
 	});
 }
 
-function sa(head, body, tipo, loc){
+function sa(head, body, tipo, loc, btn){	
 	if(loc == ''){
-		swal(head, body, tipo);
+		swal({
+			title: head,
+			text: body,
+			type: tipo,
+			closeOnConfirm: false,
+			confirmButtonClass: btn,
+			html: false
+		});
 	}
 	else{
 		swal({
@@ -24,6 +31,7 @@ function sa(head, body, tipo, loc){
 			text: body,
 			type: tipo,
 			closeOnConfirm: false,
+			confirmButtonClass: btn,
 			html: false
 		}, 
 		function(){
