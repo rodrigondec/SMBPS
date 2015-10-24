@@ -1,9 +1,10 @@
 function log_out(){
 	swal({
-  		title: "",
-  		text: "Deseja mesmo sair?",
+  		title: "Deseja mesmo sair?",
+  		text: "",
   		type: "warning",
   		showCancelButton: true,
+  		cancelButtonClass: "btn-primary",
   		cancelButtonText: "Cancelar",
   		confirmButtonClass: "btn-danger",
   		confirmButtonText: "sair!",
