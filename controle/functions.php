@@ -54,6 +54,9 @@
 	}
 
 	function upload(){
+		$return = array();
+		$return['status'] = false;
+
 		$extensao =  pathinfo($_FILES['imagem']['name'], PATHINFO_EXTENSION);
 		$nome = $_FILES['imagem']['name'];
 		$nome = md5($nome).'.'.$extensao;
@@ -64,42 +67,46 @@
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 		// Check if image file is a actual image or fake image
-		if(isset($_POST["submit"])) {
+		if(count($_FILES) > 0) {
 		    $check = getimagesize($_FILES["imagem"]["tmp_name"]);
 		    if($check !== false) {
-		        echo "File is an image - " . $check["mime"] . ".";
+		        $return['mensagem']['info'][] = "File is an image - " . $check["mime"] . ".";
 		        $uploadOk = 1;
 		    } else {
-		        echo "File is not an image.";
+		        $return['mensagem']['error'][] = 'File is not an image.';
 		        $uploadOk = 0;
+
 		    }
 		}
 		// Check if file already exists
 		if (file_exists($target_file)) {
-		    echo "Sorry, file already exists.";
+		    $return['mensagem']['error'][] = "Sorry, file already exists.";
 		    $uploadOk = 0;
 		}
 		// Check file size
 		if ($_FILES["imagem"]["size"] > 500000) {
-		    echo "Sorry, your file is too large.";
+		    $return['mensagem']['error'][] = "Sorry, your file is too large.";
 		    $uploadOk = 0;
 		}
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
 		&& $imageFileType != "gif" ) {
-		    echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+		    $return['mensagem']['error'][] = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
 		    $uploadOk = 0;
 		}
 		// Check if $uploadOk is set to 0 by an error
 		if ($uploadOk == 0) {
-		    echo "Sorry, your file was not uploaded.";
+		    $return['status'] = false;
 		// if everything is ok, try to upload file
 		} else {
 		    if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file)) {
-		        echo "The file ". basename( $_FILES["imagem"]["name"]). " has been uploaded.";
+		        $return['mensagem']['info'][] = "The file has been uploaded.";
+		        $return['status'] = true;
 		    } else {
-		        echo "Sorry, there was an error uploading your file.";
+		        $return['mensagem']['error'][] = "Sorry, there was an error uploading your file.";
+		        $return['status'] = false;
 		    }
 		}
+		return $return;
 	}		
 ?>
