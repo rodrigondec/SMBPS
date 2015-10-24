@@ -36,22 +36,43 @@
         $sql .= implode(', ', $alteracoes);
         $sql .= ' WHERE '.$restricao.'=\''.$id.'\';';
         //var_dump($sql);
-        return mysql_query($sql, $link);
+        return mysql_query($sql, LINK);
     }
 
     // função que executa SQL para SELECT com WHERE
     // SELECT $campo FROM $tabela WHERE ID = $id
-    function select($campo, $tabela, $restricao, $id, $link){
-        $sql = 'SELECT '.$campo.' from '.$tabela.' WHERE '.$restricao.'=\''.$id.'\' LIMIT 1;';
-        $resultado = mysql_query($sql, $link);
+    function select($campo, $tabela, $restricao = '', $id = '', $aspas = true){
+        $sql = 'SELECT '.$campo.' from '.$tabela;
+        if($restricao != ''){
+            $sql = $sql.' WHERE '.$restricao.' = ';
+            if($aspas){
+                $sql = $sql.'\''.$id.'\'';
+            }
+            else{
+                $sql = $sql.$id;
+            }
+        }
+        $sql = $sql.' LIMIT 1;';
+        // var_dump($sql);
+        $resultado = mysql_query($sql, LINK);
         return mysql_fetch_assoc($resultado);        
     }
 
     // função que executa SQL para SELECT
     // SELECT $campo FROM $tabela
-    function select_many($campo, $tabela, $link, $where = ''){
-        $sql = 'SELECT '.$campo.' from '.$tabela.' '.$where.';';
-        $resultado = mysql_query($sql, $link);
+    function select_many($campo, $tabela, $restricao = '', $id = '', $aspas = true){
+        $sql = 'SELECT '.$campo.' from '.$tabela;
+        if($restricao != ''){
+            $sql = $sql.' WHERE '.$restricao.' = ';
+            if($aspas){
+                $sql = $sql.'\''.$id.'\'';
+            }
+            else{
+                $sql = $sql.$id;
+            }
+        }
+        // var_dump($sql);
+        $resultado = mysql_query($sql, LINK);
         if(!$resultado) return array();
         $objetos = array();
         while($row = mysql_fetch_assoc($resultado)){
