@@ -1,5 +1,5 @@
 <?php 
-    $perguntas = select_many('*', 'resposta');
+    $perguntas = select_many('*', 'pergunta');
     $indicadores = select_many('*', 'indicador');
 ?>
 <div class='text-center'><h2>Perguntas</h2></div>
@@ -33,7 +33,7 @@
 				<?php echo $perguntas[$key]['texto']; ?>
 			</td>
 			<td>
-				<?php echo $perguntas[$key]['observacao']; ?>
+				<?php echo $perguntas[$key]['observação']; ?>
 			</td>
 			<td class='text-right col-md-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $perguntas[$key]['id']; ?>">

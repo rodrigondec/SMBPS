@@ -1,5 +1,5 @@
 <?php 
-    $usuarios = select_many('*', 'usuario');
+    $usuarios = select_many('*', 'usuário');
     $papeis = select_many('*', 'papel');
     $max_id_hospital = intval(select('max(id)', 'hospital')['max(id)']);    
 ?>
@@ -102,7 +102,7 @@
     	}
     	var_dump($_POST);echo '<br /><br />';
     	var_dump($dados);
-    	update($dados, 'usuario', 'id', $_POST['id']);
+    	update($dados, 'usuário', 'id', $_POST['id']);
     	ob_clean();
     	header('LOCATION: '.ADMIN.'listar_usuarios');
     }

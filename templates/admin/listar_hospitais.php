@@ -37,7 +37,7 @@
 				<?php echo $hospitais[$key]['telefone']; ?>
 			</td>
 			<td>
-				<?php echo $hospitais[$key]['endereco']; ?>
+				<?php echo $hospitais[$key]['endereço']; ?>
 			</td>
 			<td data-mask='00.000-000'>
 				<?php echo $hospitais[$key]['cep']; ?>
@@ -62,7 +62,7 @@
 									<input class='form-control' type='text' name='nome' value="<?php echo $hospitais[$key]['nome']; ?>" placeholder='Nome' required />
 									<input class='form-control' type='text' name='cnpj' value="<?php echo $hospitais[$key]['cnpj']; ?>" data-mask='00.000.000/0000-00' placeholder='CNPJ' required />
 									<input class='form-control' type='text' name='telefone' value="<?php echo $hospitais[$key]['telefone']; ?>" data-mask='(00) 0000-0000' placeholder='Telefone' required />
-									<input class='form-control' type='text' name='endereco' value="<?php echo $hospitais[$key]['endereco']; ?>" placeholder='Endereço' required />
+									<input class='form-control' type='text' name='endereço' value="<?php echo $hospitais[$key]['endereço']; ?>" placeholder='Endereço' required />
 									<input class='form-control' type='text' name='cep' value="<?php echo $hospitais[$key]['cep']; ?>" data-mask='00.000-000' placeholder='CEP' required />
 								<div class='text-right'>
 									<button class='btn btn-primary'>Alterar</button>

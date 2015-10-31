@@ -14,7 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div id='navbar' class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class='dropdown active'>
+                <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
@@ -55,14 +55,14 @@
                     </ul>
                 </li>
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Usuarios<span class="caret"></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Usuários<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
                             <a href="<?php echo ADMIN; ?>listar_usuarios">Listar</a>
                             <li><a href="#">Cadastrar</a></li>
                         </li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Papeis<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <a tabindex="-1" href="#">Papéis<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_papeis">Listar</a></li>
                                 <li><a href="#">Cadastrar</a></li>
@@ -119,11 +119,11 @@
             <?php 
                 else:
             ?>
-                <li><a href="#" onclick="sa('Não há notificações ativas', '', 'success', '', 'btn-info');"><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações</a></li>
+                <li><a href="#" onclick="sa('Não há notificações', '', 'success', '', 'btn-info');"><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações</a></li>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li><a href="#">Não há notificações ativas</a></li>
+                        <li><a href="#">Não há notificações</a></li>
                     </ul>
                 </li>
             <?php 
