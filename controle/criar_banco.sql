@@ -1,9 +1,9 @@
 
 drop database smbps;
-create database smbps;
+create database smbps DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 USE smbps;
 
-CREATE TABLE pais(
+CREATE TABLE país(
   id int NOT NULL auto_increment,
   nome varchar(60) NOT NULL,
   sigla varchar(10) NOT NULL,
@@ -14,11 +14,11 @@ CREATE TABLE pais(
 
 CREATE TABLE estado(
   id int NOT NULL auto_increment,
-  id_pais int NOT NULL,
+  id_país int NOT NULL,
   nome varchar(75) DEFAULT NULL,
   uf varchar(5) DEFAULT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (id_pais) REFERENCES pais(id),
+  FOREIGN KEY (id_país) REFERENCES país(id),
   UNIQUE (nome),
   UNIQUE (uf)
 );
@@ -31,18 +31,10 @@ CREATE TABLE cidade(
   FOREIGN KEY (id_estado) REFERENCES estado(id)
 );
 
-CREATE TABLE tipo_indicador(
-	id int NOT NULL auto_increment,
-	nome varchar(10) NOT NULL,
-	PRIMARY KEY (id)
-);
-
 CREATE TABLE indicador(
 	id int NOT NULL auto_increment,
-	id_tipo_indicador int NOT NULL,
 	nome varchar(35) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES tipo_indicador(id)
+	PRIMARY KEY (id)
 );
 
 CREATE TABLE imagem(
@@ -58,7 +50,7 @@ CREATE TABLE hospital(
 	nome varchar(35) NOT NULL,
 	cnpj varchar(14) NOT NULL,
 	telefone varchar(11) NOT NULL,
-	endereco varchar(40) NOT NULL,
+	endereço varchar(40) NOT NULL,
 	complemento varchar(20) NOT NULL,
 	cep varchar(8) NOT NULL,
 	PRIMARY KEY (id),
@@ -81,41 +73,50 @@ CREATE TABLE protocolo(
 CREATE TABLE pergunta(
 	id int NOT NULL auto_increment,
 	id_indicador int NOT NULL,
-	pergunta varchar(35) NOT NULL,
-	observacao varchar(35),
+	obrigatória int NOT NULL,
+	texto varchar(255) NOT NULL,
+	observação varchar(255),
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_indicador) REFERENCES indicador(id)
 );
 
 CREATE TABLE input(
 	id int NOT NULL auto_increment,
+	nome varchar(20) NOT NULL,
+	type varchar(6) NOT NULL,
+	value varchar(15),
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE pergunta_input(
+	id int NOT NULL auto_increment,
 	id_pergunta int NOT NULL,
-	nome varchar(50) NOT NULL,
-	tipo varchar(6) NOT NULL,
-	Value varchar(15),
+	id_input int NOT NULL,
+	name varchar(50) NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id)
+	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id),
+	FOREIGN KEY (id_input) REFERENCES input(id)
+);
+
+CREATE TABLE formulário(
+	id int NOT NULL auto_increment,
+	id_hospital int NOT NULL,
+	data_recebimento date NOT NULL, 
+	mes_avaliação varchar(2) NOT NULL,
+	nome_responsável varchar(35) NOT NULL,
+	email_responsável varchar(35) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
 );
 
 CREATE TABLE resposta(
 	id int NOT NULL auto_increment,
 	id_pergunta int NOT NULL,
-	id_formulario int NOT NULL,
+	id_formulário int NOT NULL,
 	texto varchar(30) NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id),
-	FOREIGN KEY (id_formulario) REFERENCES formulario(id)
-);
-
-CREATE TABLE formulario(
-	id int NOT NULL auto_increment,
-	id_hospital int NOT NULL,
-	data_recebimento date NOT NULL, 
-	mes_avaliacao varchar(2) NOT NULL,
-	nome_responsavel varchar(35) NOT NULL,
-	email_responsavel varchar(35) NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
+	FOREIGN KEY (id_formulário) REFERENCES formulário(id)
 );
 
 CREATE TABLE papel(
@@ -125,7 +126,7 @@ CREATE TABLE papel(
 	UNIQUE (nome)
 );
 
-CREATE TABLE usuario(
+CREATE TABLE usuário(
 	id int NOT NULL auto_increment,
 	id_papel int NOT NULL,
 	id_hospital int,
@@ -138,14 +139,14 @@ CREATE TABLE usuario(
 	UNIQUE (email)
 );
 
-CREATE TABLE notificacao(
+CREATE TABLE notificação(
 	id int NOT NULL auto_increment,
-	id_usuario int NOT NULL,
+	id_usuário int NOT NULL,
 	ativa varchar(1) NOT NULL DEFAULT '1',
-	titulo varchar(20) NOT NULL,
+	título varchar(20) NOT NULL,
 	texto varchar(255) NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_usuario) REFERENCES usuario(id)
+	FOREIGN KEY (id_usuário) REFERENCES usuário(id)
 );
 
 
@@ -161,12 +162,12 @@ CREATE TABLE notificacao(
 
 
 
-INSERT INTO pais (nome, sigla) VALUES ("Brasil", "BR");
+INSERT INTO país (nome, sigla) VALUES ("Brasil", "BR");
 
 
 
 
-INSERT INTO estado (id, nome, uf, id_pais) VALUES
+INSERT INTO estado (id, nome, uf, id_país) VALUES
 (1, "Acre", "AC", 1),
 (2, "Alagoas", "AL", 1),
 (3, "Amazonas", "AM", 1),
@@ -5781,20 +5782,124 @@ INSERT INTO cidade (id, nome, id_estado) VALUES
 
 
 
+insert into indicador (nome) values 
+	('Dados'), 
+	('Segurança paciente ??'), 
+	('Úlcera por pressão'), 
+	('Higiene das mãos'), 
+	('infecção respiração ??'), 
+	('Cirurgia segura'), 
+	('Quedas'), 
+	('Medicação'), 
+	('Identificação');
+
+insert into pergunta (id_indicador, obrigatória, texto, observação) values 
+	(1, 1, 'Data de avaliação', ''),
+	(1, 1, 'Nome completo do responsável pela avaliação', ''),
+	(1, 1, 'E-mail do responsável pela avaliação', ''),
+	(1, 1, 'Estado', ''),
+	(1, 1, 'CNES - Cadastro Nacional de Estabelecimento de Saúde', ''),
+	(1, 1, 'Nome do serviço de saúde', ''),
+	(1, 1, 'Número total de leitos no hospital', ''),
+	(1, 0, 'Número total de leitos de UTI Adultos', 'informar número total de leitos de UTI adultos existentes no hospital'),
+	(1, 0, 'Número total de leitos de UTI Pediátricos', 'informar número total de leitos de UTI pediátricos existentes no hospital'),
+	(1, 0, 'Número total de leitos de UTI Neonatal', 'informar número total de leitos de UTI neonatal existentes no hospital'),
+	(2, 1, 'O serviço de saúde possui núcleo de segurança do paciente(NSP) implantado?', ''),
+	(2, 1, 'O serviço de saúde possui plano de segurança do paciente(PSP) implantado?', ''),
+	(3, 1, 'O serviço de saúde possui o protocolo de prevenção de úlceras por pressão implantado?', ''),
+	(3, 1, 'É realizada a avaliação do risco para úlceras por pressão até 24 Horas da admissão do paciente nos serviço de saúde?', 'Paciente com mais de 60 anos. Verificar o preenchimento do instrumento de estratificação de risco.'),
+	(4, 1, 'O serviço de saúde possui protocolo de prática de higiene das mãos implantado?', ''),
+	(4, 1, 'O serviço de saúde possui número de lavatórios/pias e dispensadores de preparações alcoólicas para a higiene das mãos nas UTI de acordo com as normas vigentes?', ''),
+	(4, 1, 'É realizado o monitoramento indireto mensal da adesão à higiene das mãos pelos profissionais de saúde das UTI ( consumo de preparações alcoólicas, pelo menos 20 ml/ 1000 pacientes ao dia?', ''),
+	(4, 1, 'Qual o valor do consumo por dia?', 'Calcular o consumo dividindo volume mensal pela quantidade total de paciente-dia no mês.'),
+	(4, 1, 'Observação Direta da Higienização das Mãos', 'Dividir o número de atos de higienização por número de oportunidades (necessidades) de higienização.'),
+	(5, 1, 'O serviço de saúde possui o protocolo para a prevenção de infecção primária de corrente sanguínea associada ao uso de cateter venoso central implantado?', ''),
+	(5, 1, 'O serviço de saúde possui o protocolo para a prevenção de infecção do trato respiratório relacionado ao uso da ventilação mecânica implantado?', ''),
+	(6, 1, 'O serviço de saúde possui protocolo de cirurgia segura implantado?', ''),
+	(6, 1, 'O serviço de saúde utiliza a lista de verificação (CHECKLIST) de cirurgia segura em todas cirurgias definida pelo protocolo institucional?', ''),
+	(7, 1, 'O serviço de saúde possui protocolo de prevenção de quedas implementado?', ''),
+	(7, 1, 'É realizada a avaliação de risco de quedas até 24 horas de admissão do paciente nos serviços de saúde?', 'Em pacientes com mais de 60 anos.'),
+	(8, 1, 'O serviço de saúde possui protocolo de segurança na prescrição, uso e administração de medicamentos implementados?', ''),
+	(9, 1, 'O serviço de saúde possui o protocolo de identificação do paciente implementado?', ''),
+	(9, 0, 'Se sim, qual o método de identificação?', ''),
+	(9, 0, 'Qual a quantidade de pacientes indentificados?', 'Colocar a quantidade de paciente identificados em observação direta após seleção de lote de pacientes internados em um dia do mês. Selecionar 17 pacientes entre aqueles internados no dia de avaliação através de amostragem sistemática.');
+
+insert into input (nome, type, value) values 
+	('data', 'date', ''), -- 1
+	('texto', 'text', ''), -- 2
+	('email', 'email', ''), -- 3
+	('número', 'number', ''), -- 4
+	('radio_sim', 'radio', 'Sim'), -- 5
+	('radio_nao', 'radio', 'Não'), -- 6
+	('radio_nao_se_aplica', 'radio', 'Não se aplica'); -- 7
+
+insert into pergunta_input (id_pergunta, id_input, name) values
+	(1, 1, 'data_avaliacao'),
+	(2, 2, 'nome_responsavel'),
+	(3, 3, 'email_responsavel'),
+	(4, 2, 'estado'),
+	(5, 2, 'cnes'),
+	(6, 2, 'nome_servico'),
+	(7, 4, 'numero_total_leitos'),
+	(8, 4, 'numero_leitos_adultos'),
+	(9, 4, 'numero_leitos_pediatricos'),
+	(10, 4, 'numero_leitos_neonatal'),
+	(11, 5, 'nsp'),
+	(11, 6, 'nsp'),
+	(12, 5, 'psp'),
+	(12, 6, 'psp'),
+	(13, 5, 'protocolo_prevencao_ulceras'),
+	(13, 6, 'protocolo_prevencao_ulceras'),
+	(13, 7, 'protocolo_prevencao_ulceras'),
+	(14, 5, 'avaliacao_risco_ulceras'),
+	(14, 6, 'avaliacao_risco_ulceras'),
+	(14, 7, 'avaliacao_risco_ulceras'),
+	(15, 5, 'protocolo_higiene_maos'),
+	(15, 6, 'protocolo_higiene_maos'),
+	(16, 5, 'numero_lavatorios_higiene_maos'),
+	(16, 6, 'numero_lavatorios_higiene_maos'),
+	(17, 5, 'monitoramento_higiene_maos'),
+	(17, 6, 'monitoramento_higiene_maos'),
+	(18, 2, 'consumo_dia'),
+	(19, 2, 'observacao_higiene_maos'),
+	(20, 5, 'protocolo_infeccao_cateter'),
+	(20, 6, 'protocolo_infeccao_cateter'),
+	(20, 7, 'protocolo_infeccao_cateter'),
+	(21, 5, 'protocolo_infeccao_ventilacao'),
+	(21, 6, 'protocolo_infeccao_ventilacao'),
+	(21, 7, 'protocolo_infeccao_ventilacao'),
+	(22, 5, 'protocolo_cirurgia_segura'),
+	(22, 6, 'protocolo_cirurgia_segura'),
+	(23, 5, 'lista_cirurgia_segura'),
+	(23, 6, 'lista_cirurgia_segura'),
+	(24, 5, 'protocolo_prevencao_quedas'),
+	(24, 6, 'protocolo_prevencao_quedas'),
+	(24, 7, 'protocolo_prevencao_quedas'),
+	(25, 5, 'avaliacao_risco_quedas'),
+	(25, 6, 'avaliacao_risco_quedas'),
+	(26, 5, 'protocolo_seguranca_medicamentos'),
+	(26, 6, 'protocolo_seguranca_medicamentos'),
+	(27, 5, 'protocolo_identificacao_pacientes'),
+	(27, 6, 'protocolo_identificacao_pacientes'),
+	(28, 2, 'metodo_identificacao'),
+	(29, 4, 'numero_pacientes_identificados');
+	
 
 
-insert into hospital (nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
+insert into hospital (nome, cnpj, telefone, endereço, complemento, cep, id_cidade) values 
+	('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770),
+	('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA2 BLA2 BL2A', 'nº 2200', '59152250', 3770);
 
-insert into hospital (nome, cnpj, telefone, endereco, complemento, cep, id_cidade) values ('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770);
+insert into papel (nome) values 
+	('Administrador Geral'), 
+	('Gestor Hospitalar');
 
-insert into papel (nome) values ('Administrador Geral'), ('Gestor Hospitalar');
+insert into usuário (nome, email, senha, id_papel, id_hospital) values 
+	('Admin', 'admin@admin.com', md5('admin'), 1, NULL), 
+	('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), 
+	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
 
-insert into usuario (nome, email, senha, id_papel, id_hospital) values ('Admin', 'admin@admin.com', md5('admin'), 1, NULL), ('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), ('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
-
-insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (1, '15102015', '10', 'jhon', 'jhon@hospital.com');
-
-insert into formulario (id_hospital, data_recebimento, mes_avaliacao, nome_responsavel, email_responsavel) values (2, '15102015', '10', 'jhon', 'jhon@hospital.com');
-
-insert into indicador (nome) values ('Quedas'), ('Ulcera por pressao'), ('Higiene das maos'), ('Medicacao'), ('Cirurgia segura'), ('Identificacao');
-
-insert into notificacao (id_usuario, titulo, texto) values (1, 'Notificacao teste', 'Este é o exemplo de uma notificação!'), (2, 'Notificacao teste', 'Este é o exemplo de uma notificação!'), (3, 'Notificacao teste', 'Este é o exemplo de uma notificação!');
+insert into notificação (id_usuário, título, texto) values 
+	(1, 'Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
+	(2, 'Notificacao teste RODRIGO', 'Este é o exemplo de uma notificação RODRIGO!'), 
+	(3, 'Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!');
