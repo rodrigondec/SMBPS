@@ -1,7 +1,10 @@
 <?php 
     $formularios = select_many('*', 'formulário');
 ?>
-<div class='text-center'><h2>Formulários</h2></div>
+<div class='text-center'>
+	<h2>Formulários</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>

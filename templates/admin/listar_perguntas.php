@@ -2,7 +2,10 @@
     $perguntas = select_many('*', 'pergunta');
     $indicadores = select_many('*', 'indicador');
 ?>
-<div class='text-center'><h2>Perguntas</h2></div>
+<div class='text-center'>
+	<h2>Perguntas</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>
