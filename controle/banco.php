@@ -27,14 +27,20 @@
 
     // função que executa SQL para UPDATE
     // UPDATE $tabela SET $chave=$valor,... WHERE id=$id
-    function update($dados, $tabela, $restricao, $id) {
+    function update($dados, $tabela, $restricao, $id, $aspas = true) {
         $sql = 'UPDATE '.$tabela.' SET ';
         $alteracoes = array();
         foreach ($dados as $chave => $valor) {
             $alteracoes[] = $chave.'=\''.$valor.'\'';
         }
         $sql .= implode(', ', $alteracoes);
-        $sql .= ' WHERE '.$restricao.'=\''.$id.'\';';
+        $sql .= ' WHERE '.$restricao.' = ';
+        if($aspas){
+            $sql .= '\''.$id.'\'';
+        }
+        else{
+            $sql .= $id;
+        }
         //var_dump($sql);
         return mysql_query($sql, LINK);
     }
@@ -44,15 +50,15 @@
     function select($campo, $tabela, $restricao = '', $id = '', $aspas = true){
         $sql = 'SELECT '.$campo.' from '.$tabela;
         if($restricao != ''){
-            $sql = $sql.' WHERE '.$restricao.' = ';
+            $sql .= ' WHERE '.$restricao.' = ';
             if($aspas){
-                $sql = $sql.'\''.$id.'\'';
+                $sql .= '\''.$id.'\'';
             }
             else{
-                $sql = $sql.$id;
+                $sql .= $id;
             }
         }
-        $sql = $sql.' LIMIT 1;';
+        $sql .= ' LIMIT 1;';
         // var_dump($sql);
         $resultado = mysql_query($sql, LINK);
         return mysql_fetch_assoc($resultado);        
@@ -63,12 +69,12 @@
     function select_many($campo, $tabela, $restricao = '', $id = '', $aspas = true){
         $sql = 'SELECT '.$campo.' from '.$tabela;
         if($restricao != ''){
-            $sql = $sql.' WHERE '.$restricao.' = ';
+            $sql .= ' WHERE '.$restricao.' = ';
             if($aspas){
-                $sql = $sql.'\''.$id.'\'';
+                $sql .= '\''.$id.'\'';
             }
             else{
-                $sql = $sql.$id;
+                $sql .= $id;
             }
         }
         // var_dump($sql);
