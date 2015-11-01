@@ -3,7 +3,10 @@
     $papeis = select_many('*', 'papel');
     $max_id_hospital = intval(select('max(id)', 'hospital')['max(id)']);    
 ?>
-<div class='text-center'><h2>Usuários</h2></div>
+<div class='text-center'>
+	<h2>Usuários</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>

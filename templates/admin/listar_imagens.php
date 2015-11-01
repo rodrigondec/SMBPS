@@ -1,7 +1,10 @@
 <?php 
     $imagens = select_many('*', 'imagem');
 ?>
-<div class='text-center'><h2>Imagens</h2></div>
+<div class='text-center'>
+	<h2>Imagens</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>

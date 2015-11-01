@@ -1,7 +1,10 @@
 <?php 
     $respostas = select_many('*', 'resposta');
 ?>
-<div class='text-center'><h2>Respostas</h2></div>
+<div class='text-center'>
+	<h2>Respostas</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>

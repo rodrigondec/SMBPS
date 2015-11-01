@@ -2,7 +2,10 @@
     $indicador = select('*', 'indicador', 'id', $_GET['id']);
     $protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
 ?>
-<div class='text-center'><h2><?php echo $indicador['nome']; ?></h2></div>
+<div class='text-center'>
+	<h2><?php echo $indicador['nome']; ?></h2>
+	<hr />
+</div>
 <?php 
 	if(!$protocolo){
 		echo "<div class='text-center text-danger'><h3>Seu hospital não possui esse protocolo. Favor cadastra-lo.</h3></div>";

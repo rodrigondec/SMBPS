@@ -1,7 +1,10 @@
 <?php 
     $papeis = select_many('*', 'papel');
 ?>
-<div class='text-center'><h2>Papéis</h2></div>
+<div class='text-center'>
+	<h2>Papéis</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>

@@ -1,3 +1,7 @@
+<div class='text-center'>
+	<h2>Configurações</h2>
+	<hr />
+</div>
 <?php
 	$services_json = json_decode(getenv("VCAP_SERVICES"),true);
 	$mysql_config = $services_json["mysql-5.1"][0]["credentials"];

@@ -1,7 +1,10 @@
 <?php 
     $indicadores = select_many('*', 'indicador');
 ?>
-<div class='text-center'><h2>Indicadores</h2></div>
+<div class='text-center'>
+	<h2>Indicadores</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>

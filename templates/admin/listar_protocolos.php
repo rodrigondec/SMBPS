@@ -3,7 +3,10 @@
     $indicadores = select_many('*', 'indicador');
     $hospitais = select_many('*', 'hospital');
 ?>
-<div class='text-center'><h2>Protocolos</h2></div>
+<div class='text-center'>
+	<h2>Protocolos</h2>
+	<hr />
+</div>
 <div class="table-responsive">
 <table class="table table-striped">
 	<thead>
