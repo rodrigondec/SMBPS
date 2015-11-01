@@ -18,12 +18,17 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li>
-                            <a href="<?php echo HOSPITAL; ?>home">Quedas</a>
-                            <a href="<?php echo HOSPITAL; ?>sobre">Ulcera por pressão</a>
-                            <a href="<?php echo HOSPITAL; ?>contato">Higiena das mãos</a>
-                            <a href="<?php echo HOSPITAL; ?>home">Medicação</a>
-                            <a href="<?php echo HOSPITAL; ?>sobre">Cirurgia segura</a>
-                            <a href="<?php echo HOSPITAL; ?>contato">Identificação</a>
+                            <?php 
+                                $indicadores = select_many('*', 'indicador');
+                                unset($indicadores[0]);
+                                //var_dump($indicadores);
+
+                                foreach ($indicadores as $key => $value):
+                                    echo "<a href='".HOSPITAL."protocolo?id=".$indicadores[$key]["id"]."'>";
+                                    echo $indicadores[$key]['nome'];
+                                    echo "</a>";
+                                endforeach;
+                            ?>
                         </li>
                     </ul>
                 </li>
@@ -47,17 +52,17 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <?php 
-                $notificacoes = select_many('*', 'notificacao', '(id_usuario, ativa)', '('.$_SESSION['id_usuario'].', 1)', false);
+                $notificacoes = select_many('*', 'notificação', '(id_usuário, ativa)', '('.$_SESSION['id_usuario'].', 1)', false);
                 if(count($notificacoes) > 0):
             ?>
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-o"></i>&nbsp;Notificações<span class="caret"></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><!-- <i class="fa fa-bell-o"></i>&nbsp; -->Notificações <span class="badge"><?php echo count($notificacoes); ?> <span class="caret"></span></span></a>
                     <ul class='dropdown-menu'>
                     <?php 
                         foreach($notificacoes as $key => $value):
                     ?>
                         <li>
-                            <a data-toggle="modal" data-target="#myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>"><?php echo $notificacoes[$key]['titulo']; ?></a>
+                            <a data-toggle="modal" data-target="#myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>"><?php echo $notificacoes[$key]['título']; ?></a>
                         </li>
                     <?php 
                         endforeach;
@@ -67,9 +72,8 @@
             <?php 
                 else:
             ?>
-                <li><a href="#" onclick="sa('Não há notificações ativas', '', 'success', '', 'btn-info');"><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações</a></li>
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-bell-slash-o"></i>&nbsp;Notificações<span class="caret"></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><!-- <i class="fa fa-bell-slash-o"></i>&nbsp; -->Notificações <span class="badge"><?php echo count($notificacoes); ?> <span class="caret"></span></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="#">Não há notificações ativas</a></li>
                     </ul>
