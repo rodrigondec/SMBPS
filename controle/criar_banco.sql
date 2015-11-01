@@ -143,11 +143,13 @@ CREATE TABLE usuário(
 CREATE TABLE notificação(
 	id int NOT NULL auto_increment,
 	id_usuário int NOT NULL,
+	id_indicador int,
 	ativa varchar(1) NOT NULL DEFAULT '1',
 	título varchar(20) NOT NULL,
 	texto varchar(255) NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_usuário) REFERENCES usuário(id)
+	FOREIGN KEY (id_usuário) REFERENCES usuário(id),
+	FOREIGN KEY (id_indicador) REFERENCES indicador(id)
 );
 
 
