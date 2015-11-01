@@ -38,6 +38,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/bootstrap-sweetalert/lib/sweet-alert.css">
         <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/estilo.css">
+        <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/fileinput/css/fileinput.min.css" media="all" type="text/css" />
             
         <title>Sistema de Monitoramento de Boas Práticas em Saúde</title>
     </head>
@@ -63,9 +64,13 @@
         ?>
         </div>
     </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha256-Sk3nkD6mLTMOF0EOpNtsIry+s1CsaqQC1rVLTAy+0yc= sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
     <script src="/<?php echo BASE; ?>estaticos/functions.js"></script>
     <script src="/<?php echo BASE; ?>estaticos/bootstrap-sweetalert/lib/sweet-alert.min.js"></script> 
     <script src="/<?php echo BASE; ?>estaticos/Jquery_Mask/jquery.mask.js"></script>
+    <script src="/<?php echo BASE; ?>estaticos/fileinput/js/plugins/canvas-to-blob.min.js" type="text/javascript"></script>
+    <script src="/<?php echo BASE; ?>estaticos/fileinput/js/fileinput.min.js"></script>
+    <script src="/<?php echo BASE; ?>estaticos/fileinput/js/fileinput_locale_pt-BR.js"></script>
 </html>
