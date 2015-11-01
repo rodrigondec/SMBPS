@@ -24,6 +24,7 @@
 	
 	define('SOURCE', ARQUIVOS.'/'.BASE.'estaticos/source/');
 	define('IMGS', '/'.BASE.'estaticos/source/imgs/');
+	define('PROTOCOLOS', '/'.BASE.'estaticos/source/protocolos/');
 	define('LOGIN', ARQUIVOS.'/'.BASE.'login.php');
 	define('CONFIGS', ARQUIVOS.'/'.BASE.'configs/configs.php');
 	
