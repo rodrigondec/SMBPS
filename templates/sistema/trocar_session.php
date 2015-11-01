@@ -8,7 +8,7 @@
     	if($_GET['type'] == '1'){
     		// hospital para admin
 
-    		$usuario = select('*', 'usuario', 'email', 'admin@admin.com');
+    		$usuario = select('*', 'usuário', 'email', 'admin@admin.com');
             $_SESSION['id_usuario'] = $usuario['id'];
     		$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
@@ -16,7 +16,7 @@
     	else if($_GET['type'] == '2'){
     		// admin para hospital
 
-    		$usuario = select('*', 'usuario', 'email', 'gestor@hospital.com');
+    		$usuario = select('*', 'usuário', 'email', 'gestor@hospital.com');
             $_SESSION['id_usuario'] = $usuario['id'];
     		$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];

@@ -37,14 +37,18 @@
             </div>
             <div class="modal-body text-center">
                 <form action="/smbps/index.php/login" method='post'>
-                    <div class='form-group'>
-                    <input type='email' name='email' class='form-control' id='input_email' placeholder='Email'  required />
-                    <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' style='margin-top: 10px;' required />
-                </div>
-                <div id='buttons' class='text-right'>
-                    <button type='submit' class='btn btn-info'>Entrar</button>
-                </div>
-            </form>
+                    <div class='form-group text-left'>
+                        <label for='email'>Email</label>
+                        <input type='email' name='email' class='form-control' id='input_email' placeholder='Email'  required />
+                    </div>
+                    <div class='form-group text-left'>
+                        <label for='senha'>Senha</label>
+                        <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' required />
+                    </div>
+                    <div id='buttons' class='text-right'>
+                        <button type='submit' class='btn btn-info'>Entrar</button>
+                    </div>
+                </form>
             </div>
 <!--             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

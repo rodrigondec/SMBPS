@@ -13,6 +13,7 @@
 			<th>Nome Hospital</th>
 			<th class='col-md-2'>Id indicador</th>
 			<th class='col-md-2'>Id imagem</th>
+			<th class='col-md-1'>Ativo</th>
 			<th>Data</th>
 			<th class='col-md-1'></th>
 		</tr>
@@ -64,6 +65,9 @@
 					    </div>
 				  </div>
 				</div>
+			</td>
+			<td>
+				<?php echo $protocolos[$key]['ativo']; ?>
 			</td>
 			<td>
 				<?php echo $protocolos[$key]['data']; ?>
