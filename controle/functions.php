@@ -62,7 +62,7 @@
 		$nome = md5($nome).'.'.$extensao;
 		$_FILES['imagem']['name'] = $nome;
 
-		$target_dir = SOURCE.'/imgs/';
+		$target_dir = SOURCE.'/protocolos/';
 		$target_file = $target_dir.basename($_FILES["imagem"]["name"]);
 		$uploadOk = 1;
 		$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
