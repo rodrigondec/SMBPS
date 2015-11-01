@@ -131,6 +131,7 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
+                        <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
                         <li><a href="#" onclick="log_out()">Sair</a></li>
                         <li><a href="<?php echo SISTEMA; ?>trocar_session?type=2">Trocar Sessão</a></li>
                     </ul>
