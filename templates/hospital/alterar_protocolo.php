@@ -1,3 +1,8 @@
+<?php 
+    $data_limite = explode('-', date('Y-m-d'));
+    $data_limite[0] = ''.(intval($data_limite[0])-2); // 2 = quantidade de anos. 2 anos.
+    $data_limite = implode('-', $data_limite);   
+?>
 <div class='text-center centered-30'>
 	<form enctype="multipart/form-data" action="<?php echo htmlentities($_SERVER['PHP_SELF']).'?id='.$indicador['id'];?>" method="post">
 		<div class='form-group text-left'>
@@ -13,38 +18,48 @@
 	</form>
 </div>
 <?php 
-	if(count($_FILES) > 0){
-		try{
-			$upload = upload();
-			// var_dump($upload);
-	        if($upload['status']){
-	        	// inserir no banco de dados a referencia da imagem e protocolo
-		        
-	        	$dados['ativo'] = '0';
-	        	update($dados, 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
-	        	unset($dados);
+	if(count($_POST) > 0){
 
-		        $dados['nome'] = $_FILES['imagem']['name'];
-		        insert($dados, 'imagem');
+		$data_valida = true;
 
-		        unset($dados);
-		        $dados['id_indicador'] = $indicador['id'];
-		        $dados['id_imagem'] = select('max(id)', 'imagem')['max(id)'];
-		        $dados['id_hospital'] = $_SESSION['hospital'];
-		        $dados['data'] = $_POST['data'];
-		        insert($dados, 'protocolo');
+		if(strtotime($_POST['data']) < strtotime($data_limite)){
+			$data_valida = false;
+			swal('Envio não realizado', 'A data do protocolo ultrapassa da data limite.', 'error', $_SERVER['PHP_SELF'].'?id='.$indicador['id'], 'btn btn-primary');
+		}
+		
+		if(count($_FILES) > 0 && $data_valida){
+			try{
+				$upload = upload();
+				// var_dump($upload);
+		        if($upload['status']){
+		        	// inserir no banco de dados a referencia da imagem e protocolo
+			        
+		        	$dados['ativo'] = '0';
+		        	update($dados, 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
+		        	unset($dados);
 
-		        echo end($upload['mensagem']['info']);
-		        swal('Envio realizado com sucesso', end($upload['mensagem']['info']), 'success', '/'.BASE);
-		        
+			        $dados['nome'] = $_FILES['imagem']['name'];
+			        insert($dados, 'imagem');
+
+			        unset($dados);
+			        $dados['id_indicador'] = $indicador['id'];
+			        $dados['id_imagem'] = select('max(id)', 'imagem')['max(id)'];
+			        $dados['id_hospital'] = $_SESSION['hospital'];
+			        $dados['data'] = $_POST['data'];
+			        insert($dados, 'protocolo');
+
+			        echo end($upload['mensagem']['info']);
+			        swal('Envio realizado com sucesso', end($upload['mensagem']['info']), 'success', '/'.BASE);
+			        
+		        }
+		        else{
+		        	throw new Exception(end($upload['mensagem']['error']));
+		        }        
 	        }
-	        else{
-	        	throw new Exception(end($upload['mensagem']['error']));
-	        }        
-        }
-	    catch(Exception $e){
-	    	swal('Erro no envio', 'Sua imagem não foi enviada.\nError: '.$e->getMessage(), 'error', '/'.BASE, 'btn-primary');
-        }
-        
+		    catch(Exception $e){
+		    	swal('Erro no envio', 'Sua imagem não foi enviada.\nError: '.$e->getMessage(), 'error', '/'.BASE, 'btn-primary');
+	        }
+	        
+		}
 	}    
 ?>
