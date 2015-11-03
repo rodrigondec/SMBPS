@@ -40,14 +40,14 @@
                             <a href="<?php echo ADMIN; ?>formulario">Cadastrar</a>
                         </li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Perguntas<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <a tabindex="-1" href="#">Perguntas<div class='inline'><i class="fa fa-caret-right"></i></div></a>
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_perguntas">listar</a></li>                             
                                 <li><a href="#">Cadastrar</a></li>
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Respostas<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <a tabindex="-1" href="#">Respostas<div class='inline'><i class="fa fa-caret-right"></i></div></a>
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_respostas">listar</a></li>                             
                             </ul>
@@ -62,7 +62,7 @@
                             <li><a href="#">Cadastrar</a></li>
                         </li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Papéis<span style='float:right;margin-top:3px'><i class="fa fa-caret-right"></i></span></a>
+                            <a tabindex="-1" href="#">Papéis<div class='inline'><i class="fa fa-caret-right"></i></div></a>
                             <ul class="dropdown-menu">
                                 <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_papeis">Listar</a></li>
                                 <li><a href="#">Cadastrar</a></li>
@@ -86,7 +86,7 @@
                             <a href="<?php echo ADMIN; ?>listar_protocolos">Listar</a>
                         </li>
                         <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Imagens<span style='float:right;margin-top:3px;'><i class="fa fa-caret-right" style=''></i></span></a>
+                            <a tabindex="-1" href="#">Imagens<div class='inline'><i class="fa fa-caret-right" style=''></i></div></a>
                             <ul class="dropdown-menu">
                               <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_imagens">Listar</a></li>                           
 
@@ -132,7 +132,9 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
+                        <hr />
                         <li><a href="#" onclick="log_out()">Sair</a></li>
+                        <hr />
                         <li><a href="<?php echo SISTEMA; ?>trocar_session?type=2">Trocar Sessão</a></li>
                     </ul>
                 </li>
