@@ -7,7 +7,7 @@
 	<h2>Protocolos</h2>
 	<hr />
 </div>
-<div class="table-responsive">
+<div class="table-responsive container">
 <table class="table table-striped">
 	<thead>
 		<tr>
@@ -49,8 +49,8 @@
 				<?php 
 					echo $protocolos[$key]['id_imagem']; 
 					$nome_imagem = select('nome', 'imagem', 'id', $protocolos[$key]['id_imagem'])['nome'];
-				?>&nbsp;&nbsp;&nbsp;&nbsp;
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModalimg<?php echo $protocolos[$key]['id_imagem']; ?>">
+				?>
+				<a class='btn btn-info' data-toggle="modal"  data-target="#myModalimg<?php echo $protocolos[$key]['id_imagem']; ?>" style='margin-left:5%;'>
 					Visualizar
 				</a>
 				<!-- Modal -->
@@ -66,7 +66,7 @@
 								<img src="<?php echo PROTOCOLOS.$nome_imagem; ?>" width="100%">
 							</div>
 					    </div>
-				  </div>
+				  	</div>
 				</div>
 			</td>
 			<td>
@@ -92,7 +92,7 @@
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $protocolos[$key]['id']; ?>" hidden placeholder='' required />
 									<select class='form-control' name='id_indicador' required>
-										<option>Indicador</option>
+										<option value='' disabled>Indicador</option>
 										<?php 
 										    foreach ($indicadores as $key2 => $value):
 										?>
@@ -105,7 +105,7 @@
 										?>
 									</select>
 									<select class='form-control' name='id_hospital' required>
-										<option>Hospital</option>
+										<option value='' disabled>Hospital</option>
 										<?php 
 										    foreach ($hospitais as $key2 => $value):
 										?>

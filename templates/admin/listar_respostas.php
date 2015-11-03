@@ -5,13 +5,13 @@
 	<h2>Respostas</h2>
 	<hr />
 </div>
-<div class="table-responsive">
+<div class="table-responsive container">
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th class='col-md-1'>Id</th>
-			<th class='col-md-1'>Id Pergunta</th>
-			<th class='col-md-1'>Id_Formulário</th>
+			<th class='col-md-2'>Id Pergunta</th>
+			<th class='col-md-2'>Id_Formulário</th>
 			<th>Texto</th>
 			<th class='col-md-1'></th>
 		</tr>
@@ -24,10 +24,10 @@
 			<td class='col-md-1'>
 				<?php echo $respostas[$key]['id']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-md-2'>
 				<?php echo $respostas[$key]['id_pergunta']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-md-2'>
 				<?php echo $respostas[$key]['id_formulario']; ?>
 			</td>
 			<td>
@@ -79,9 +79,9 @@
     	//header('LOCATION: '.ADMIN.'listar_respostas');
     }
 ?>
-<form method='post'>
-<textarea class='form-control' name='texto' placeholder='Texto' required>
-	<?php echo $respostas[$key]['texto']; ?>
+<!-- <form method='post'>
+<textarea class='form-control' name='texto' required>
+teste
 </textarea>
 <input type='submit' class='btn btn-info' />
-</form>
+</form> -->

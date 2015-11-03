@@ -7,7 +7,7 @@
 	<h2>Usuários</h2>
 	<hr />
 </div>
-<div class="table-responsive">
+<div class="table-responsive container">
 <table class="table table-striped">
 	<thead>
 		<tr>

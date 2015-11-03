@@ -12,7 +12,7 @@
 		include_once('cadastrar_protocolo.php');
 	}
 	else{
-		echo "<div class='text-center text-succes'><h3>Seu hospital tem esse protocolo</h3></div>";
+		echo "<div class='text-center text-success'><h3>Seu hospital tem esse protocolo!</h3></div>";
 		// include_once('alterar_protocolo.php');
 	}
 ?>
