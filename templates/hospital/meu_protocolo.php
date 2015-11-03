@@ -3,12 +3,12 @@
     $protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
 ?>
 <div class='text-center'>
-	<h2><?php echo $indicador['nome']; ?></h2>
+	<h2>Meu Protocolo <?php echo $indicador['nome']; ?></h2>
 	<hr />
 </div>
 <?php 
 	if(!$protocolo){
-		echo "<div class='text-center text-danger'><h3>Seu hospital não possui esse protocolo. Favor cadastra-lo.</h3></div>";
+		echo "<div class='text-center text-danger'><h3>Seu hospital não possui esse protocolo Cadastrado. Favor cadastra-lo.</h3></div>";
 		include_once('cadastrar_protocolo.php');
 	}
 	else{

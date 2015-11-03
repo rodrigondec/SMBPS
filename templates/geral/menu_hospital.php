@@ -17,19 +17,37 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li>
-                            <?php 
-                                $indicadores = select_many('*', 'indicador');
-                                unset($indicadores[0]);
-                                //var_dump($indicadores);
+                        <?php 
+                            $indicadores = select_many('*', 'indicador');
+                            unset($indicadores[0]);
 
-                                foreach ($indicadores as $key => $value):
-                                    echo "<a href='".HOSPITAL."protocolo?id=".$indicadores[$key]["id"]."'>";
-                                    echo $indicadores[$key]['nome'];
-                                    echo "</a>";
-                                endforeach;
+                            foreach ($indicadores as $key => $value):
+                        ?>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">
+                                <?php echo $indicadores[$key]['nome']; ?><div class='inline'><i class="fa fa-caret-right"></i></div>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="<?php echo HOSPITAL.'dados_protocolo?id='.$indicadores[$key]['id']; ?>">
+                                        Dados
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo HOSPITAL.'meu_protocolo?id='.$indicadores[$key]['id']; ?>">
+                                        Meu Protocolo
+                                    </a>
+                                </li>
+                            </ul>
+                            <?php 
+                                    // echo "<a href='".HOSPITAL."protocolo?id=".$indicadores[$key]["id"]."'>";
+                                    // echo $indicadores[$key]['nome'];
+                                    // echo "</a>";
                             ?>
                         </li>
+                        <?php 
+                            endforeach;
+                        ?>
                     </ul>
                 </li>
                 <li class='dropdown'>
@@ -43,9 +61,6 @@
                         </li>
                         
                     </ul>
-                </li>
-                <li>
-                    <a href="<?php echo HOSPITAL; ?>mostrar_imagem">mostrar imagem</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -83,7 +98,9 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
+                        <hr />
                         <li><a href="#" onclick="log_out()">Sair</a></li>
+                        <hr />
                         <li><a href="<?php echo SISTEMA; ?>trocar_session?type=1">Trocar Sessão</a></li>
                     </ul>
                 </li>
