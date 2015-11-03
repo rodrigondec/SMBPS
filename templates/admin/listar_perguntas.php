@@ -6,13 +6,14 @@
 	<h2>Perguntas</h2>
 	<hr />
 </div>
-<div class="table-responsive">
+<div class="table-responsive container">
 <table class="table table-striped">
 	<thead>
 		<tr>
 			<th class='col-md-1'>Id</th>
 			<th class='col-md-2'>Indicador</th>
 			<th>Texto</th>
+			<th>Obrigatória</th>
 			<th>Observação</th>
 			<th class='col-md-1'></th>
 		</tr>
@@ -35,6 +36,16 @@
 			<td>
 				<?php echo $perguntas[$key]['texto']; ?>
 			</td>
+			<td class='col-md-1'>
+				<?php
+					if($perguntas[$key]['obrigatória'] == '1'){
+						echo 'Sim';
+					}
+					else{
+						echo 'Não';
+					}
+				?>
+			</td>
 			<td>
 				<?php echo $perguntas[$key]['observação']; ?>
 			</td>
@@ -54,7 +65,30 @@
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $perguntas[$key]['id']; ?>" hidden required />
-									<input class='form-control' type='textarea' name='texto' value="<?php echo $perguntas[$key]['texto']; ?>" placeholder='Texto' required />
+									<select class='form-control' name='id_indicador' required>
+										<option value='' disabled>Indicador</option>
+										<?php 
+										    foreach ($indicadores as $key2 => $value):
+										?>
+										<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($perguntas[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
+											<?php echo $indicadores[$key2]['nome']?>
+										</option>
+
+										<?php
+										    endforeach;
+										?>
+									</select>
+									<textarea class='form-control' name='texto' required><?php echo $perguntas[$key]['texto']; ?></textarea>
+									<select class='form-control' name='obrigatória' required>
+										<option value='' disabled>Obrigatória?</option>
+										<option value='1' <?php if($perguntas[$key]['obrigatória'] == '1'){echo 'selected';} ?> >
+											Sim
+										</option>
+										<option value='0' <?php if($perguntas[$key]['obrigatória'] == '0'){echo 'selected';} ?> >
+											Não
+										</option>
+									</select>
+									<textarea class='form-control' name='observação'><?php echo $perguntas[$key]['observação']; ?></textarea>
 								<div class='text-right'>
 									<button class='btn btn-primary'>Alterar</button>
 								</div>
@@ -79,8 +113,8 @@
     			$dados[$key] = $value;
     		}
     	}
-    	//update($dados, 'pergunta', 'id', $_POST['id']);
-    	//ob_clean();
-    	//header('LOCATION: '.ADMIN.'listar_perguntas');
+    	update($dados, 'pergunta', 'id', $_POST['id']);
+    	ob_clean();
+    	header('LOCATION: '.ADMIN.'listar_perguntas');
     }
 ?>
