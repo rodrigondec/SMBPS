@@ -39,7 +39,7 @@
 								<h4 class="modal-title text-left">Imagem</h4>
 							</div>
 							<div class="modal-body text-center">
-								<img src="<?php echo IMGS.$imagens[$key]['nome']; ?>" width="100%">
+								<img src="<?php echo PROTOCOLOS.$imagens[$key]['nome']; ?>" width="100%">
 							</div>
 <!-- 							<div class="modal-footer">
 								<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -63,7 +63,7 @@
 								<h4 class="modal-title text-left">Imagem</h4>
 							</div>
 							<div class="modal-body text-center">
-								<img src="<?php echo IMGS.$nome_imagem; ?>" width="100%">
+								<img src="<?php echo PROTOCOLOS.$nome_imagem; ?>" width="100%">
 							</div>
 					    </div>
 				  </div>

@@ -5787,10 +5787,10 @@ INSERT INTO cidade (id, nome, id_estado) VALUES
 
 insert into indicador (nome) values 
 	('Dados'), 
-	('Segurança paciente ??'), 
+	('Segurança paciente'), 
 	('Úlcera por pressão'), 
 	('Higiene das mãos'), 
-	('Infecção respiração ??'), 
+	('Infecção respiração'), 
 	('Cirurgia segura'), 
 	('Quedas'), 
 	('Medicação'), 

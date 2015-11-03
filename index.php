@@ -37,9 +37,9 @@
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/bootstrap-sweetalert/lib/sweet-alert.css">
-        <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/estilo.css">
         <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/fileinput/css/fileinput.min.css" media="all" type="text/css" />
-            
+        <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/estilo.css">   
+
         <title>Sistema de Monitoramento de Boas Práticas em Saúde</title>
     </head>
     <body>
