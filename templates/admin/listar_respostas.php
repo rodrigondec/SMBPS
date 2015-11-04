@@ -10,8 +10,10 @@
 	<thead>
 		<tr>
 			<th class='col-md-1'>Id</th>
+			<th class='col-md-1'>Id Hospital</th>
+			<th>Hospital</th>
 			<th class='col-md-2'>Id Pergunta</th>
-			<th class='col-md-2'>Id_Formulário</th>
+			<th class='col-md-2'>Id Formulário</th>
 			<th>Texto</th>
 			<th class='col-md-1'></th>
 		</tr>
@@ -23,6 +25,15 @@
 		<tr>
 			<td class='col-md-1'>
 				<?php echo $respostas[$key]['id']; ?>
+			</td>
+			<td class='col-md-1'>
+				<?php echo $respostas[$key]['id_hospital']; ?>
+			</td>
+			<td>
+				<?php 
+					$hospital = select('nome', 'hospital', 'id', $protocolos[$key]['id_hospital'])['nome'];
+					echo $hospital;
+				?>
 			</td>
 			<td class='col-md-2'>
 				<?php echo $respostas[$key]['id_pergunta']; ?>
@@ -49,7 +60,10 @@
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $respostas[$key]['id']; ?>" hidden required />
-									<input class='form-control' type='textarea' name='texto' value="<?php echo $respostas[$key]['texto']; ?>" placeholder='Texto' required />
+									<div class='form-group text-left'>
+                        				<label for='texto'>Texto</label>
+										<textarea class='form-control' name='texto' required><?php echo $respostas[$key]['texto']; ?></textarea>
+									</div>
 								<div class='text-right'>
 									<button class='btn btn-default '>Alterar</button>
 								</div>

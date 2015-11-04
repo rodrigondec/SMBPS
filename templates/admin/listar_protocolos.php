@@ -13,7 +13,7 @@
 		<tr>
 			<th class='col-md-1'>Id</th>
 			<th class='col-md-1'>Id hospital</th>
-			<th>Nome Hospital</th>
+			<th>Hospital</th>
 			<th class='col-md-2'>Id indicador</th>
 			<th class='col-md-2'>Id imagem</th>
 			<th class='col-md-1'>Ativo</th>
@@ -91,32 +91,42 @@
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $protocolos[$key]['id']; ?>" hidden placeholder='' required />
-									<select class='form-control' name='id_indicador' required>
-										<option value='' disabled>Indicador</option>
-										<?php 
-										    foreach ($indicadores as $key2 => $value):
-										?>
-										<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($protocolos[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
-											<?php echo $indicadores[$key2]['nome']?>
-										</option>
+									<div class='form-group text-left'>
+                        				<label for='id_indicador'>Indicador</label>
+										<select class='form-control' name='id_indicador' required>
+											<?php 
+											    foreach ($indicadores as $key2 => $value):
+											?>
+											<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($protocolos[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
+												<?php echo $indicadores[$key2]['nome']?>
+											</option>
 
-										<?php
-										    endforeach;
-										?>
-									</select>
-									<select class='form-control' name='id_hospital' required>
-										<option value='' disabled>Hospital</option>
-										<?php 
-										    foreach ($hospitais as $key2 => $value):
-										?>
-										<option value='<?php echo $hospitais[$key2]['id']; ?>' <?php if($protocolos[$key]['id_hospital'] == $hospitais[$key2]['id']){echo 'selected';} ?>>
-											<?php echo $hospitais[$key2]['nome']?>
-										</option>
-										<?php
-										    endforeach;
-										?>
-									</select>
-									<input class='form-control' type='date' name='data' value="<?php echo $protocolos[$key]['data']; ?>"placeholder='Data' required />
+											<?php
+											    endforeach;
+											?>
+										</select>
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='id_hospital'>Hospital</label>
+										<select class='form-control' name='id_hospital' required>
+											<?php 
+											    foreach ($hospitais as $key2 => $value):
+											?>
+											<option value='<?php echo $hospitais[$key2]['id']; ?>' <?php if($protocolos[$key]['id_hospital'] == $hospitais[$key2]['id']){echo 'selected';} ?>>
+												<?php echo $hospitais[$key2]['nome']?>
+											</option>
+											<?php
+											    endforeach;
+											?>
+										</select>
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='data'>Data</label>
+										<input class='form-control' type='date' name='data' value="<?php echo $protocolos[$key]['data']; ?>"placeholder='Data' required />
+									</div>
+									
 								<div class='text-right'>
 									<button class='btn btn-primary'>Alterar</button>
 								</div>

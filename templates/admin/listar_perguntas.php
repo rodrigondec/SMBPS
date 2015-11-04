@@ -65,30 +65,44 @@
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $perguntas[$key]['id']; ?>" hidden required />
-									<select class='form-control' name='id_indicador' required>
-										<option value='' disabled>Indicador</option>
-										<?php 
-										    foreach ($indicadores as $key2 => $value):
-										?>
-										<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($perguntas[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
-											<?php echo $indicadores[$key2]['nome']?>
-										</option>
+									<div class='form-group text-left'>
+                        				<label for='id_indicador'>Indicador</label>
+										<select class='form-control' name='id_indicador' required>
+											<?php 
+											    foreach ($indicadores as $key2 => $value):
+											?>
+											<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($perguntas[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
+												<?php echo $indicadores[$key2]['nome']?>
+											</option>
 
-										<?php
-										    endforeach;
-										?>
-									</select>
-									<textarea class='form-control' name='texto' required><?php echo $perguntas[$key]['texto']; ?></textarea>
-									<select class='form-control' name='obrigatória' required>
-										<option value='' disabled>Obrigatória?</option>
-										<option value='1' <?php if($perguntas[$key]['obrigatória'] == '1'){echo 'selected';} ?> >
-											Sim
-										</option>
-										<option value='0' <?php if($perguntas[$key]['obrigatória'] == '0'){echo 'selected';} ?> >
-											Não
-										</option>
-									</select>
-									<textarea class='form-control' name='observação'><?php echo $perguntas[$key]['observação']; ?></textarea>
+											<?php
+											    endforeach;
+											?>
+										</select>
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='texto'>Texto</label>
+										<textarea class='form-control' name='texto' required><?php echo $perguntas[$key]['texto']; ?></textarea>
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='obrigatória'>Obrigatória?</label>
+										<select class='form-control' name='obrigatória' required>
+											<option value='1' <?php if($perguntas[$key]['obrigatória'] == '1'){echo 'selected';} ?> >
+												Sim
+											</option>
+											<option value='0' <?php if($perguntas[$key]['obrigatória'] == '0'){echo 'selected';} ?> >
+												Não
+											</option>
+										</select>
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='observação'>Observação</label>
+										<textarea class='form-control' name='observação'><?php echo $perguntas[$key]['observação']; ?></textarea>
+									</div>
+									
 								<div class='text-right'>
 									<button class='btn btn-primary'>Alterar</button>
 								</div>

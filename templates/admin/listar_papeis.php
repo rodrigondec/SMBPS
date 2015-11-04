@@ -41,7 +41,11 @@
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $papeis[$key]['id']; ?>" hidden required />
-									<input class='form-control' type='text' name='nome' value="<?php echo $papeis[$key]['nome']; ?>" placeholder='Nome' required />
+									<div class='form-group text-left'>
+                        				<label for='nome'>Nome</label>
+										<input class='form-control' type='text' name='nome' value="<?php echo $papeis[$key]['nome']; ?>" placeholder='Nome' required />
+									</div>
+									
 								<div class='text-right'>
 									<button class='btn btn-primary'>Alterar</button>
 								</div>

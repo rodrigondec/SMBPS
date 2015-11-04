@@ -1,7 +1,7 @@
 <?php 
     $usuarios = select_many('*', 'usuário');
     $papeis = select_many('*', 'papel');
-    $max_id_hospital = intval(select('max(id)', 'hospital')['max(id)']);    
+    $hospitais = select_many('*', 'hospital');    
 ?>
 <div class='text-center'>
 	<h2>Usuários</h2>
@@ -55,22 +55,51 @@
 							<div class="modal-body text-center">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $usuarios[$key]['id']; ?>" hidden placeholder='' required />
-									<select class='form-control' name='id_papel' required>
-										<option value='' disabled>Selecione o papel</option>
-										<?php 
-										    foreach ($papeis as $key2 => $value):
-										?>
-										<option value='<?php echo $papeis[$key2]['id']; ?>' <?php if($usuarios[$key]['id_papel'] == $papeis[$key2]['id']){echo 'selected';} ?>>
-											<?php echo $papeis[$key2]['nome']?>
-										</option>
-										<?php
-										    endforeach;
-										?>
-									</select>
-									<input class='form-control' type='number' name='id_hospital' value="<?php echo $usuarios[$key]['id_hospital']; ?>" placeholder='Id hospital' min='1' max='<?php echo $max_id_hospital; ?>' />
-									<input class='form-control' type='text' name='nome' value="<?php echo $usuarios[$key]['nome']; ?>" placeholder='Nome' required />
-									<input class='form-control' type='email' name='email' value="<?php echo $usuarios[$key]['email']; ?>"placeholder='Email' required />
-									<input class='form-control' type='password' name='senha' placeholder='senha' />
+									<div class='form-group text-left'>
+                        				<label for='id_papel'>Papel</label>
+										<select class='form-control' name='id_papel' required>
+											<?php 
+											    foreach ($papeis as $key2 => $value):
+											?>
+											<option value='<?php echo $papeis[$key2]['id']; ?>' <?php if($usuarios[$key]['id_papel'] == $papeis[$key2]['id']){echo 'selected';} ?>>
+												<?php echo $papeis[$key2]['nome']?>
+											</option>
+											<?php
+											    endforeach;
+											?>
+										</select>
+									</div>
+									<div class='form-group text-left'>
+                        				<label for='id_hospital'>Hospital</label>
+										<select class='form-control' name='id_hospital' required>
+										<option value='' disabled selected>Selecionar hospital para gerir</option>
+											<?php 
+											    foreach ($hospitais as $key2 => $value):
+											?>
+											<option value='<?php echo $hospitais[$key2]['id']; ?>' <?php if($usuarios[$key]['id_hospital'] == $hospitais[$key2]['id']){echo 'selected';} ?>>
+												<?php echo $hospitais[$key2]['nome']?>
+											</option>
+											<?php
+											    endforeach;
+											?>
+										</select>
+									</div>
+
+									<div class='form-group text-left'>
+                        				<label for='nome'>Nome</label>
+										<input class='form-control' type='text' name='nome' value="<?php echo $usuarios[$key]['nome']; ?>" placeholder='Nome' required />
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='email'>Email</label>
+										<input class='form-control' type='email' name='email' value="<?php echo $usuarios[$key]['email']; ?>"placeholder='Email' required />
+									</div>
+									
+									<div class='form-group text-left'>
+                        				<label for='senha'>Senha</label>
+										<input class='form-control' type='password' name='senha' placeholder='senha' />
+									</div>
+									
 								<div class='text-right'>
 									<button class='btn btn-primary'>Alterar</button>
 								</div>
