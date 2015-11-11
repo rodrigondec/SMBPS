@@ -62,6 +62,9 @@
                         
                     </ul>
                 </li>
+                <li>
+                    <a href="<?php echo HOSPITAL; ?>cadastrar_formulario">Cadastrar Formulário</a>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <?php 
