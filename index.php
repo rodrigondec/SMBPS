@@ -43,25 +43,18 @@
         <title>Sistema de Monitoramento de Boas Práticas em Saúde</title>
     </head>
     <body>
-        <div class='wrapper'>
-            <div class='header'>
-        <?php  
-            incluir_menu();
-        ?>
+        <!-- Wrap all page content here -->
+        <div id="wrap">
+            <?php incluir_menu(); ?> <!-- mostra o menu incluído -->
+            <!-- Begin page content -->
+            <div class="fluid-container">
+                <?php include_conteudo(); ?> <!-- mostrar o template incluído -->
             </div>
-            <div class='content'>
-        <?php  
-            include_conteudo(); //mostrar o template incluído
-        ?>
-        	</div>
-            <div class='footer'>
-        <?php  
-            include_once(TEMPLATES.'/geral/footer.php');
-        ?>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <?php include_once(TEMPLATES.'/geral/footer.php'); ?> <!-- mostrar o footer incluído -->
             </div>
-        <?php
-            //include_once(TEMPLATES.'/preview.php');
-        ?>
         </div>
     </body>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
