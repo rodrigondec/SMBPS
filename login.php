@@ -8,7 +8,7 @@
 			$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
 			if($_SESSION['privilegio'] == '2'){
-				$_SESSION['hospital'] = $usuario['id_hospital'];
+				$_SESSION['id_hospital'] = $usuario['id_hospital'];
 				var_dump($_SESSION);
 			}
 			ob_clean();

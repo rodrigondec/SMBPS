@@ -1,6 +1,6 @@
 <?php 
     $indicador = select('*', 'indicador', 'id', $_GET['id']);
-    $protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
+    $protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$_GET['id'].', \'1\')', false);
     $data_limite = explode('-', date('Y-m-d'));
     $data_limite[0] = ''.(intval($data_limite[0])-2); // 2 = quantidade de anos. 2 anos.
     $data_limite = implode('-', $data_limite);  

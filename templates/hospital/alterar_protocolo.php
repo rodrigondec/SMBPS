@@ -35,7 +35,7 @@
 		        	// inserir no banco de dados a referencia da imagem e protocolo
 			        
 		        	$dados['ativo'] = '0';
-		        	update($dados, 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
+		        	update($dados, 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$_GET['id'].', \'1\')', false);
 		        	unset($dados);
 
 			        $dados['nome'] = $_FILES['imagem']['name'];
@@ -44,7 +44,7 @@
 			        unset($dados);
 			        $dados['id_indicador'] = $indicador['id'];
 			        $dados['id_imagem'] = select('max(id)', 'imagem')['max(id)'];
-			        $dados['id_hospital'] = $_SESSION['hospital'];
+			        $dados['id_hospital'] = $_SESSION['id_hospital'];
 			        $dados['data'] = $_POST['data'];
 			        insert($dados, 'protocolo');
 

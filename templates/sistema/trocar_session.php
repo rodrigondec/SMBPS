@@ -20,7 +20,7 @@
             $_SESSION['id_usuario'] = $usuario['id'];
     		$_SESSION['email'] = $usuario['email'];
 			$_SESSION['privilegio'] = $usuario['id_papel'];
-			$_SESSION['hospital'] = $usuario['id_hospital'];
+			$_SESSION['id_hospital'] = $usuario['id_hospital'];
     	}
 
     	echo 'session: ';var_dump($_SESSION);echo '<br /><br />';

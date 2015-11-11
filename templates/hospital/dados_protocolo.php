@@ -1,6 +1,6 @@
 <?php 
     $indicador = select('*', 'indicador', 'id', $_GET['id']);
-    $protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['hospital'].', '.$_GET['id'].', \'1\')', false);
+    $protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$_GET['id'].', \'1\')', false);
 ?>
 <div class='text-center'>
 	<h2>Dados Indicador <?php echo $indicador['nome']; ?></h2>

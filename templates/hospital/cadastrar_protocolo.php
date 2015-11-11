@@ -40,7 +40,7 @@
 			        unset($dados);
 			        $dados['id_indicador'] = $indicador['id'];
 			        $dados['id_imagem'] = select('max(id)', 'imagem')['max(id)'];
-			        $dados['id_hospital'] = $_SESSION['hospital'];
+			        $dados['id_hospital'] = $_SESSION['id_hospital'];
 			        $dados['data'] = $_POST['data'];
 			        insert($dados, 'protocolo');
 
