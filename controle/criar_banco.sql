@@ -5939,4 +5939,7 @@ insert into usuário (nome, email, senha, id_papel, id_hospital) values
 insert into notificação (id_usuário, título, texto) values 
 	(1, 'Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
 	(2, 'Notificacao teste RODRIGO', 'Este é o exemplo de uma notificação RODRIGO!'), 
-	(3, 'Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!');
+	(3, 'Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!'),
+	(1, 'Notificacao teste ADMIN 22', 'Este é o exemplo de uma notificação ADMIN 22!'), 
+	(2, 'Notificacao teste RODRIGO 22', 'Este é o exemplo de uma notificação RODRIGO 22!'), 
+	(3, 'Notificacao teste HOSPITAL 22', 'Este é o exemplo de uma notificação HOSPITAL 22!');
