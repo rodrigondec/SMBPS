@@ -34,6 +34,7 @@
 		<p class='obrigatorio'><span class='obrigatorio'>*obrigatorio</span></p>
 
 		<?php 
+		$contador = 1;
 	    foreach ($perguntas as $key => $value):
 	    	$pergunta_inputs = select_many('*', 'pergunta_input', 'id_pergunta', $perguntas[$key]['id']);
 	    	// var_dump($pergunta_inputs);echo '<br /><br />';
@@ -45,7 +46,8 @@
 		<div class='input'>
 			<p>
 				<?php 
-				    echo $perguntas[$key]['texto'];
+				    echo $contador.' - '.$perguntas[$key]['texto'];
+				    $contador++;
 				    if($perguntas[$key]['obrigatória'] == '1'){echo " <span class='obrigatorio'>*</span>";}
 				    if($perguntas[$key]['observação'] != ''):
 				?>
