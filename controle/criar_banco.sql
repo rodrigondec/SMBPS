@@ -43,6 +43,13 @@ CREATE TABLE imagem(
 	PRIMARY KEY (id)
 );
 
+CREATE TABLE setor(
+	id int NOT NULL auto_increment,
+	nome varchar(35) NOT NULL,
+	PRIMARY KEY (id),
+	UNIQUE (nome)
+);
+
 CREATE TABLE hospital(
 	id int NOT NULL auto_increment,
 	id_cidade int NOT NULL,
@@ -56,6 +63,15 @@ CREATE TABLE hospital(
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_cidade) REFERENCES cidade(id),
 	UNIQUE (CNPJ)
+);
+
+CREATE TABLE hospital_setor(
+	id int NOT NULL auto_increment,
+	id_hospital int NOT NULL,
+	id_setor int NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_hospital) REFERENCES hospital(id),
+	FOREIGN KEY (id_setor) REFERENCES setor(id)
 );
 
 CREATE TABLE protocolo(
@@ -101,13 +117,13 @@ CREATE TABLE pergunta_input(
 
 CREATE TABLE formulário(
 	id int NOT NULL auto_increment,
-	id_hospital int NOT NULL,
+	id_hospital_setor int NOT NULL,
 	data_recebimento date NOT NULL, 
 	mes_avaliação varchar(2) NOT NULL,
 	nome_responsável varchar(35) NOT NULL,
 	email_responsável varchar(35) NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
+	FOREIGN KEY (id_hospital_setor) REFERENCES hospital_setor(id)
 );
 
 CREATE TABLE resposta(
@@ -5809,7 +5825,7 @@ insert into pergunta (id_indicador, obrigatória, texto, observação) values
 	(1, '0', 'Número total de leitos de UTI Neonatal', 'informar número total de leitos de UTI neonatal existentes no hospital'),
 	(2, '1', 'O serviço de saúde possui núcleo de segurança do paciente(NSP) implantado?', ''),
 	(2, '1', 'O serviço de saúde possui plano de segurança do paciente(PSP) implantado?', ''),
-	(3, '1', 'O serviço de saúde possui o protocolo de prevenção de úlceras por pressão implantado?', ''),
+	(2, '1', 'O serviço de saúde possui o protocolo de prevenção de úlceras por pressão implantado?', ''),
 	(3, '1', 'É realizada a avaliação do risco para úlceras por pressão até 24 Horas da admissão do paciente nos serviço de saúde?', 'Paciente com mais de 60 anos. Verificar o preenchimento do instrumento de estratificação de risco.'),
 	(4, '1', 'O serviço de saúde possui protocolo de prática de higiene das mãos implantado?', ''),
 	(4, '1', 'O serviço de saúde possui número de lavatórios/pias e dispensadores de preparações alcoólicas para a higiene das mãos nas UTI de acordo com as normas vigentes?', ''),
@@ -5887,11 +5903,19 @@ insert into pergunta_input (id_pergunta, id_input, name) values
 	(28, 2, 'metodo_identificacao'),
 	(29, 4, 'numero_pacientes_identificados');
 	
-
+insert into setor (nome) values
+	('Enfermaria'),
+	('UTI');
 
 insert into hospital (nome, cnpj, telefone, endereço, complemento, cep, id_cidade) values 
 	('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770),
 	('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA2 BLA2 BL2A', 'nº 2200', '59152250', 3770);
+
+insert into hospital_setor (id_hospital, id_setor) values
+	(1, 1),
+	(1, 2),
+	(2, 1),
+	(2, 2);
 
 insert into papel (nome) values 
 	('Administrador Geral'), 
