@@ -44,11 +44,6 @@
                                     </a>
                                 </li>
                             </ul>
-                            <?php 
-                                    // echo "<a href='".HOSPITAL."protocolo?id=".$indicadores[$key]["id"]."'>";
-                                    // echo $indicadores[$key]['nome'];
-                                    // echo "</a>";
-                            ?>
                         </li>
                         <?php 
                             endforeach;
@@ -58,13 +53,8 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Relatório<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li>
-                            <a href="<?php echo HOSPITAL; ?>meu_hospital">Meu hospital</a>
-                        </li>
-                        <li>
-                            <a href="<?php echo HOSPITAL; ?>estatisticas_gerais">Estatísticas gerais</a>
-                        </li>
-                        
+                        <li><a href="<?php echo HOSPITAL; ?>meu_hospital">Meu hospital</a></li>
+                        <li><a href="<?php echo HOSPITAL; ?>estatisticas_gerais">Estatísticas gerais</a></li>
                     </ul>
                 </li>
                 <li>

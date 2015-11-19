@@ -17,28 +17,47 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li>
-                            <a href="/<?php echo BASE; ?>admin/">PHPMyAdmin</a>
-                            <a href="/<?php echo BASE; ?>index.php/configs">Configurações</a>
-                        </li>
+                        <li><a href="/<?php echo BASE; ?>admin/">PHPMyAdmin</a></li>
+                        <li><a href="/<?php echo BASE; ?>index.php/configs">Configurações</a></li>
                     </ul>
                 </li>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Hospital<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li class='dropdown'>
-                            <a href="<?php echo ADMIN; ?>listar_hospitais">Listar</a>
-                            <li><a href="#">Cadastrar</a></li>
+                        <li><a href="<?php echo ADMIN; ?>listar_hospitais">Listar</a></li>
+                        <li><a href="#">Cadastrar</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Relatórios<div class='inline'><i class="fa fa-caret-right" style=''></i></div></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Por Hospital</a></li>
+                                <li><a href="#">Indices Gerais</a></li>
+                            </ul>
                         </li>
-                    </ul>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-submenu">
+                            <a tabindex="-1" href="#">Protocolos<div class='inline'><i class="fa fa-caret-right" style=''></i></div></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="<?php echo ADMIN; ?>listar_protocolos">Listar</a>
+                                </li>
+                                <li role="separator" class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="-1" href="#">Imagens<div class='inline'><i class="fa fa-caret-right" style=''></i></div></a>
+                                    <ul class="dropdown-menu">
+                                      <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_imagens">Listar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul> 
                 </li>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Formulário<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li>
-                            <a href="<?php echo ADMIN; ?>listar_formularios">Listar</a>
-                            <a href="<?php echo ADMIN; ?>formulario">Cadastrar</a>
-                        </li>
+                        <li><a href="<?php echo ADMIN; ?>listar_formularios">Listar</a></li>
+                        <li><a href="<?php echo ADMIN; ?>formulario">Cadastrar</a></li>
+                        <li role="separator" class="divider"></li>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Perguntas<div class='inline'><i class="fa fa-caret-right"></i></div></a>
                             <ul class="dropdown-menu">
@@ -58,10 +77,9 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Usuários<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li>
-                            <a href="<?php echo ADMIN; ?>listar_usuarios">Listar</a>
-                            <li><a href="#">Cadastrar</a></li>
-                        </li>
+                        <li><a href="<?php echo ADMIN; ?>listar_usuarios">Listar</a></li>
+                        <li><a href="#">Cadastrar</a></li>
+                        <li role="separator" class="divider"></li>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Papéis<div class='inline'><i class="fa fa-caret-right"></i></div></a>
                             <ul class="dropdown-menu">
@@ -74,27 +92,11 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Indicadores<span class="caret"></span></a>
                     <ul class='dropdown-menu'>  
-                        <li>
-                            <a href="<?php echo ADMIN; ?>listar_indicadores">Listar</a>
-                            <li><a href="#">Cadastrar</a></li>
-                        </li>
+                        <li><a href="<?php echo ADMIN; ?>listar_indicadores">Listar</a></li>
+                        <li><a href="#">Cadastrar</a></li>
                     </ul>
                 </li>
-                <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Protocolos<span class="caret"></span></a>
-                    <ul class='dropdown-menu'>
-                        <li>
-                            <a href="<?php echo ADMIN; ?>listar_protocolos">Listar</a>
-                        </li>
-                        <li class="dropdown-submenu">
-                            <a tabindex="-1" href="#">Imagens<div class='inline'><i class="fa fa-caret-right" style=''></i></div></a>
-                            <ul class="dropdown-menu">
-                              <li><a tabindex="-1" href="<?php echo ADMIN; ?>listar_imagens">Listar</a></li>                           
-
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
+                
                 <!-- <li><a href="<?php echo ADMIN; ?>home">Sobre</a></li> -->
                 <!-- <li><a href="<?php echo SISTEMA; ?>contato">Contato</a></li> -->
             </ul>
@@ -128,7 +130,7 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><!-- <i class="fa fa-bell-slash-o"></i>&nbsp; -->Notificações <span class="badge"><?php echo count($notificacoes); ?> <span class="caret"></span></span></a>
                     <ul class='dropdown-menu'>
-                        <li><a href="#">Não há notificações</a></li>
+                        <li><a href="#">Não há notificações!</a></li>
                     </ul>
                 </li>
             <?php 
