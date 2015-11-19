@@ -3,5 +3,9 @@
 	<hr />
 </div>
 <?php 
-    echo 'Meus dados';
+	$usuario = select('*', 'usuário', 'id', $_SESSION["id_usuario"]);
+	var_dump($usuario);echo '<br /><br />';
 ?>
+<div class='container'>
+	TSTESTESYE
+</div>
