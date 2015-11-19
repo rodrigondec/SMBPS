@@ -22,6 +22,11 @@
                             unset($indicadores[0]);
 
                             foreach ($indicadores as $key => $value):
+                               if($key != 1):
+                        ?>
+                        <li role="separator" class="divider"></li>
+                        <?php 
+                            endif;
                         ?>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">
@@ -72,10 +77,15 @@
                 if(count($notificacoes) > 0):
             ?>
                 <li class='dropdown'>
-                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'><!-- <i class="fa fa-bell-o"></i>&nbsp; -->Notificações <span class="badge"><?php echo count($notificacoes); ?> <span class="caret"></span></span></a>
+                    <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Notificações <span class="badge"><?php echo count($notificacoes); ?> <span class="caret"></span></span></a>
                     <ul class='dropdown-menu'>
                     <?php 
                         foreach($notificacoes as $key => $value):
+                           if($key != 0):
+                    ?>
+                        <li role="separator" class="divider"></li>
+                    <?php 
+                            endif;
                     ?>
                         <li>
                             <a data-toggle="modal" data-target="#myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>"><?php echo $notificacoes[$key]['título']; ?></a>
@@ -101,9 +111,9 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
-                        <hr />
+                        <li role="separator" class="divider"></li>
                         <li><a href="#" onclick="log_out()">Sair</a></li>
-                        <hr />
+                        <li role="separator" class="divider"></li>
                         <li><a href="<?php echo SISTEMA; ?>trocar_session?type=1">Trocar Sessão</a></li>
                     </ul>
                 </li>

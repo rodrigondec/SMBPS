@@ -46,6 +46,7 @@
                                 <li><a href="#">Cadastrar</a></li>
                             </ul>
                         </li>
+                        <li role="separator" class="divider"></li>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Respostas<div class='inline'><i class="fa fa-caret-right"></i></div></a>
                             <ul class="dropdown-menu">
@@ -107,6 +108,11 @@
                     <ul class='dropdown-menu'>
                     <?php 
                         foreach ($notificacoes as $key => $value):
+                            if($key != 0):
+                    ?>
+                        <li role="separator" class="divider"></li>
+                    <?php 
+                        endif;
                     ?>
                         <li>
                             <a data-toggle="modal" data-target="#myModalnotificacao<?php echo $notificacoes[$key]['id']; ?>"><?php echo $notificacoes[$key]['título']; ?></a>
@@ -132,9 +138,9 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
-                        <hr />
+                        <li role="separator" class="divider"></li>
                         <li><a href="#" onclick="log_out()">Sair</a></li>
-                        <hr />
+                        <li role="separator" class="divider"></li>
                         <li><a href="<?php echo SISTEMA; ?>trocar_session?type=2">Trocar Sessão</a></li>
                     </ul>
                 </li>
