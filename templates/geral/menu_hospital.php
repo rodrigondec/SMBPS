@@ -43,6 +43,11 @@
                                         Meu Protocolo
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="<?php echo HOSPITAL.'cadastrar_formulario?id='.$indicadores[$key]['id']; ?>">
+                                        Cadastrar Formulário
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                         <?php 
@@ -56,9 +61,6 @@
                         <li><a href="<?php echo HOSPITAL; ?>meu_hospital">Meu hospital</a></li>
                         <li><a href="<?php echo HOSPITAL; ?>estatisticas_gerais">Estatísticas gerais</a></li>
                     </ul>
-                </li>
-                <li>
-                    <a href="<?php echo HOSPITAL; ?>cadastrar_formulario">Cadastrar Formulário</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -100,7 +102,7 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
+                        <li><a href="<?php echo HOSPITAL; ?>meus_dados">Meus dados</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" onclick="log_out()">Sair</a></li>
                         <li role="separator" class="divider"></li>
