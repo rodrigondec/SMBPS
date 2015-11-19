@@ -22,7 +22,7 @@
 </style>
 
 <?php 
-    $perguntas = select_many('*', 'pergunta');
+    $perguntas = select_many('*', 'pergunta', 'id_indicador', $_GET['id']);
     // var_dump($perguntas);
 ?>
 <div class='text-center'>
