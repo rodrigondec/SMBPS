@@ -5934,12 +5934,15 @@ insert into papel (nome) values
 insert into usuário (nome, email, senha, id_papel, id_hospital) values 
 	('Admin', 'admin@admin.com', md5('admin'), 1, NULL), 
 	('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), 
-	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1);
+	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1),
+	('gestor2', 'gestor2@hospital.com', md5('gestor2'), 2, 2);
 
 insert into notificação (id_usuário, título, texto) values 
 	(1, 'Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
 	(2, 'Notificacao teste RODRIGO', 'Este é o exemplo de uma notificação RODRIGO!'), 
 	(3, 'Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!'),
+	(3, 'Notificacao teste HOSPITAL2', 'Este é o exemplo de uma notificação HOSPITAL2!'),
 	(1, 'Notificacao teste ADMIN 22', 'Este é o exemplo de uma notificação ADMIN 22!'), 
 	(2, 'Notificacao teste RODRIGO 22', 'Este é o exemplo de uma notificação RODRIGO 22!'), 
-	(3, 'Notificacao teste HOSPITAL 22', 'Este é o exemplo de uma notificação HOSPITAL 22!');
+	(3, 'Notificacao teste HOSPITAL 22', 'Este é o exemplo de uma notificação HOSPITAL 22!'),
+	(3, 'Notificacao teste HOSPITAL2 22', 'Este é o exemplo de uma notificação HOSPITAL2 22!');
