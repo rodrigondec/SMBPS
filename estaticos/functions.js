@@ -1,4 +1,4 @@
-function log_out(){
+function log_out(base){
 	swal({
   		title: "Deseja mesmo sair?",
   		text: "",
@@ -11,7 +11,7 @@ function log_out(){
   		closeOnConfirm: false
 	},
 	function(){
-	  window.location = '/smbps/logout.php';
+	  window.location = '/'+base+'logout.php';
 	});
 }
 

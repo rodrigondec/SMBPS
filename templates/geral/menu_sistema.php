@@ -36,7 +36,7 @@
                 <h4 class="modal-title text-left">Login</h4>
             </div>
             <div class="modal-body text-center">
-                <form action="/smbps/index.php/login" method='post'>
+                <form action="/<?php echo BASE; ?>index.php/login" method='post'>
                     <div class='form-group text-left'>
                         <label for='email'>Email</label>
                         <input type='email' name='email' class='form-control' id='input_email' placeholder='Email'  required />
