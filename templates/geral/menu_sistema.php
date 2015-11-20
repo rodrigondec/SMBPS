@@ -36,12 +36,14 @@
                 <h4 class="modal-title text-left">Login</h4>
             </div>
             <div class="modal-body text-center">
+                <!-- Warning de dados incorretos no login -->
                 <div id='warning_entrar' class="alert alert-danger alert-dismissible hidden" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <p><strong>Dados incorretos!</strong></p>Tente novamente
                 </div>
+                <!-- Form de login -->
                 <form action="/<?php echo BASE; ?>index.php/login" method='post'>
                     <div class='form-group text-left'>
                         <label for='email'>Email</label>
