@@ -19,8 +19,8 @@
 
 	//XAMPP && C9
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
-	define('BASE', 'smbps/'); // XAMPP
-	// define('BASE', ''); // C9
+	// define('BASE', 'smbps/'); // XAMPP
+	define('BASE', ''); // C9
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'templates/');
 	
 	define('SOURCE', ARQUIVOS.'/'.BASE.'estaticos/source/');
