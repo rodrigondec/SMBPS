@@ -45,14 +45,14 @@
                         <label for='senha'>Senha</label>
                         <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' required />
                     </div>
-                    <div id='buttons' class='text-right'>
-                        <button type='submit' class='btn btn-info'>Entrar</button>
+                    <div id='buttons' class='text-left'>
+                        <input type='reset' value='Apagar' class='btn btn-warning' />
+                        <input type='submit' value='Entrar' class='btn btn-primary' />
+                        ou
+                        <a href="<?php echo SISTEMA; ?>cadastro">Registre-se</a>
                     </div>
                 </form>
             </div>
-<!--             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div> -->
         </div>
     </div>
 </div>
