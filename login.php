@@ -21,8 +21,7 @@
 ?>
 <script type='text/javascript'>
 	window.onload = function(){
-		str = '<div class="alert alert-danger alert-dismissible text-center" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><p><strong>Dados incorretos!</strong></p> Tente novamente</div>';
 		$('#entrar').click()
-		$('#warning_entrar').html(str)
+		$('#warning_entrar').attr('class', 'alert alert-danger alert-dismissible')
 	}
 </script>
