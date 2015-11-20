@@ -18,7 +18,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a data-toggle="modal"  data-target="#myModal">
+                    <a id='entrar' data-toggle="modal"  data-target="#myModal">
                         Entrar
                     </a>
                 </li>
@@ -36,6 +36,7 @@
                 <h4 class="modal-title text-left">Login</h4>
             </div>
             <div class="modal-body text-center">
+                <div id='warning_entrar'></div>
                 <form action="/<?php echo BASE; ?>index.php/login" method='post'>
                     <div class='form-group text-left'>
                         <label for='email'>Email</label>
