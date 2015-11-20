@@ -104,7 +104,7 @@
                     <ul class='dropdown-menu'>
                         <li><a href="<?php echo HOSPITAL; ?>meus_dados">Meus dados</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#" onclick="log_out(<?php echo BASE; ?>)">Sair</a></li>
+                        <li><a href="#" <?php echo "onclick='log_out(\"".BASE."\")'"; ?>>Sair</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo SISTEMA; ?>trocar_session?type=1">Trocar Sessão</a></li>
                     </ul>
