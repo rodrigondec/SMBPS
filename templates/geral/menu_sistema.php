@@ -35,7 +35,7 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title text-left">Login</h4>
             </div>
-            <div class="modal-body text-center">
+            <div class="modal-body">
                 <!-- Warning de dados incorretos no login -->
                 <div id='warning_entrar' class="alert alert-danger alert-dismissible hidden" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -45,15 +45,15 @@
                 </div>
                 <!-- Form de login -->
                 <form action="/<?php echo BASE; ?>index.php/login" method='post'>
-                    <div class='form-group text-left'>
+                    <div class='form-group'>
                         <label for='email'>Email</label>
                         <input type='email' name='email' class='form-control' id='input_email' placeholder='Email'  required />
                     </div>
-                    <div class='form-group text-left'>
+                    <div class='form-group'>
                         <label for='senha'>Senha</label>
                         <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' required />
                     </div>
-                    <div id='buttons' class='text-left'>
+                    <div id='buttons'>
                         <input type='reset' value='Apagar' class='btn btn-warning' />
                         <input type='submit' value='Entrar' class='btn btn-primary' />
                         ou
