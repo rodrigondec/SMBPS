@@ -41,7 +41,8 @@
         else{
             $sql .= $id;
         }
-        //var_dump($sql);
+        $sql .= ';';
+        // var_dump($sql);
         return mysql_query($sql, LINK);
     }
 

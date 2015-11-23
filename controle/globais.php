@@ -1,7 +1,7 @@
 <?php
 	//AppFog MySQL
 	// $services_json = json_decode(getenv("VCAP_SERVICES"),true);
- //    $mysql_config = $services_json["mysql-5.1"][0]["credentials"];
+    // $mysql_config = $services_json["mysql-5.1"][0]["credentials"];
 	// // Configurações do Projeto
 	// define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
 	// define('TEMPLATES', ARQUIVOS.'/templates');
@@ -19,8 +19,8 @@
 
 	//XAMPP && C9
 	define('ARQUIVOS', $_SERVER['DOCUMENT_ROOT']);
-	// define('BASE', 'smbps/'); // XAMPP
-	define('BASE', ''); // C9
+	define('BASE', 'smbps/'); // XAMPP
+	// define('BASE', ''); // C9
 	define('TEMPLATES', ARQUIVOS.'/'.BASE.'templates/');
 	
 	define('SOURCE', ARQUIVOS.'/'.BASE.'estaticos/source/');

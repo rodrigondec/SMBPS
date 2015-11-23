@@ -53,7 +53,6 @@ CREATE TABLE setor(
 CREATE TABLE hospital(
 	id int NOT NULL auto_increment,
 	id_cidade int NOT NULL,
-	sigla varchar(10) NOT NULL,
 	nome varchar(35) NOT NULL,
 	cnpj varchar(14) NOT NULL,
 	telefone varchar(11) NOT NULL,
