@@ -70,8 +70,8 @@ body {
     overflow: auto;
 }
 
-.center form {
-    display: table;
+.center {
+    float: none;
     margin: 0 auto;
 }
 

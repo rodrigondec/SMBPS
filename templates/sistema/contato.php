@@ -2,7 +2,7 @@
 	<h2>Contato</h2>
 	<hr />
 </div>
-<form class='centered-30' method='post'>
+<form class='container center col-md-5' method='post'>
 	<div class='form-group text-left'>
 	    <label for='nome'>Nome</label>
 	    <input type='nome' name='nome' class='form-control' placeholder='Nome'  required />

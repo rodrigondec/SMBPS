@@ -22,6 +22,6 @@
 <script type='text/javascript'>
 	window.onload = function(){
 		$('#entrar').click()
-		$('#warning_entrar').attr('class', 'alert alert-danger alert-dismissible')
+		$('#warning_entrar').attr('class', 'alert alert-danger alert-dismissible text-center')
 	}
 </script>
