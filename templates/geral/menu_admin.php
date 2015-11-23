@@ -139,7 +139,7 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><i class="fa fa-cog"></i>&nbsp;Opções<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li><a href="<?php echo SISTEMA; ?>meus_dados">Meus dados</a></li>
+                        <li><a href="<?php echo ADMIN; ?>meus_dados">Meus dados</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="#" <?php echo "onclick='log_out(\"".BASE."\")'"; ?>>Sair</a></li>
                         <li role="separator" class="divider"></li>
