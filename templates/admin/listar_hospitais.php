@@ -87,22 +87,7 @@
     if(count($_POST) > 0){
     	foreach ($_POST as $key => $value){
     		if($key != 'id'){
-    			if($key == 'cnpj'){
-    				$value = str_replace('.', '', $value);
-    				$value = str_replace('/', '', $value);
-    				$value = str_replace('-', '', $value);
-    			}
-    			else if($key == 'telefone'){
-    				$value = str_replace('(', '', $value);
-					$value = str_replace(')', '', $value);
-					$value = str_replace(' ', '', $value);
-					$value = str_replace('-', '', $value);
-    			}
-    			else if($key == 'cep'){
-    				$value = str_replace('.', '', $value);
-					$value = str_replace('-', '', $value);
-    			} 
-    			$dados[$key] = $value;
+    			$dados[$key] = retirar_mascara($key, $value);
     		}
     	}
     	var_dump($dados);

@@ -108,5 +108,24 @@
 		    }
 		}
 		return $return;
+	}
+
+	function retirar_mascara($key, $value){
+		if($key == 'cnpj'){
+			$value = str_replace('.', '', $value);
+			$value = str_replace('/', '', $value);
+			$value = str_replace('-', '', $value);
+		}
+		else if($key == 'telefone'){
+			$value = str_replace('(', '', $value);
+			$value = str_replace(')', '', $value);
+			$value = str_replace(' ', '', $value);
+			$value = str_replace('-', '', $value);
+		}
+		else if($key == 'cep'){
+			$value = str_replace('.', '', $value);
+			$value = str_replace('-', '', $value);
+		} 
+		return $value;
 	}		
 ?>
