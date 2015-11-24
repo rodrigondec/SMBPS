@@ -51,7 +51,7 @@
 	</div>
 	<!-- DADOS USUÁRIO -->
 	<div id='usuario' class='col-md-5 col-lg-5 col-sm-5 col-xs-6 center'>
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Informações do Usuário</h3>
 			</div>
@@ -72,7 +72,7 @@
 	            </form>
 			</div>
 		</div>
-        <div class="panel panel-default">
+        <div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Mudar Senha</h3>
 			</div>
@@ -96,7 +96,7 @@
 	                    <input type='password' name='senha[]' class='form-control' placeholder='Repetir A Senha' required />
 	                </div>
 	                <div>
-	                    <input type='submit' value='Alterar' class='btn btn-info' onclick="validar()" />
+	                    <input type='submit' value='Alterar' class='btn btn-primary' onclick="validar()" />
 	                </div>
 	            </form>
 			</div>
@@ -104,7 +104,7 @@
 	</div>
 	<!-- DADOS HOSPITAL -->
 	<div id='hospital' class='hidden'>
-		<div class="panel panel-default">
+		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Informações do Hospital</h3>
 			</div>
