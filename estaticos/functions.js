@@ -40,11 +40,3 @@ function sa(head, body, tipo, loc, btn){
 		});
 	}
 }
-
-function upper(textbox) {
-    textbox.value = textbox.value.toUpperCase();
-}
-
-function lower(textbox){
-	textbox.value = textbox.value.toLowerCase();
-}
