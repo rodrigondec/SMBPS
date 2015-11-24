@@ -39,7 +39,7 @@
 			<td>
 				<?php echo $usuarios[$key]['email']; ?>
 			</td>
-			<td class='text-right col-md-1'>
+			<td class='col-md-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $usuarios[$key]['id']; ?>">
 					Alterar
 				</a>
@@ -50,14 +50,14 @@
 					    <div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title text-left">Alterar Usuário</h4>
+								<h4 class="modal-title">Alterar Usuário</h4>
 							</div>
-							<div class="modal-body text-center">
+							<div class="modal-body">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $usuarios[$key]['id']; ?>" hidden placeholder='' required />
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='id_papel'>Papel</label>
-										<select class='form-control' name='id_papel' required>
+										<select class='form-control' name='id_papel' <?php echo "onblur='select_hospital(".$usuarios[$key]['id'].", $(this).val())'";  ?> required>
 											<?php 
 											    foreach ($papeis as $key2 => $value):
 											?>
@@ -69,10 +69,10 @@
 											?>
 										</select>
 									</div>
-									<div class='form-group text-left'>
+									<div id='div_select_hospital<?php echo $usuarios[$key]['id']; ?>' class='form-group <?php if($usuarios[$key]['id_papel'] == 1){ echo 'hidden'; } ?>'>
                         				<label for='id_hospital'>Hospital</label>
-										<select class='form-control' name='id_hospital' required>
-										<option value='' disabled selected>Selecionar hospital para gerir</option>
+										<select id='select_hospital<?php echo $usuarios[$key]['id']; ?>' class='form-control' name='id_hospital' id='select_hospital<?php echo $usuarios[$key]['id']; ?>' required>
+											<option value='' disabled selected>Selecionar hospital para gerir</option>
 											<?php 
 											    foreach ($hospitais as $key2 => $value):
 											?>
@@ -85,24 +85,22 @@
 										</select>
 									</div>
 
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='nome'>Nome</label>
 										<input class='form-control' type='text' name='nome' value="<?php echo $usuarios[$key]['nome']; ?>" placeholder='Nome' required />
 									</div>
 									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='email'>Email</label>
 										<input class='form-control' type='email' name='email' value="<?php echo $usuarios[$key]['email']; ?>"placeholder='Email' required />
 									</div>
 									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='senha'>Senha</label>
 										<input class='form-control' type='password' name='senha' placeholder='senha' />
 									</div>
 									
-								<div class='text-right'>
-									<button class='btn btn-primary'>Alterar</button>
-								</div>
+									<input type='submit' value='Alterar' class='btn btn-primary' />
 								</form>
 							</div>
 					    </div>
@@ -118,9 +116,7 @@
 </div>
 <?php 
     if(count($_POST) > 0){
-    	if($_POST['id_hospital'] == ''){
-    		unset($_POST['id_hospital']);
-    	}
+    	echo 'POST ANTES TRATAMENTO:';var_dump($_POST);echo '<br /><br />';
     	if($_POST['senha'] == ''){
     		unset($_POST['senha']);
     	}
@@ -139,3 +135,16 @@
     	header('LOCATION: '.ADMIN.'listar_usuarios');
     }
 ?>
+<script type="text/javascript">
+	function select_hospital(id, valor){
+		console.log(valor);
+		if(valor == 1){
+			$("#div_select_hospital"+id).attr('class', 'form-group hidden')
+			$("#select_hospital"+id).attr('required', false)
+		}
+		else if(valor == 2){
+			$("#div_select_hospital"+id).attr('class', 'form-group')
+			$("#select_hospital"+id).attr('required', true)
+		}
+	}
+</script>
