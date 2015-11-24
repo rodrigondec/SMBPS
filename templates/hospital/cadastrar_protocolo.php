@@ -11,7 +11,7 @@
 			<input class='form-control' type='date' name='data' required/>
 		</div>
 		<div class='form-group text-left'>
-			<label for="data">imagem</label>
+			<label for="imagem">Imagem</label>
 		<input id="input-1" type="file" class="file" name='imagem' enctype="multipart/form-data" required />
 		<!-- <input class='btn btn-primary' type='submit' value='Enviar' /> -->
 		</div>
