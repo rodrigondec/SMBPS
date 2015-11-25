@@ -1,6 +1,5 @@
 <?php 
     $hospitais = select_many('*', 'hospital');
-    $cidades = select_many('*', 'cidade');
 ?>
 <div class='text-center'>
 	<h2>Hospitais</h2>
@@ -64,18 +63,6 @@
 							<div class="modal-body text-center">
 								<form method='post'>
 									<input type='number' name='id' value="<?php echo $hospitais[$key]['id']; ?>" hidden placeholder='' required />
-									<select class='form-control selectpicker' data-live-search='true' name='id_cidade[]' required>
-										<?php 
-										    foreach ($cidades as $key2 => $value):
-										?>
-										<option value='<?php echo $cidades[$key2]['id']; ?>' <?php if($hospitais[$key]['id_cidade'] == $cidades[$key2]['id']){echo 'selected';} ?>>
-											<?php echo $cidades[$key2]['nome']?>
-										</option>
-										<?php
-										    endforeach;
-										?>
-									</select>
-									<input class='form-control' type='number' name='id_cidade[]' value="<?php echo $hospitais[$key]['id_cidade']; ?>" placeholder='Id cidade' required />
 									<input class='form-control' type='text' name='nome' value="<?php echo $hospitais[$key]['nome']; ?>" placeholder='Nome' required />
 									<input class='form-control' type='text' name='cnpj' value="<?php echo $hospitais[$key]['cnpj']; ?>" data-mask='00.000.000/0000-00' placeholder='CNPJ' required />
 									<input class='form-control' type='text' name='telefone' value="<?php echo $hospitais[$key]['telefone']; ?>" data-mask='(00) 0000-0000' placeholder='Telefone' required />
