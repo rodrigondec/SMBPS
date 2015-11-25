@@ -47,7 +47,7 @@
 			<td>
 				<?php echo $perguntas[$key]['observação']; ?>
 			</td>
-			<td class='text-right col-md-1'>
+			<td class='col-md-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $perguntas[$key]['id']; ?>">
 					Alterar
 				</a>
@@ -58,12 +58,12 @@
 					    <div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title text-left">Alterar Pergunta</h4>
+								<h4 class="modal-title">Alterar Pergunta</h4>
 							</div>
-							<div class="modal-body text-center">
+							<div class="modal-body">
 								<form method='post'>
 									<input type='number' name='id' value="<?php echo $perguntas[$key]['id']; ?>" hidden required />
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='id_indicador'>Indicador</label>
 										<select class='form-control selectpicker' data-live-search='true' name='id_indicador' required>
 											<?php 
@@ -78,13 +78,11 @@
 											?>
 										</select>
 									</div>
-									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='texto'>Texto</label>
 										<textarea class='form-control' name='texto' required><?php echo $perguntas[$key]['texto']; ?></textarea>
 									</div>
-									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='obrigatória'>Obrigatória?</label>
 										<select class='form-control selectpicker' name='obrigatória' required>
 											<option value='1' <?php if($perguntas[$key]['obrigatória'] == '1'){echo 'selected';} ?> >
@@ -95,15 +93,11 @@
 											</option>
 										</select>
 									</div>
-									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='observação'>Observação</label>
 										<textarea class='form-control' name='observação'><?php echo $perguntas[$key]['observação']; ?></textarea>
 									</div>
-									
-								<div class='text-right'>
-									<button class='btn btn-primary'>Alterar</button>
-								</div>
+									<input type='submit' value='Alterar' class='btn btn-primary' />
 								</form>
 							</div>
 					    </div>
