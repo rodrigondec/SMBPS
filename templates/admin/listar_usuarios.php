@@ -69,7 +69,7 @@
 									</div>
 									<div class='form-group'>
                         				<label for='senha'>Senha</label>
-										<input class='form-control' type='password' name='senha' placeholder='senha' />
+										<input class='form-control' type='password' name='senha' placeholder='Senha' />
 									</div>
 									<input type='submit' value='Alterar' class='btn btn-primary' />
 								</form>

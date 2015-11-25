@@ -28,9 +28,7 @@
 			</td>
 			<td class='col-md-2'>
 				<?php 
-					echo $perguntas[$key]['id_indicador']; 
-					$nome_indicador = select('nome', 'indicador', 'id', $perguntas[$key]['id_indicador'])['nome'];
-					echo ' ('.$nome_indicador.')';
+					echo select('nome', 'indicador', 'id', $perguntas[$key]['id_indicador'])['nome'];
 				?>
 			</td>
 			<td>

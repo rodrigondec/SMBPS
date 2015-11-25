@@ -59,7 +59,7 @@
 								<h4 class="modal-title text-left">Alterar Hopistal</h4>
 							</div>
 							<div class="modal-body text-center">
-								<form action="<?php echo ADMIN.'listar_hospitais';?>" method='post'>
+								<form method='post'>
 									<input type='number' name='id' value="<?php echo $hospitais[$key]['id']; ?>" hidden placeholder='' required />
 									<input class='form-control' type='number' name='id_cidade' value="<?php echo $hospitais[$key]['id_cidade']; ?>" placeholder='Id cidade' required />
 									<input class='form-control' type='text' name='nome' value="<?php echo $hospitais[$key]['nome']; ?>" placeholder='Nome' required />

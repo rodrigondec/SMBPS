@@ -58,7 +58,7 @@
 								<h4 class="modal-title text-left">Alterar Resposta</h4>
 							</div>
 							<div class="modal-body text-center">
-								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
+								<form method='post'>
 									<input type='number' name='id' value="<?php echo $respostas[$key]['id']; ?>" hidden required />
 									<div class='form-group text-left'>
                         				<label for='texto'>Texto</label>
