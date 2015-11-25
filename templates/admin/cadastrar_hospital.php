@@ -12,6 +12,10 @@
 <div class='container col-md-5 col-lg-5 col-sm-5 col-xs-6 center'>
 	<form method='post'>
 		<div class='form-group'>
+			<label for='nome'>Nome</label>
+			<input type='text' name='nome' placeholder='Nome' class='form-control' />
+		</div>
+		<div class='form-group'>
 			<label for='select_estado'>Estado</label>
 			<div onclick='show_hide_cidade($("#select_estado").selectpicker("val"))'>
 			<select id='select_estado' class='form-control selectpicker' data-live-search='true' required>
@@ -47,6 +51,9 @@
 		<?php 
 		    endforeach;
 		?>
+		<input type='reset' value='Apagar' class='btn btn-warning' />
+		<input type='submit' value='Cadastrar' class='btn btn-primary' />
+	</form>
 </div>
 <script type="text/javascript">
 	function show_hide_cidade(valor){
