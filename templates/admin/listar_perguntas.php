@@ -63,11 +63,11 @@
 								<h4 class="modal-title text-left">Alterar Pergunta</h4>
 							</div>
 							<div class="modal-body text-center">
-								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
+								<form method='post'>
 									<input type='number' name='id' value="<?php echo $perguntas[$key]['id']; ?>" hidden required />
 									<div class='form-group text-left'>
                         				<label for='id_indicador'>Indicador</label>
-										<select class='form-control' name='id_indicador' required>
+										<select class='form-control selectpicker' data-live-search='true' name='id_indicador' required>
 											<?php 
 											    foreach ($indicadores as $key2 => $value):
 											?>
@@ -88,7 +88,7 @@
 									
 									<div class='form-group text-left'>
                         				<label for='obrigatória'>Obrigatória?</label>
-										<select class='form-control' name='obrigatória' required>
+										<select class='form-control selectpicker' name='obrigatória' required>
 											<option value='1' <?php if($perguntas[$key]['obrigatória'] == '1'){echo 'selected';} ?> >
 												Sim
 											</option>

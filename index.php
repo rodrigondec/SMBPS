@@ -37,7 +37,8 @@
         
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/bootstrap-sweetalert/lib/sweet-alert.css">
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.2.8/css/fileinput.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.2.8/css/fileinput.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/css/bootstrap-select.css">
         <link rel="stylesheet" href="/<?php echo BASE; ?>estaticos/estilo.css">   
 
         <title>Sistema de Monitoramento de Boas Práticas em Saúde</title>
@@ -68,6 +69,9 @@
 
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.2.8/js/fileinput.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.2.8/js/fileinput_locale_pt-BR.js'></script>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/bootstrap-select.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.7.5/js/i18n/defaults-pt_BR.js'></script>
 
     <script src="/<?php echo BASE; ?>estaticos/functions.js"></script>
 </html>
