@@ -72,7 +72,6 @@
 											<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($perguntas[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
 												<?php echo $indicadores[$key2]['nome']?>
 											</option>
-
 											<?php
 											    endforeach;
 											?>
