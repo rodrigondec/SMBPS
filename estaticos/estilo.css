@@ -75,18 +75,13 @@ body {
     margin: 0 auto;
 }
 
-/*.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
-   background-color: #f3f3f3;
-}*/
-
-/*.table-striped > tbody > tr:nth-child(odd) > td{
-   background-color: #f3f3f3;
-}*/
-
-.table-striped > tbody > tr:hover > td {
-    background-color: #eaeaea;
+.table-striped > tbody > tr:nth-child(odd) > td{
+   /*background-color: #f3f3f3;*/
 }
 
+.table-hover > tbody > tr:hover > td{
+    /*background-color: #eaeaea;*/
+}
 
 .dropdown-submenu {
   	position: relative;
