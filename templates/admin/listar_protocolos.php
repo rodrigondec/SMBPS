@@ -8,17 +8,17 @@
 	<hr />
 </div>
 <div class="table-responsive container">
-<table class="table table-striped">
+<table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
-			<th class='col-md-1'>Id</th>
-			<th class='col-md-1'>Id hospital</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Id hospital</th>
 			<th>Hospital</th>
-			<th class='col-md-2'>Id indicador</th>
-			<th class='col-md-2'>Id imagem</th>
-			<th class='col-md-1'>Ativo</th>
+			<th class='col-lg-2 col-md-2 col-sm-2'>Id indicador</th>
+			<th class='col-lg-2 col-md-2 col-sm-2'>Id imagem</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Ativo</th>
 			<th>Data</th>
-			<th class='col-md-1'></th>
+			<th class='col-lg-1 col-md-1 col-sm-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -26,10 +26,10 @@
 	    foreach ($protocolos as $key => $value):
 	?>
 		<tr>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $protocolos[$key]['id']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $protocolos[$key]['id_hospital']; ?>
 			</td>
 			<td>
@@ -38,14 +38,14 @@
 					echo $hospital;
 				?>
 			</td>
-			<td class='col-md-2'>
+			<td class='col-lg-2 col-md-2 col-sm-2'>
 				<?php 
 					echo $protocolos[$key]['id_indicador']; 
 					$nome_indicador = select('nome', 'indicador', 'id', $protocolos[$key]['id_indicador'])['nome'];
 					echo ' ('.$nome_indicador.')';
 				?>
 			</td>
-			<td class='col-md-2'>
+			<td class='col-lg-2 col-md-2 col-sm-2'>
 				<?php 
 					echo $protocolos[$key]['id_imagem']; 
 					$nome_imagem = select('nome', 'imagem', 'id', $protocolos[$key]['id_imagem'])['nome'];
@@ -75,7 +75,7 @@
 			<td>
 				<?php echo $protocolos[$key]['data']; ?>
 			</td>
-			<td class='text-right col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-primary' data-toggle="modal" data-target="#myModal<?php echo $protocolos[$key]['id']; ?>">
 					Alterar
 				</a>
@@ -86,28 +86,26 @@
 					    <div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
-								<h4 class="modal-title text-left">Alterar Protocolo</h4>
+								<h4 class="modal-title">Alterar Protocolo</h4>
 							</div>
-							<div class="modal-body text-center">
+							<div class="modal-body">
 								<form action="<?php echo $_SERVER['PHP_SELF'];?>" method='post'>
 									<input type='number' name='id' value="<?php echo $protocolos[$key]['id']; ?>" hidden placeholder='' required />
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='id_indicador'>Indicador</label>
 										<select class='form-control' name='id_indicador' required>
 											<?php 
-											    foreach ($indicadores as $key2 => $value):
+											    foreach($indicadores as $key2 => $value):
 											?>
 											<option value='<?php echo $indicadores[$key2]['id']; ?>' <?php if($protocolos[$key]['id_indicador'] == $indicadores[$key2]['id']){echo 'selected';} ?>>
 												<?php echo $indicadores[$key2]['nome']?>
 											</option>
-
 											<?php
 											    endforeach;
 											?>
 										</select>
 									</div>
-									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='id_hospital'>Hospital</label>
 										<select class='form-control' name='id_hospital' required>
 											<?php 
@@ -121,15 +119,11 @@
 											?>
 										</select>
 									</div>
-									
-									<div class='form-group text-left'>
+									<div class='form-group'>
                         				<label for='data'>Data</label>
 										<input class='form-control' type='date' name='data' value="<?php echo $protocolos[$key]['data']; ?>"placeholder='Data' required />
 									</div>
-									
-								<div class='text-right'>
-									<button class='btn btn-primary'>Alterar</button>
-								</div>
+									<input type='submit' value='Alterar' class='btn btn-primary' />
 								</form>
 							</div>
 					    </div>

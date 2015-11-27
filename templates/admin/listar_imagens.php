@@ -5,13 +5,13 @@
 	<h2>Imagens</h2>
 	<hr />
 </div>
-<div class="table-responsive container">
-<table class="table table-striped">
+<div class="table-responsive container col-lg-4 col-md-4 col-sm-5 center">
+<table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
-			<th class='col-md-1'>Id</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
 			<th>Nome</th>
-			<th class='col-md-1'></th>
+			<th class='col-lg-1 col-md-1 col-sm-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,13 +19,13 @@
 	    foreach ($imagens as $key => $value):
 	?>
 		<tr>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $imagens[$key]['id']; ?>
 			</td>
 			<td>
 				<?php echo $imagens[$key]['nome']; ?>
 			</td>
-			<td class='text-right col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $imagens[$key]['id']; ?>">
 					visualizar
 				</a>

@@ -7,15 +7,15 @@
 	<hr />
 </div>
 <div class="table-responsive container">
-<table class="table table-striped">
+<table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
-			<th class='col-md-1'>Id</th>
-			<th class='col-md-2'>Indicador</th>
+			<th class='col-lg-1 col-md-1 col-sm-1 col-xs-1'>Id</th>
+			<th class='col-lg-2 col-md-2 col-sm-2 col-xs-2'>Indicador</th>
 			<th>Texto</th>
 			<th>Obrigatória</th>
 			<th>Observação</th>
-			<th class='col-md-1'></th>
+			<th class='col-lg-1 col-md-1 col-sm-1 col-xs-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -23,10 +23,10 @@
 	    foreach ($perguntas as $key => $value):
 	?>
 		<tr>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $perguntas[$key]['id']; ?>
 			</td>
-			<td class='col-md-2'>
+			<td class='col-lg-2 col-md-2 col-sm-2'>
 				<?php 
 					echo select('nome', 'indicador', 'id', $perguntas[$key]['id_indicador'])['nome'];
 				?>
@@ -34,7 +34,7 @@
 			<td>
 				<?php echo $perguntas[$key]['texto']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php
 					if($perguntas[$key]['obrigatória'] == '1'){
 						echo 'Sim';
@@ -47,7 +47,7 @@
 			<td>
 				<?php echo $perguntas[$key]['observação']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $perguntas[$key]['id']; ?>">
 					Alterar
 				</a>
@@ -65,7 +65,7 @@
 									<input type='number' name='id' value="<?php echo $perguntas[$key]['id']; ?>" hidden required />
 									<div class='form-group'>
                         				<label for='id_indicador'>Indicador</label>
-										<select class='form-control selectpicker' data-live-search='true' name='id_indicador' required>
+										<select class='form-control selectpicker' data-style='btn-info' data-live-search='true' name='id_indicador' required>
 											<?php 
 											    foreach ($indicadores as $key2 => $value):
 											?>
@@ -83,7 +83,7 @@
 									</div>
 									<div class='form-group'>
                         				<label for='obrigatória'>Obrigatória?</label>
-										<select class='form-control selectpicker' name='obrigatória' required>
+										<select class='form-control selectpicker' name='obrigatória' data-style='btn-info' required>
 											<option value='1' <?php if($perguntas[$key]['obrigatória'] == '1'){echo 'selected';} ?> >
 												Sim
 											</option>

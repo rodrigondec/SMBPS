@@ -23,7 +23,7 @@
 				<tr>
 					<th>Data</th>
 					<th>Válido até</th>
-					<th class='col-md-1'>Imagem</th>
+					<th class='col-lg-1 col-md-1 col-sm-1'>Imagem</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -38,7 +38,7 @@
 						    echo $data;
 						?>
 					</td>
-					<td class='col-md-1'>
+					<td class='col-lg-1 col-md-1 col-sm-1'>
 						<?php 
 							$nome_imagem = select('nome', 'imagem', 'id', $protocolo['id_imagem'])['nome'];
 						?>

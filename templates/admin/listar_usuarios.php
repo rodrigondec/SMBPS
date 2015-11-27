@@ -7,16 +7,16 @@
 	<h2>Usuários</h2>
 	<hr />
 </div>
-<div class="table-responsive container">
-<table class="table table-striped">
+<div class="table-responsive container col-lg-6 col-md-6 col-sm-6 center">
+<table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
-			<th class='col-md-1'>Id</th>
-			<th class='col-md-1'>Id Papel</th>
-			<th class='col-md-1'>Id Hospital</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Id Papel</th>
+			<th class='col-lg-1 col-md-1 col-sm-1'>Id Hospital</th>
 			<th>Nome</th>
 			<th>Email</th>
-			<th class='col-md-1'></th>
+			<th class='col-lg-1 col-md-1 col-sm-1'></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -24,15 +24,15 @@
 	    foreach ($usuarios as $key => $value):
 	?>
 		<tr>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $usuarios[$key]['id']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php 
 					echo $usuarios[$key]['id_papel']; 
 				?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php 
 					echo $usuarios[$key]['id_hospital']; 
 				?>
@@ -43,7 +43,7 @@
 			<td>
 				<?php echo $usuarios[$key]['email']; ?>
 			</td>
-			<td class='col-md-1'>
+			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $usuarios[$key]['id']; ?>">
 					Alterar
 				</a>
