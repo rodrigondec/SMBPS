@@ -17,7 +17,7 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Admin<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
-                        <li><a href="/<?php echo BASE; ?>admin/">PHPMyAdmin</a></li>
+                        <li><a href="/phpmyadmin">PHPMyAdmin</a></li>
                         <li><a href="/<?php echo BASE; ?>index.php/configs">Configurações</a></li>
                     </ul>
                 </li>
