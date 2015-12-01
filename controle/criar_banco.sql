@@ -53,6 +53,7 @@ CREATE TABLE setor(
 CREATE TABLE hospital(
 	id int NOT NULL auto_increment,
 	id_cidade int NOT NULL,
+	ativo varchar(1) NOT NULL DEFAULT '0',
 	nome varchar(35) NOT NULL,
 	cnpj varchar(14) NOT NULL,
 	telefone varchar(11) NOT NULL,
@@ -156,6 +157,7 @@ CREATE TABLE usuário(
 	id int NOT NULL auto_increment,
 	id_papel int NOT NULL,
 	id_hospital int,
+	ativo varchar(1) NOT NULL DEFAULT '0',
 	nome varchar(35) NOT NULL,
 	email varchar(35) NOT NULL,
 	senha varchar(32) NOT NULL,
@@ -5916,9 +5918,9 @@ insert into setor (nome) values
 	('Enfermaria'),
 	('UTI');
 
-insert into hospital (nome, cnpj, telefone, endereço, complemento, cep, id_cidade) values 
-	('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770),
-	('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA2 BLA2 BL2A', 'nº 2200', '59152250', 3770);
+insert into hospital (nome, cnpj, telefone, endereço, complemento, cep, id_cidade, ativo) values 
+	('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770, 1),
+	('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA2 BLA2 BL2A', 'nº 2200', '59152250', 3770, 1);
 
 insert into hospital_setor (id_hospital, id_setor) values
 	(1, 1),
@@ -5930,11 +5932,11 @@ insert into papel (nome) values
 	('Administrador Geral'), 
 	('Gestor Hospitalar');
 
-insert into usuário (nome, email, senha, id_papel, id_hospital) values 
-	('Admin', 'admin@admin.com', md5('admin'), 1, NULL), 
-	('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL), 
-	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1),
-	('gestor2', 'gestor2@hospital.com', md5('gestor2'), 2, 2);
+insert into usuário (nome, email, senha, id_papel, id_hospital, ativo) values 
+	('Admin', 'admin@admin.com', md5('admin'), 1, NULL, 1), 
+	('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL, 1), 
+	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1, 1),
+	('gestor2', 'gestor2@hospital.com', md5('gestor2'), 2, 2, 1);
 
 insert into notificação (id_usuário, título, texto) values 
 	(1, 'Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
