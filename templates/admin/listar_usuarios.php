@@ -7,15 +7,16 @@
 	<h2>Usuários</h2>
 	<hr />
 </div>
-<div class="table-responsive container col-lg-6 col-md-6 col-sm-6 center">
+<div class="table-responsive container col-lg-7 center">
 <table class="table table-striped table-bordered table-hover table-condensed">
 	<thead>
 		<tr>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
-			<th class='col-lg-1 col-md-1 col-sm-1'>Id Papel</th>
-			<th class='col-lg-1 col-md-1 col-sm-1'>Id Hospital</th>
+			<th>Papel</th>
+			<th>Hospital</th>
 			<th>Nome</th>
 			<th>Email</th>
+			<th>Status</th>
 			<th class='col-lg-1 col-md-1 col-sm-1'></th>
 		</tr>
 	</thead>
@@ -27,14 +28,19 @@
 			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $usuarios[$key]['id']; ?>
 			</td>
-			<td class='col-lg-1 col-md-1 col-sm-1'>
+			<td>
 				<?php 
-					echo $usuarios[$key]['id_papel']; 
+					echo select('nome', 'papel', 'id', $usuarios[$key]['id_papel'])['nome'];
 				?>
 			</td>
-			<td class='col-lg-1 col-md-1 col-sm-1'>
+			<td>
 				<?php 
-					echo $usuarios[$key]['id_hospital']; 
+					if(select('nome', 'hospital', 'id', $usuarios[$key]['id_hospital'])['nome']){
+						echo select('nome', 'hospital', 'id', $usuarios[$key]['id_hospital'])['nome'];
+					}
+					else{
+						echo '--------';
+					}
 				?>
 			</td>
 			<td>
@@ -42,6 +48,20 @@
 			</td>
 			<td>
 				<?php echo $usuarios[$key]['email']; ?>
+			</td>
+			<td>
+				<?php 
+					if($usuarios[$key]['ativo'] == '1'){
+						echo 'Ativo';
+					}
+					else if($usuarios[$key]['ativo'] == '0'){
+						echo 'Inativo';
+					}
+					else{
+						exit('Status Inesperado');
+					}
+					
+				?>
 			</td>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $usuarios[$key]['id']; ?>">

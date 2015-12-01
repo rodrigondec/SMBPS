@@ -16,6 +16,7 @@
 			<th>Telefone</th>
 			<th class='text-center'>Endereço</th>
 			<th>CEP</th>
+			<th>Status</th>
 			<th class='col-lg-1 col-md-1 col-sm-1'></th>
 		</tr>
 	</thead>
@@ -46,6 +47,20 @@
 			</td>
 			<td data-mask='00.000-000'>
 				<?php echo $hospitais[$key]['cep']; ?>
+			</td>
+			<td>
+				<?php 
+					if($hospitais[$key]['ativo'] == '1'){
+						echo 'Ativo';
+					}
+					else if($hospitais[$key]['ativo'] == '0'){
+						echo 'Inativo';
+					}
+					else{
+						exit('Status Inesperado');
+					}
+					
+				?>
 			</td>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-primary' data-toggle="modal"  data-target="#myModal<?php echo $hospitais[$key]['id']; ?>">

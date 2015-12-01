@@ -5,7 +5,7 @@
         $sql = 'INSERT INTO '.$tabela;
         $chaves = array();
         $valores = array();
-        foreach ($dados as $chave => $valor) {
+        foreach ($dados as $chave => $valor){
             $chaves[] = $chave;
             $valores[] = '\''.$valor.'\'';
         }
@@ -19,7 +19,7 @@
 
     // função que executa SQL para DELETE
     // DELETE FROM $tabela WHERE id=$id
-    function delete($id, $tabela) {
+    function delete($id, $tabela){
         $sql = 'DELETE FROM '.$tabela.' WHERE id='.$id.';';
         return mysql_query($sql, LINK);
         // var_dump($sql);
@@ -27,7 +27,7 @@
 
     // função que executa SQL para UPDATE
     // UPDATE $tabela SET $chave=$valor,... WHERE id=$id
-    function update($dados, $tabela, $restricao, $id, $aspas = true) {
+    function update($dados, $tabela, $restricao, $id, $aspas = true){
         $sql = 'UPDATE '.$tabela.' SET ';
         $alteracoes = array();
         foreach ($dados as $chave => $valor) {

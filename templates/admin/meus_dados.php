@@ -16,11 +16,11 @@
 ?>
 <!-- DAR SCROLL PARA O FORM DA SENHA COM A MENSAGEM DE ERRO -->
 <script type="text/javascript">
-    window.onload = function(){
-        $('html, body').animate({
+	$(document).ready(function(){
+		$('html, body').animate({
             'scrollTop' : $("#form_senha").position().top
         })
-    }
+	})
 </script>
 <?php
                 $senha_inconsistente = true;
