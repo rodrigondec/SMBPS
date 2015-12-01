@@ -3,20 +3,84 @@
 	<hr />
 </div>
 <?php 
+
     if(count($_POST) > 0){
-    	var_dump($_POST);
-    	foreach ($_POST as $key => $value) {
-    		$_POST[$key] = retirar_mascara($key, $value);
+    	//var_dump($_POST);
+    	try {
+    		foreach ($_POST as $key => $value) {
+    			$_POST[$key] = retirar_mascara($key, $value);
+	    	}
+
+	    	// var_dump(validar_cnpj($_POST['cnpj']));
+	    	/* CNPJ INVÁLIDO */
+	    	/*if(!validar_cnpj($_POST['cnpj'])){
+	    		throw new Exception('O CNPJ '.$_POST['cnpj'].' é inválido', 100);
+	    	}*/
+
+	    	/* CNPJ DUPLICADO */
+	    	$hospital = select('*', 'hospital', 'cnpj', $_POST['cnpj']);
+	    	if(count($hospital) > 0){
+	    		throw new Exception('O CNPJ '.$_POST['cnpj'].' já está em uso', 101);
+	    	}
+
+	    	/* MYSQL ERROR INSERT */
+	    	if(!insert($_POST, 'hospital')){
+	    		throw new Exception(mysql_error(LINK), 102);
+	    	}
+
+	    	ob_clean();
+    		header('LOCATION: '.ADMIN.'listar_hospitais');
+    	} catch (Exception $e){
+    		/* CNPJ INVÁLIDO */
+    		if($e->getCode() == 100){
+    			$titulo = 'CNPJ inválido!';
+    			$mensagem = $e->getMessage();
+    		}
+    		/* CNPJ DUPLICADO */
+    		else if($e->getCode() == 101){
+    			$titulo = 'CNPJ duplicado!';
+	    		$mensagem = $e->getMessage();
+	    	}
+    		/* MYSQL ERROR INSERT */
+    		else if($e->getCode() == 102){
+    			$titulo = 'Erro ao inserir no banco de dados!';
+	    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    	}
+	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
+	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
+?>
+<script type="text/javascript">
+	window.onload = function(){
+		if(titulo == 'CNPJ inválido!' || titulo == 'CNPJ duplicado!'){
+			swal({
+				title: titulo,
+				text: mensagem,
+				type: 'error',
+				confirmButtonClass: 'btn-danger',
+				html: false
+			}, 
+			function(){
+				$('#erro_cnpj').attr('class', 'alert alert-danger alert-dismissible')
+				$('#titulo_erro_cnpj').html(titulo)
+			});
+		}
+		else if(titulo == 'Erro ao inserir no banco de dados!'){
+			swal({
+				title: titulo,
+				text: mensagem,
+				type: 'error',
+				confirmButtonClass: 'btn-danger',
+				html: false
+			});
+		}
+		
+	}
+</script>
+<?php
     	}
-    	insert($_POST, 'hospital');
-    	//ob_clean();
-    	//header('LOCATION: '.ADMIN.'listar_hospitais');
     }
-
-
-
 	$estados = select_many('id, nome, uf', 'estado');
-	foreach ($estados as $key => $estado) {
+	foreach ($estados as $key => $estado){
 		$estados[$key]['cidades'] = select_many('id, nome', 'cidade', 'id_estado', $estado['id']);
 	}
 	echo '<script type="text/javascript">var num_estados = '.count($estados).';</script>';
@@ -25,12 +89,12 @@
 	<form method='post'>
 		<div class='form-group'>
 			<label for='nome'>Nome</label>
-			<input class='form-control' type='text' name='nome' placeholder='Nome' required />
+			<input class='form-control' type='text' name='nome' placeholder='Nome' value='<?php if(count($_POST) > 0){echo $_POST['nome'];} ?>' required />
 		</div>
 		<div class='form-group'>
 			<label for='select_estado'>Estado</label>
 			<div onclick='show_hide_cidade($("#select_estado").selectpicker("val"))'>
-			<select name='estado' id='select_estado' class='form-control selectpicker' data-style="btn-info" data-live-search='true' required>
+			<select id='select_estado' class='form-control selectpicker' data-style="btn-info" data-live-search='true' required>
 				<option disabled selected value=''>Selecione um estado</option>
 				<?php 
 				    foreach ($estados as $key => $estado):
@@ -65,22 +129,28 @@
 		?>
 		<div class='form-group'>
 			<label for='cnpj'>CNPJ</label>
-			<input class='form-control' type='text' name='cnpj' data-mask='00.000.000/0000-00' placeholder='CNPJ' required />
+			<div id='erro_cnpj' class="alert alert-danger alert-dismissible hidden" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<div><strong id='titulo_erro_cnpj'></strong></div>Verifique o CNPJ e tente novamente.
+			</div>
+			<input class='form-control' type='text' name='cnpj' data-mask='00.000.000/0000-00' placeholder='CNPJ' value='<?php if(count($_POST) > 0){echo $_POST['cnpj'];} ?>' required />
 		</div>
 		<div class='form-group'>
 			<label for='telefone'>Telefone</label>
-			<input class='form-control' type='text' name='telefone' data-mask='(00) 0000-0000' placeholder='Telefone' required />
+			<input class='form-control' type='text' name='telefone' data-mask='(00) 0000-0000' placeholder='Telefone' value='<?php if(count($_POST) > 0){echo $_POST['telefone'];} ?>' required />
 		</div>
 		<div class='form-group'>
 			<label for='endereço'>Endereço</label>
-			<input class='form-control' type='text' name='endereço' placeholder='Endereço' required />
+			<input class='form-control' type='text' name='endereço' placeholder='Endereço' value='<?php if(count($_POST) > 0){echo $_POST['endereço'];} ?>' required />
 		</div>
 		<div class='form-group'>
 			<label for='cep'>CEP</label>
-			<input class='form-control' type='text' name='cep' data-mask='00.000-000' placeholder='CEP' required />
+			<input class='form-control' type='text' name='cep' data-mask='00.000-000' placeholder='CEP' value='<?php if(count($_POST) > 0){echo $_POST['cep'];} ?>' required />
 		</div>
-		<input type='reset' value='Apagar' class='btn btn-warning' />
-		<input type='submit' value='Cadastrar' class='btn btn-primary' />
+		<button type='reset' class='btn btn-warning'>Apagar</button>
+		<button type='submit' class='btn btn-primary'>Cadastrar</button>
 	</form>
 </div>
 <script type="text/javascript">
