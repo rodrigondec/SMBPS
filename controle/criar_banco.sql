@@ -179,6 +179,14 @@ CREATE TABLE notificação(
 	FOREIGN KEY (id_indicador) REFERENCES indicador(id)
 );
 
+CREATE TABLE mensagem(
+	id int NOT NULL auto_increment,
+	nome varchar(50) NOT NULL,
+	email varchar(35) NOT NULL,
+	data date NOT NULL,
+	texto varchar(255) NOT NULL,
+	PRIMARY KEY (id)
+);
 
 
 
