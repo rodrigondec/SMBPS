@@ -3,7 +3,6 @@
 	<hr />
 </div>
 <?php 
-
     if(count($_POST) > 0){
     	//var_dump($_POST);
     	try {
@@ -14,13 +13,13 @@
 	    	// var_dump(validar_cnpj($_POST['cnpj']));
 	    	/* CNPJ INVÁLIDO */
 	    	/*if(!validar_cnpj($_POST['cnpj'])){
-	    		throw new Exception('O CNPJ '.$_POST['cnpj'].' é inválido', 100);
+	    		throw new Exception('O CNPJ ´'.$_POST['cnpj'].'´ é inválido', 100);
 	    	}*/
 
 	    	/* CNPJ DUPLICADO */
 	    	$hospital = select('*', 'hospital', 'cnpj', $_POST['cnpj']);
-	    	if(count($hospital) > 0){
-	    		throw new Exception('O CNPJ '.$_POST['cnpj'].' já está em uso', 101);
+	    	if(count($hospital) > 1){
+	    		throw new Exception('O CNPJ ´'.$_POST['cnpj'].'´ já está em uso', 101);
 	    	}
 
 	    	/* MYSQL ERROR INSERT */
@@ -31,7 +30,7 @@
 	    	ob_clean();
     		header('LOCATION: '.ADMIN.'listar_hospitais');
     	} catch (Exception $e){
-    		/* CNPJ INVÁLIDO */
+    		/* CNPJ INVÃLIDO */
     		if($e->getCode() == 100){
     			$titulo = 'CNPJ inválido!';
     			$mensagem = $e->getMessage();
@@ -73,7 +72,6 @@
 				html: false
 			});
 		}
-		
 	}
 </script>
 <?php
@@ -135,11 +133,11 @@
 				</button>
 				<div><strong id='titulo_erro_cnpj'></strong></div>Verifique o CNPJ e tente novamente.
 			</div>
-			<input class='form-control' type='text' name='cnpj' data-mask='00.000.000/0000-00' placeholder='CNPJ' value='<?php if(count($_POST) > 0){echo $_POST['cnpj'];} ?>' required />
+			<input class='form-control' type='text' name='cnpj' data-mask='00.000.000/0000-00' placeholder='CNPJ' value='<?php if(count($_POST) > 0){echo $_POST['cnpj'];} ?>' pattern='^[0-9]{2}\.[0-9]{3}\.[0-9]{3}/[0-9]{4}-[0-9]{2}' title='xx.xxx.xxx/xxxx-xx' required />
 		</div>
 		<div class='form-group'>
 			<label for='telefone'>Telefone</label>
-			<input class='form-control' type='text' name='telefone' data-mask='(00) 0000-0000' placeholder='Telefone' value='<?php if(count($_POST) > 0){echo $_POST['telefone'];} ?>' required />
+			<input class='form-control' type='text' name='telefone' data-mask='(00) 0000-0000' placeholder='Telefone' value='<?php if(count($_POST) > 0){echo $_POST['telefone'];} ?>' pattern='^\([0-9]{2}\) [0-9]{4}-[0-9]{4}' title='(xx) xxxx-xxxx' required />
 		</div>
 		<div class='form-group'>
 			<label for='endereço'>Endereço</label>
@@ -147,29 +145,9 @@
 		</div>
 		<div class='form-group'>
 			<label for='cep'>CEP</label>
-			<input class='form-control' type='text' name='cep' data-mask='00.000-000' placeholder='CEP' value='<?php if(count($_POST) > 0){echo $_POST['cep'];} ?>' required />
+			<input class='form-control' type='text' name='cep' data-mask='00.000-000' placeholder='CEP' value='<?php if(count($_POST) > 0){echo $_POST['cep'];} ?>' pattern="^[0-9]{2}\.[0-9]{3}-[0-9]{3}" title='xx.xxx-xxx' required />
 		</div>
 		<button type='reset' class='btn btn-warning'>Apagar</button>
 		<button type='submit' class='btn btn-primary'>Cadastrar</button>
 	</form>
 </div>
-<script type="text/javascript">
-	function show_hide_cidade(valor){
-		console.log(valor);
-		for (id = 1; id <= num_estados; id++){
-			if(id == valor){
-				// HIDE TODOS OS SELECTS
-				for (j = 1; j <= num_estados; j++) {
-					$("#div_select_cidade"+j).attr('class', 'form-group hidden')
-					$("#select_cidade"+j).attr('required', false)
-				}
-				// SHOW SELECIONADO
-				$("#div_select_cidade"+id).attr('class', 'form-group')
-				$("#select_cidade"+id).attr('required', true)
-			}
-			else{
-
-			}
-		}
-	}
-</script>
