@@ -12,10 +12,9 @@
 	<thead>
 		<tr>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
-			<th class='col-lg-1 col-md-1 col-sm-1'>Id hospital</th>
 			<th>Hospital</th>
-			<th class='col-lg-2 col-md-2 col-sm-2'>Id indicador</th>
-			<th class='col-lg-2 col-md-2 col-sm-2'>Id imagem</th>
+			<th class='col-lg-2 col-md-2 col-sm-2'>Indicador</th>
+			<th class='col-lg-2 col-md-2 col-sm-2'>Imagem</th>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Ativo</th>
 			<th>Data</th>
 			<th class='col-lg-1 col-md-1 col-sm-1'></th>
@@ -29,13 +28,9 @@
 			<td class='col-lg-1 col-md-1 col-sm-1'>
 				<?php echo $protocolos[$key]['id']; ?>
 			</td>
-			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<?php echo $protocolos[$key]['id_hospital']; ?>
-			</td>
 			<td>
 				<?php 
-					$hospital = select('nome', 'hospital', 'id', $protocolos[$key]['id_hospital'])['nome'];
-					echo $hospital;
+					echo select('nome', 'hospital', 'id', $protocolos[$key]['id_hospital'])['nome'];
 				?>
 			</td>
 			<td class='col-lg-2 col-md-2 col-sm-2'>
