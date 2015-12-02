@@ -99,3 +99,35 @@ function show_hide_cidade(valor){
 		}
 	}
 }
+
+function show_usuario(){
+	$('#usuario').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
+	$('#hospital').attr('class', 'hidden')
+
+	$('#nav_usuario').attr('class', 'list-group-item active')
+	$('#nav_hospital').attr('class', 'list-group-item')
+}
+
+function show_hospital(){
+	$('#usuario').attr('class', 'hidden')
+	$('#hospital').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
+
+	$('#nav_usuario').attr('class', 'list-group-item')
+	$('#nav_hospital').attr('class', 'list-group-item active')
+}
+
+function show_notificacoes(){
+	$('#notificacoes').attr('class', 'table-responsive col-lg-9 center')
+	$('#usuario_notificacoes').attr('class', 'hidden')
+
+	$('#nav_notificacoes').attr('class', 'list-group-item active')
+	$('#nav_usuario_notificacoes').attr('class', 'list-group-item')
+}
+
+function show_usuario_notificacoes(){
+	$('#notificacoes').attr('class', 'hidden')
+	$('#usuario_notificacoes').attr('class', 'table-responsive col-lg-9 center')
+
+	$('#nav_notificacoes').attr('class', 'list-group-item')
+	$('#nav_usuario_notificacoes').attr('class', 'list-group-item active')
+}
