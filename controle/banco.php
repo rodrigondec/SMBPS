@@ -14,15 +14,37 @@
 
         $sql .= ' ('.$str_chaves.') VALUES ('.$str_valores.');';
         // var_dump($sql);
-        return mysql_query($sql, LINK);
+
+        try {
+        	if(!mysql_query($sql, LINK)){
+        		throw new Exception(mysql_error(LINK));
+        	}
+        } catch (Exception $e){
+			$titulo = 'Erro no banco de dados!';
+    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+	    	return false;
+        }
+        return true;
     }
 
     // função que executa SQL para DELETE
     // DELETE FROM $tabela WHERE id=$id
     function delete($id, $tabela){
         $sql = 'DELETE FROM '.$tabela.' WHERE id='.$id.';';
-        return mysql_query($sql, LINK);
         // var_dump($sql);
+
+        try {
+        	if(!mysql_query($sql, LINK)){
+        		throw new Exception(mysql_error(LINK));
+        	}
+        } catch (Exception $e) {
+			$titulo = 'Erro no banco de dados!';
+    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+	    	return false;
+        }
+        return true;
     }
 
     // função que executa SQL para UPDATE
@@ -42,8 +64,20 @@
             $sql .= $id;
         }
         $sql .= ';';
+
         // var_dump($sql);
-        return mysql_query($sql, LINK);
+
+        try {
+        	if(!mysql_query($sql, LINK)){
+        		throw new Exception(mysql_error(LINK));
+        	}
+        } catch (Exception $e) {
+			$titulo = 'Erro no banco de dados!';
+    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+	    	return false;
+        }
+        return true;
     }
 
     // função que executa SQL para SELECT com WHERE
