@@ -47,7 +47,7 @@
 	ob_start(); //Criando Buffer
 	session_start();
 	date_default_timezone_set('America/Recife');
-	include_once('banco.php');
 	include_once('functions.php');
+	include_once('banco.php');
 	include_once(ARQUIVOS.'/'.BASE.'/estaticos/PHPMailer/PHPMailerAutoload.php');
 ?>
