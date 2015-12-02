@@ -93,7 +93,7 @@
 	    	}
     		/* MYSQL ERROR INSERT */
     		else if($e->getCode() == 113){
-    			$titulo = 'Erro ao inserir no banco de dados!';
+    			$titulo = 'Erro no banco de dados!';
 	    		$mensagem = str_replace('\'', '´', $e->getMessage());
 	    	}
 	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
