@@ -53,7 +53,7 @@
 
 	    	/* MYSQL INSERT USUÁRIO E HOSPITAL */
 	    	foreach ($dados as $key => $value) {
-	    		//insert($dados[$key], $key);
+	    		insert($dados[$key], $key);
 	    	}
 
 	    	$cnpj = $dados['hospital']['cnpj'];
@@ -63,10 +63,10 @@
 	    	$dados = array();
 	    	$dados['id_hospital'] = select('id', 'hospital', 'cnpj', $cnpj)['id'];
 	    	/* MYSQL UPDATE ID ACESSO HOSPITAL DO USUÁRIO */
-    		/*if(update($dados, 'usuário', 'email', $email)){
+    		if(update($dados, 'usuário', 'email', $email)){
     			ob_clean();
     			header('LOCATION: '.SISTEMA.'cadastro?success=1');
-    		}*/
+    		}
     	} catch (Exception $e){
     		/* CNPJ INVÁLIDO */
     		if($e->getCode() == 100){
