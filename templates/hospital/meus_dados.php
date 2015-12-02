@@ -4,10 +4,13 @@
 </div>
 <?php 
 	$senha_inconsistente = false;
-	$update['status'] = false;
-	$update['banco'] = '';
-	$update['id'] = '';
+
 	if(count($_POST) > 0):
+
+		$update['status'] = false;
+		$update['banco'] = '';
+		$update['id'] = '';
+
 		if($_POST['form'] == 'dados'):
 			$update['banco'] = 'usuário';
 			$update['status'] = true;
@@ -33,29 +36,39 @@
 				$senha_inconsistente = true;
 			endif;
 		elseif($_POST['form'] == 'hospital'):
-?>
-<!-- CONTINUAR NA PAGINA DO HOSPITAL -->
-<script type="text/javascript">
-	window.onload = function(){
-		show_hospital();
-	}
-</script>
-<?php
 			$update['banco'] = 'hospital';
 			$update['status'] = true;
 			$update['id'] = $_SESSION["id_hospital"];
 		else:
 			exit("ERROR!");
 		endif;
+
 		/* UPDATE DOS DADOS */
 		if($update['status']){
+
 			$dados = array();
+
 			foreach ($_POST as $key => $value) {
 				if($key != 'form'){
 					$dados[$key] = retirar_mascara($key, $value);
 				}
 			}
-			update($dados, $update['banco'], 'id', $update['id']);
+			
+			try {
+				if(!update($dados, $update['banco'], 'id', $update['id'])){
+					throw new Exception(mysql_error(LINK), 113);
+				}
+				ob_clean();
+    			header('LOCATION: '.HOSPITAL.'meus_dados');
+			} catch (Exception $e) {
+				if($e->getCode() == 113){
+	    			$titulo = 'Erro no banco de dados!';
+		    		$mensagem = str_replace('\'', '´', $e->getMessage());
+		    	}
+		    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
+		    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
+		    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+			}
 		}
 	endif;
 	
@@ -64,7 +77,7 @@
 ?>
 <div class='container'>
 	<!-- MENU DE SELEÇÃO -->
-	<div class="list-group text-left col-md-2 col-lg-2 col-sm-2 col-xs-3">
+	<div class="list-group col-lg-2 col-md-2 col-sm-2 col-xs-3">
 		<a id='nav_usuario' href="#" class="list-group-item active" onclick='show_usuario();'>Usuário</a>
 		<a id='nav_hospital' href="#" class="list-group-item" onclick='show_hospital();'>Hospital</a>
 	</div>
@@ -165,20 +178,3 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	function show_usuario(){
-		$('#usuario').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
-		$('#hospital').attr('class', 'hidden')
-
-		$('#nav_usuario').attr('class', 'list-group-item active')
-		$('#nav_hospital').attr('class', 'list-group-item')
-	}
-
-	function show_hospital(){
-		$('#usuario').attr('class', 'hidden')
-		$('#hospital').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
-
-		$('#nav_usuario').attr('class', 'list-group-item')
-		$('#nav_hospital').attr('class', 'list-group-item active')
-	}
-</script>
