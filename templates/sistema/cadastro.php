@@ -41,21 +41,19 @@
 
 	    	/* EMAIL DUPLICADO */
 	    	$usuario = select('*', 'usuário', 'email', $_POST['email']);
-	    	if(count($usuario) > 1){
+	    	if($usuario){
 	    		throw new Exception('O email ´'.$_POST['email'].'´ já está em uso', 102);
 	    	}
 
 	    	/* CNPJ DUPLICADO */
-	    	$hospital = select('*', 'hospital', 'cnpj', $_POST['cnpj']);
-	    	if(count($hospital) > 1){
+	    	$hospital = select('*', 'hospital', 'cnpj', $dados['hospital']['cnpj']);
+	    	if($hospital){
 	    		throw new Exception('O CNPJ ´'.$_POST['cnpj'].'´ já está em uso', 101);
 	    	}
 
 	    	/* MYSQL INSERT USUÁRIO E HOSPITAL */
 	    	foreach ($dados as $key => $value) {
-	    		if(!insert($dados[$key], $key)){
-	    			throw new Exception(mysql_error(LINK), 113);
-	    		}
+	    		//insert($dados[$key], $key);
 	    	}
 
 	    	$cnpj = $dados['hospital']['cnpj'];
@@ -65,12 +63,10 @@
 	    	$dados = array();
 	    	$dados['id_hospital'] = select('id', 'hospital', 'cnpj', $cnpj)['id'];
 	    	/* MYSQL UPDATE ID ACESSO HOSPITAL DO USUÁRIO */
-	    	if(!update($dados, 'usuário', 'email', $email)){
-    			throw new Exception(mysql_error(LINK), 113);
-    		}
-    		
-	    	/*ob_clean();
-    		header('LOCATION: /'.BASE);*/
+    		/*if(update($dados, 'usuário', 'email', $email)){
+    			ob_clean();
+    			header('LOCATION: '.SISTEMA.'cadastro?success=1');
+    		}*/
     	} catch (Exception $e){
     		/* CNPJ INVÁLIDO */
     		if($e->getCode() == 100){
@@ -86,11 +82,6 @@
     		else if($e->getCode() == 102){
     			$titulo = 'Email duplicado!';
 	    		$mensagem = $e->getMessage();
-	    	}
-    		/* MYSQL ERROR INSERT */
-    		else if($e->getCode() == 113){
-    			$titulo = 'Erro no banco de dados!';
-	    		$mensagem = str_replace('\'', '´', $e->getMessage());
 	    	}
 	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
 	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
@@ -123,15 +114,6 @@
 				$('#titulo_erro_email').html(titulo)
 			});
 		}
-		else if(titulo == 'Erro ao inserir no banco de dados!'){
-			swal({
-				title: titulo,
-				text: mensagem,
-				type: 'error',
-				confirmButtonClass: 'btn-danger',
-				html: false
-			});
-		}
 	}
 </script>
 <?php
@@ -144,6 +126,10 @@
 	echo '<script type="text/javascript">var num_estados = '.count($estados).';</script>';
 ?>
 <div class='container col-md-6 col-lg-6 col-sm-6 col-xs-7 center' method='post'>
+	<div class="alert alert-success alert-dismissible text-center <?php if(!isset($_GET['success'])){ echo 'hidden'; } ?>" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<div><strong>Cadastro realizado com sucesso!</strong></div>Seu registro será validado por um dos administradores do sistema.
+	</div>
 	<form method='post'>
 		<div class="panel panel-primary">
 			<div class="panel-heading">

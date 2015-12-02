@@ -31,18 +31,9 @@
 <?php 
     if(count($_POST) > 0){
     	$_POST['data'] = date('Y-m-d');
-    	try {
-    		if(!insert($_POST, 'mensagem')){
-    			throw new Exception(mysql_error(LINK), 113);
-    		}
+    	if(insert($_POST, 'mensagem')){
     		ob_clean();
     		header('LOCATION: '.SISTEMA.'contato?success=1');
-    	} catch (Exception $e) {
-    		if($e->getCode() == 113){
-    			$titulo = 'Erro ao inserir no banco de dados!';
-	    		$mensagem = str_replace('\'', '´', $e->getMessage());
-	    		swal($titulo, $mensagem, 'error', '', 'btn-danger');
-	    	}
     	}
     }
 ?>

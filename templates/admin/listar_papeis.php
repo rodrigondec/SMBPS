@@ -66,20 +66,9 @@
     			$dados[$key] = $value;
     		}
     	}
-    	try {
-    		if(!update($dados, 'papel', 'id', $_POST['id'])){
-    			throw new Exception(mysql_error(LINK), 113);
-    		}
-			ob_clean();
+    	if(update($dados, 'papel', 'id', $_POST['id'])){
+    		ob_clean();
     		header('LOCATION: '.ADMIN.'listar_papeis');
-    	} catch (Exception $e) {
-    		if($e->getCode() == 113){
-    			$titulo = 'Erro no banco de dados!';
-	    		$mensagem = str_replace('\'', '´', $e->getMessage());
-	    	}
-	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
-	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
-	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
     	}
     }
 ?>

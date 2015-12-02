@@ -187,20 +187,9 @@
     		}
     	}
 
-    	try {
-    		if(!update($dados, $update['banco'], 'id', $_POST['id'])){
-    			throw new Exception(mysql_error(LINK), 113);
-    		}
+    	if(update($dados, $update['banco'], 'id', $_POST['id'])){
     		ob_clean();
     		header('LOCATION: '.ADMIN.'listar_notificacoes');
-    	} catch (Exception $e) {
-    		if($e->getCode() == 113){
-    			$titulo = 'Erro no banco de dados!';
-	    		$mensagem = str_replace('\'', '´', $e->getMessage());
-	    	}
-	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
-	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
-	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
     	}
     }
 ?>
