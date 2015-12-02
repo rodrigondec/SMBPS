@@ -5947,45 +5947,40 @@ insert into papel (nome) values
 
 insert into usuário (nome, email, senha, id_papel, id_hospital, ativo) values 
 	('Admin', 'admin@admin.com', md5('admin'), 1, NULL, 1), 
-	('rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL, 1), 
+	('Rodrigo', 'rodrigondec@gmail.com', md5('3c1a0l1a0n6g0o'), 1, NULL, 1), 
+	-- ('', '', md5(''), 1, NULL, 1),
+	('Brenda', 'bsssalustino@hotmail.com', md5('brenda'), 1, NULL, 1),
+	('Jamile', 'milla-aires@hotmail.com', md5('jamile'), 1, NULL, 1),
+	-- ('Mayara', '', md5('mayara'), 1, NULL, 1),
+	('Ana Paula', 'paulinhafla09@hotmail.com', md5('ana'), 1, NULL, 1),
+	('Wanesca', 'wanesca_caroline@hotmail.com', md5('wanesca'), 1, NULL, 1),
+	('Johnnatas', 'johnnataslopes2@gmail.com', md5('johnnatas'), 1, NULL, 1),
 	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1, 1),
 	('gestor2', 'gestor2@hospital.com', md5('gestor2'), 2, 2, 1);
 
 insert into notificação (título, texto) values 
-	('Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
-	('Notificacao teste RODRIGO', 'Este é o exemplo de uma notificação RODRIGO!'), 
-	('Notificacao teste GESTOR', 'Este é o exemplo de uma notificação GESTOR!'),
-	('Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!'),
-	('Notificacao teste HOSPITAL2', 'Este é o exemplo de uma notificação HOSPITAL2!'),
-	
-	('Notificacao teste ADMIN 22', 'Este é o exemplo de uma notificação ADMIN 22!'), 
-	('Notificacao teste RODRIGO 22', 'Este é o exemplo de uma notificação RODRIGO 22!'), 
-	('Notificacao teste GESTOR 22', 'Este é o exemplo de uma notificação GESTOR 22!'),
-	('Notificacao teste HOSPITAL 22', 'Este é o exemplo de uma notificação HOSPITAL 22!'),
-	('Notificacao teste HOSPITAL2 22', 'Este é o exemplo de uma notificação HOSPITAL2 22!');
+	('Banco de dados resetado', 'O banco de dados foi resetado devido à necessidades do sistema!'), 
+	('Notificacao teste', 'Este é o exemplo de uma notificação!');
 
 insert into usuário_notificação (id_usuário, id_notificação) values
 	(1, 1),
 	(2, 1),
+	(3, 1),
+	(4, 1),
+	(5, 1),
+	(6, 1),
+	(7, 1),
+	(8, 1),
+	(9, 1),
+	-- (10, 1),
 
+	(1, 2),
 	(2, 2),
-
-	(3, 3),
-	(4, 3),
-
-	(3, 4),
-
-	(4, 5),
-
-
-	(1, 6),
-	(2, 6),
-
-	(2, 7),
-
-	(3, 8),
-	(4, 8),
-
-	(3, 9),
-
-	(4, 10);
+	(3, 2),
+	(4, 2),
+	(5, 2),
+	(6, 2),
+	(7, 2),
+	(8, 2),
+	(9, 2);
+	-- (10, 2);
