@@ -19,7 +19,7 @@
 		</div>
 		<div class='form-group'>
 		    <label for='comentario'>Comentário</label>
-		    <textarea rows='5' name="comentario" class='form-control' required></textarea>
+		    <textarea rows='5' name="texto" class='form-control' required></textarea>
 
 		</div>
 		<div class='text-center'>
@@ -31,9 +31,18 @@
 <?php 
     if(count($_POST) > 0){
     	$_POST['data'] = date('Y-m-d');
-    	var_dump($_POST);
-
-    	/*ob_clean();
-    	header('LOCATION: '.SISTEMA.'contato?success=1');*/
+    	try {
+    		if(!insert($_POST, 'mensagem')){
+    			throw new Exception(mysql_error(LINK), 113);
+    		}
+    		ob_clean();
+    		header('LOCATION: '.SISTEMA.'contato?success=1');
+    	} catch (Exception $e) {
+    		if($e->getCode() == 113){
+    			$titulo = 'Erro ao inserir no banco de dados!';
+	    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    		swal($titulo, $mensagem, 'error', '', 'btn-danger');
+	    	}
+    	}
     }
 ?>
