@@ -56,7 +56,6 @@
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Formulário<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
                         <li><a href="<?php echo ADMIN; ?>listar_formularios">Listar</a></li>
-                        <li><a href="<?php echo ADMIN; ?>formulario">Cadastrar</a></li>
                         <li role="separator" class="divider"></li>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">Indicadores<div class='inline'><i class="fa fa-caret-right"></i></div></a>
