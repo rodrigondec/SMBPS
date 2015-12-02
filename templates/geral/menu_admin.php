@@ -129,8 +129,12 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
             <?php 
-                $notificacoes = select_many('*', 'notificação', '(id_usuário, ativa)', '('.$_SESSION['id_usuario'].', 1)', false);
-                if(count($notificacoes) > 0):
+                $usuario_notificacoes = select_many('*', 'usuário_notificação', '(id_usuário, ativa)', '('.$_SESSION['id_usuario'].', 1)', false);
+                $notificacoes = array();
+            	foreach ($usuario_notificacoes as $key => $value) {
+            		$notificacoes[$key] = select('*', 'notificação', 'id', $value['id_notificação']);
+            	}
+                if(count($usuario_notificacoes) > 0):
             ?>
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'><!-- <i class="fa fa-bell-o"></i>&nbsp; -->Notificações <span class="badge"><?php echo count($notificacoes); ?> <span class="caret"></span></span></a>
