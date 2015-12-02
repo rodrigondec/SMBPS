@@ -169,19 +169,24 @@ CREATE TABLE usuário(
 
 CREATE TABLE notificação(
 	id int NOT NULL auto_increment,
-	id_usuário int NOT NULL,
-	id_indicador int,
-	ativa varchar(1) NOT NULL DEFAULT '1',
-	título varchar(20) NOT NULL,
+	título varchar(40) NOT NULL,
 	texto varchar(255) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE usuário_notificação(
+	id int NOT NULL auto_increment,
+	id_usuário int NOT NULL,
+	id_notificação int NOT NULL,
+	ativa varchar(1) NOT NULL DEFAULT '1',
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_usuário) REFERENCES usuário(id),
-	FOREIGN KEY (id_indicador) REFERENCES indicador(id)
+	FOREIGN KEY (id_notificação) REFERENCES notificação(id)
 );
 
 CREATE TABLE mensagem(
 	id int NOT NULL auto_increment,
-	nome varchar(50) NOT NULL,
+	nome varchar(40) NOT NULL,
 	email varchar(35) NOT NULL,
 	data date NOT NULL,
 	texto varchar(255) NOT NULL,
@@ -5946,12 +5951,41 @@ insert into usuário (nome, email, senha, id_papel, id_hospital, ativo) values
 	('gestor', 'gestor@hospital.com', md5('gestor'), 2, 1, 1),
 	('gestor2', 'gestor2@hospital.com', md5('gestor2'), 2, 2, 1);
 
-insert into notificação (id_usuário, título, texto) values 
-	(1, 'Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
-	(2, 'Notificacao teste RODRIGO', 'Este é o exemplo de uma notificação RODRIGO!'), 
-	(3, 'Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!'),
-	(4, 'Notificacao teste HOSPITAL2', 'Este é o exemplo de uma notificação HOSPITAL2!'),
-	(1, 'Notificacao teste ADMIN 22', 'Este é o exemplo de uma notificação ADMIN 22!'), 
-	(2, 'Notificacao teste RODRIGO 22', 'Este é o exemplo de uma notificação RODRIGO 22!'), 
-	(3, 'Notificacao teste HOSPITAL 22', 'Este é o exemplo de uma notificação HOSPITAL 22!'),
-	(4, 'Notificacao teste HOSPITAL2 22', 'Este é o exemplo de uma notificação HOSPITAL2 22!');
+insert into notificação (título, texto) values 
+	('Notificacao teste ADMIN', 'Este é o exemplo de uma notificação ADMIN!'), 
+	('Notificacao teste RODRIGO', 'Este é o exemplo de uma notificação RODRIGO!'), 
+	('Notificacao teste GESTOR', 'Este é o exemplo de uma notificação GESTOR!'),
+	('Notificacao teste HOSPITAL', 'Este é o exemplo de uma notificação HOSPITAL!'),
+	('Notificacao teste HOSPITAL2', 'Este é o exemplo de uma notificação HOSPITAL2!'),
+	
+	('Notificacao teste ADMIN 22', 'Este é o exemplo de uma notificação ADMIN 22!'), 
+	('Notificacao teste RODRIGO 22', 'Este é o exemplo de uma notificação RODRIGO 22!'), 
+	('Notificacao teste GESTOR 22', 'Este é o exemplo de uma notificação GESTOR 22!'),
+	('Notificacao teste HOSPITAL 22', 'Este é o exemplo de uma notificação HOSPITAL 22!'),
+	('Notificacao teste HOSPITAL2 22', 'Este é o exemplo de uma notificação HOSPITAL2 22!');
+
+insert into usuário_notificação (id_usuário, id_notificação) values
+	(1, 1),
+	(2, 1),
+
+	(2, 2),
+
+	(3, 3),
+	(4, 3),
+
+	(3, 4),
+
+	(4, 5),
+
+
+	(1, 6),
+	(2, 6),
+
+	(2, 7),
+
+	(3, 8),
+	(4, 8),
+
+	(3, 9),
+
+	(4, 10);
