@@ -78,6 +78,7 @@
                 $sql .= $id;
             }
         }
+        $sql .= ';';
         // var_dump($sql);
         $resultado = mysql_query($sql, LINK);
         if(!$resultado) return array();

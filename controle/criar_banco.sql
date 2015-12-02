@@ -4,31 +4,31 @@ create database smbps DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci
 USE smbps;
 
 CREATE TABLE país(
-  id int NOT NULL auto_increment,
-  nome varchar(60) NOT NULL,
-  sigla varchar(10) NOT NULL,
-  PRIMARY KEY (id),
-  UNIQUE (nome),
-  UNIQUE (sigla)
+  	id int NOT NULL auto_increment,
+  	nome varchar(60) NOT NULL,
+  	sigla varchar(10) NOT NULL,
+  	PRIMARY KEY (id),
+  	UNIQUE (nome),
+  	UNIQUE (sigla)
 );
 
 CREATE TABLE estado(
-  id int NOT NULL auto_increment,
-  id_país int NOT NULL,
-  nome varchar(75) DEFAULT NULL,
-  uf varchar(5) DEFAULT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_país) REFERENCES país(id),
-  UNIQUE (nome),
-  UNIQUE (uf)
+  	id int NOT NULL auto_increment,
+  	id_país int NOT NULL,
+  	nome varchar(75) DEFAULT NULL,
+  	uf varchar(5) DEFAULT NULL,
+	PRIMARY KEY (id),
+  	FOREIGN KEY (id_país) REFERENCES país(id),
+  	UNIQUE (nome),
+  	UNIQUE (uf)
 );
 
 CREATE TABLE cidade(
-  id int NOT NULL auto_increment,
-  id_estado int NOT NULL,
-  nome varchar(120) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (id_estado) REFERENCES estado(id)
+  	id int NOT NULL auto_increment,
+  	id_estado int NOT NULL,
+  	nome varchar(120) NOT NULL,
+  	PRIMARY KEY (id),
+  	FOREIGN KEY (id_estado) REFERENCES estado(id)
 );
 
 CREATE TABLE indicador(
@@ -5959,8 +5959,7 @@ insert into usuário (nome, email, senha, id_papel, id_hospital, ativo) values
 	('gestor2', 'gestor2@hospital.com', md5('gestor2'), 2, 2, 1);
 
 insert into notificação (título, texto) values 
-	('Banco de dados resetado', 'O banco de dados foi resetado devido à necessidades do sistema!'), 
-	('Notificacao teste', 'Este é o exemplo de uma notificação!');
+	('Banco de dados resetado', 'O banco de dados foi resetado devido à necessidades do sistema!');
 
 insert into usuário_notificação (id_usuário, id_notificação) values
 	(1, 1),
@@ -5971,16 +5970,5 @@ insert into usuário_notificação (id_usuário, id_notificação) values
 	(6, 1),
 	(7, 1),
 	(8, 1),
-	(9, 1),
+	(9, 1);
 	-- (10, 1),
-
-	(1, 2),
-	(2, 2),
-	(3, 2),
-	(4, 2),
-	(5, 2),
-	(6, 2),
-	(7, 2),
-	(8, 2),
-	(9, 2);
-	-- (10, 2);

@@ -68,11 +68,7 @@
 	    	if(!update($dados, 'usuário', 'email', $email)){
     			throw new Exception(mysql_error(LINK), 113);
     		}
-
-
-
-
-
+    		
 	    	/*ob_clean();
     		header('LOCATION: /'.BASE);*/
     	} catch (Exception $e){
