@@ -35,7 +35,8 @@
     	$bool = true;
     	$bool = $bool && insert($_POST, 'mensagem');
 
-    	$mensagem_id = select('id', 'mensagem', 'texto', $_POST['texto'])['id'];
+    	$mensagem_id = select('max(id)', 'mensagem')['max(id)'];
+
     	$notificacao['título'] = 'Nova mensagem cadastrada';
     	$notificacao['texto'] = 'A mensagem de id '.$mensagem_id.' foi cadastrada por '.$_POST['nome'].' em '.$_POST['data'].'. O email para contato cadastrado foi '.$_POST['email'].'.';
     	
