@@ -11,7 +11,7 @@
 		<div class='form-group'>
 			<label for='id_papel'>Papel</label>
 			<div onclick='show_hide_hospital($("#select_papel").selectpicker("val"))'>
-			<select id='select_papel' class='form-control selectpicker' name='id_papel'  required>
+			<select id='select_papel' class='form-control selectpicker' name='id_papel' data-style="btn-info" required>
 				<?php 
 				    foreach ($papeis as $key2 => $value):
 				?>
@@ -26,7 +26,7 @@
 		</div>
 		<div id='div_select_hospital' class='form-group hidden'>
 			<label for='id_hospital'>Hospital</label>
-			<select id='select_hospital' class='form-control selectpicker' name='id_hospital' data-live-search="true">
+			<select id='select_hospital' class='form-control selectpicker' name='id_hospital' data-style="btn-info" data-live-search="true">
 				<option value='' disabled selected>Selecionar hospital para gerir</option>
 				<?php 
 				    foreach ($hospitais as $key2 => $value):
