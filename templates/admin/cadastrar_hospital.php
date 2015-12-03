@@ -28,6 +28,8 @@
 
 	    	$id_hospital = select('max(id)', 'hospital')['max(id)'];
 
+	    	$bool = $bool & cadastrar_hospital_setor($id_hospital);
+
 			$notificacao['título'] = 'Novo cadastro no sistema';
 			$notificacao['texto'] = 'O administrador geral de id '.$_SESSION['id_usuario'].' cadastrou o hospital de id '.$id_hospital.' no sistema.';
 
@@ -41,7 +43,7 @@
 				header('LOCATION: '.ADMIN.'listar_hospitais');
 	    	}    		
     	} catch (Exception $e){
-    		/* CNPJ INVÃLIDO */
+    		/* CNPJ INVÁLIDO */
     		if($e->getCode() == 100){
     			$titulo = 'CNPJ inválido!';
     			$mensagem = $e->getMessage();
@@ -51,38 +53,22 @@
     			$titulo = 'CNPJ duplicado!';
 	    		$mensagem = $e->getMessage();
 	    	}
-    		/* MYSQL ERROR INSERT */
-    		else if($e->getCode() == 102){
-    			$titulo = 'Erro ao inserir no banco de dados!';
-	    		$mensagem = str_replace('\'', '´', $e->getMessage());
-	    	}
 	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
 	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
 ?>
 <script type="text/javascript">
 	window.onload = function(){
-		if(titulo == 'CNPJ inválido!' || titulo == 'CNPJ duplicado!'){
-			swal({
-				title: titulo,
-				text: mensagem,
-				type: 'error',
-				confirmButtonClass: 'btn-danger',
-				html: false
-			}, 
-			function(){
-				$('#erro_cnpj').attr('class', 'alert alert-danger alert-dismissible')
-				$('#titulo_erro_cnpj').html(titulo)
-			});
-		}
-		else if(titulo == 'Erro ao inserir no banco de dados!'){
-			swal({
-				title: titulo,
-				text: mensagem,
-				type: 'error',
-				confirmButtonClass: 'btn-danger',
-				html: false
-			});
-		}
+		swal({
+			title: titulo,
+			text: mensagem,
+			type: 'error',
+			confirmButtonClass: 'btn-danger',
+			html: false
+		}, 
+		function(){
+			$('#erro_cnpj').attr('class', 'alert alert-danger alert-dismissible')
+			$('#titulo_erro_cnpj').html(titulo)
+		});
 	}
 </script>
 <?php
