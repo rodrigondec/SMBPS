@@ -152,4 +152,34 @@
 		$resto = $soma % 11;
 		return $cnpj{13} == ($resto < 2 ? 0 : 11 - $resto);
 	}
+
+	function cadastrar_notificacoes_para_usuarios($notificacao, $seletor, $funcao_banco){
+		$bool = true;
+
+		$bool = $bool && insert($notificacao, 'notificação');
+		$notificacao['id'] = select('id', 'notificação', 'texto', $notificacao['texto'])['id'];
+
+		if($funcao_banco == 'select_many'){
+			$usuarios = select_many('id', 'usuário', $seletor['identificador'], $seletor['valor']);
+
+	    	$usuario_notificacoes = array();
+	    	foreach ($usuarios as $num => $usuario){
+	    		$usuario_notificacoes[$num]['id_usuário'] = $usuario['id'];
+	    		$usuario_notificacoes[$num]['id_notificação'] = $notificacao['id'];
+	    	}
+	    	
+	    	foreach ($usuario_notificacoes as $num => $usuario_notificacao) {
+	    		$bool = $bool && insert($usuario_notificacao, 'usuário_notificação');
+	    	}
+		}
+		else if($funcao_banco == 'select'){
+			$id_usuario = select('id', 'usuário', $seletor['identificador'], $seletor['valor'])['id'];
+
+			$usuario_notificacao = array();
+			$usuario_notificacao['id_usuário'] = $id_usuario;
+			$usuario_notificacao['id_notificação'] = $notificacao['id'];
+			$bool = $bool && insert($usuario_notificacao, 'usuário_notificação');
+		}
+		return $bool;
+	}
 ?>
