@@ -18,17 +18,28 @@
 
 	    	/* CNPJ DUPLICADO */
 	    	$hospital = select('*', 'hospital', 'cnpj', $_POST['cnpj']);
-	    	if(count($hospital) > 1){
+	    	if($hospital){
 	    		throw new Exception('O CNPJ ´'.$_POST['cnpj'].'´ já está em uso', 101);
 	    	}
 
-	    	/* MYSQL ERROR INSERT */
-	    	if(!insert($_POST, 'hospital')){
-	    		throw new Exception(mysql_error(LINK), 102);
-	    	}
+	    	insert($_POST, 'hospital');
+	    		
+	    	$bool = true;
 
-	    	ob_clean();
-    		header('LOCATION: '.ADMIN.'listar_hospitais');
+	    	$id_hospital = select('max(id)', 'hospital')['max(id)'];
+
+			$notificacao['título'] = 'Novo cadastro no sistema';
+			$notificacao['texto'] = 'O administrador geral de id '.$_SESSION['id_usuario'].' cadastrou o hospital de id '.$id_hospital.' no sistema.';
+
+			$seletor['identificador'] = 'id_papel';
+			$seletor['valor'] = '1';
+
+			$bool = $bool && cadastrar_notificacoes_para_usuarios($notificacao, $seletor, 'select_many');
+
+			if($bool){
+	    		ob_clean();
+				header('LOCATION: '.ADMIN.'listar_hospitais');
+	    	}    		
     	} catch (Exception $e){
     		/* CNPJ INVÃLIDO */
     		if($e->getCode() == 100){
