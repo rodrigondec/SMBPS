@@ -56,16 +56,27 @@
 	    		insert($dados[$key], $key);
 	    	}
 
-	    	$cnpj = $dados['hospital']['cnpj'];
-	    	$email = $dados['usuário']['email'];
+	    	$id_usuario = select('max(id)', 'usuário')['max(id)'];
 
 	    	unset($dados);
 	    	$dados = array();
-	    	$dados['id_hospital'] = select('id', 'hospital', 'cnpj', $cnpj)['id'];
+	    	$dados['id_hospital'] = select('max(id)', 'hospital')['max(id)'];
 	    	/* MYSQL UPDATE ID ACESSO HOSPITAL DO USUÁRIO */
-    		if(update($dados, 'usuário', 'email', $email)){
-    			ob_clean();
-    			header('LOCATION: '.SISTEMA.'cadastro?success=1');
+    		if(update($dados, 'usuário', 'id', $id_usuario)){
+    			$bool = true;
+
+    			$notificacao['título'] = 'Novo cadastro no sistema';
+    			$notificacao['texto'] = 'O usuário de id '.$id_usuario.' solicitou seu cadastro e o cadastro do hospital de id '.$dados['id_hospital'].' no sistema. Favor verificar o status desse usuário e desse hospital e ativar os registros.';
+
+    			$seletor['identificador'] = 'id_papel';
+    			$seletor['valor'] = '1';
+
+    			$bool = $bool && cadastrar_notificacoes_para_usuarios($notificacao, $seletor, 'select_many');
+
+    			if($bool){
+		    		ob_clean();
+					header('LOCATION: '.SISTEMA.'cadastro?success=1');
+		    	}
     		}
     	} catch (Exception $e){
     		/* CNPJ INVÁLIDO */
