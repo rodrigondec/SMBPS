@@ -65,6 +65,8 @@
     		if(update($dados, 'usuário', 'id', $id_usuario)){
     			$bool = true;
 
+    			$bool = $bool && cadastrar_hospital_setor($dados['id_hospital']);
+
     			$notificacao['título'] = 'Novo cadastro no sistema';
     			$notificacao['texto'] = 'O usuário de id '.$id_usuario.' solicitou seu cadastro e o cadastro do hospital de id '.$dados['id_hospital'].' no sistema. Favor verificar o status desse usuário e desse hospital e ativar os registros.';
 
