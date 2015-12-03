@@ -1,9 +1,35 @@
 <?php 
-    $hospitais = select_many('*', 'hospital');
+	if(isset($_GET['identificador'])){
+		$hospitais = select_many('*', 'hospital', $_GET['identificador'], $_GET['valor']);
+	}
+	else{
+		$hospitais = select_many('*', 'hospital');
+	}
 ?>
 <div class='text-center'>
 	<h2>Hospitais</h2>
 	<hr />
+</div>
+<div class='container col-lg-7 center'>
+	<div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Buscar por</h3>
+        </div>
+        <div class="panel-body">
+            <form class='form-inline'>
+            	<div class='form-group'>
+            		<label for='identificador'>Identificador</label>
+            		<input type='text' name='identificador' class='form-control' required />
+            	</div>
+				<div class='form-group'>
+            		<label for='valor'>Valor</label>
+            		<input type='text' name='valor' class='form-control' required />
+            	</div>
+				<button class='btn btn-primary'>Buscar</button>
+			</form>
+        </div>
+    </div>
+	
 </div>
 <div class="table-responsive container">
 <table class="table table-striped table-bordered table-hover table-condensed">
