@@ -31,9 +31,40 @@
 <?php 
     if(count($_POST) > 0){
     	$_POST['data'] = date('Y-m-d');
-    	if(insert($_POST, 'mensagem')){
+
+    	$bool = true;
+
+    	$bool = $bool && insert($_POST, 'mensagem');
+
+		$admins = select_many('id', 'usuário', 'id_papel', '1');
+
+    	$mensagem_id = select('id', 'mensagem', 'texto', $_POST['texto'])['id'];
+
+    	$notificacao['título'] = 'Nova mensagem cadastrada';
+    	$notificacao['texto'] = 'A mensagem de id '.$mensagem_id.' foi cadastrada por '.$_POST['nome'].' em '.$_POST['data'].'. O email para contato cadastrado foi '.$_POST['email'].'.';
+    	
+    	$bool = $bool && insert($notificacao, 'notificação');
+
+    	$notificacao['id'] = select('id', 'notificação', 'texto', $notificacao['texto'])['id'];
+
+    	$usuario_noticacao = array();
+    	foreach ($admins as $num => $admin){
+    		foreach ($admin as $key => $value) {
+    			if($key == 'id'){
+    				$key = 'id_usuário';
+    				$usuario_noticacao[$num][$key] = $value;
+    			}
+    		}
+    		$usuario_noticacao[$num]['id_notificação'] = $notificacao['id'];
+    	}
+    	
+    	foreach ($usuario_noticacao as $key => $value) {
+    		$bool = $bool && insert($value, 'usuário_notificação');
+    	}
+
+    	if($bool){
     		ob_clean();
-    		header('LOCATION: '.SISTEMA.'contato?success=1');
+			header('LOCATION: '.SISTEMA.'contato?success=1');
     	}
     }
 ?>
