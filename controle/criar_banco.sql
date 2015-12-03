@@ -5951,7 +5951,7 @@ insert into usuário (nome, email, senha, id_papel, id_hospital, ativo) values
 	-- ('', '', md5(''), 1, NULL, 1),
 	('Brenda', 'bsssalustino@hotmail.com', md5('brenda'), 1, NULL, 1),
 	('Jamile', 'milla-aires@hotmail.com', md5('jamile'), 1, NULL, 1),
-	-- ('Mayara', '', md5('mayara'), 1, NULL, 1),
+	('Mayara', 'm.mayaraoliveir@outlook.com', md5('mayara'), 1, NULL, 1),
 	('Ana Paula', 'paulinhafla09@hotmail.com', md5('ana'), 1, NULL, 1),
 	('Wanesca', 'wanesca_caroline@hotmail.com', md5('wanesca'), 1, NULL, 1),
 	('Johnnatas', 'johnnataslopes2@gmail.com', md5('johnnatas'), 1, NULL, 1),
@@ -5970,5 +5970,5 @@ insert into usuário_notificação (id_usuário, id_notificação) values
 	(6, 1),
 	(7, 1),
 	(8, 1),
-	(9, 1);
-	-- (10, 1),
+	(9, 1),
+	(10, 1);
