@@ -166,6 +166,17 @@
 												?>
 											</select>
 										</div>
+										<div class='form-group'>
+											<label for='id_notificação'>Status</label>
+											<select class='form-control selectpicker' name='ativa' data-style="btn-info" data-live-search='true' required>
+												<option value='1' <?php if($usuario_notificacoes[$key]['ativa'] == '1'){echo 'selected';} ?>>
+													Ativa
+												</option>
+												<option value='0' <?php if($usuario_notificacoes[$key]['ativa'] == '0'){echo 'selected';} ?>>
+													Inativa
+												</option>
+											</select>
+										</div>
 										<input type='submit' value='Alterar' class='btn btn-primary' />
 									</form>
 								</div>
