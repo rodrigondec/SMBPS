@@ -19,13 +19,13 @@
         	if(!mysql_query($sql, LINK)){
         		throw new Exception(mysql_error(LINK));
         	}
+        	return true;
         } catch (Exception $e){
 			$titulo = 'Erro no banco de dados!';
     		$mensagem = str_replace('\'', '´', $e->getMessage());
 	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
 	    	return false;
         }
-        return true;
     }
 
     // função que executa SQL para DELETE
@@ -38,13 +38,13 @@
         	if(!mysql_query($sql, LINK)){
         		throw new Exception(mysql_error(LINK));
         	}
+        	return true;
         } catch (Exception $e) {
 			$titulo = 'Erro no banco de dados!';
     		$mensagem = str_replace('\'', '´', $e->getMessage());
 	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
 	    	return false;
         }
-        return true;
     }
 
     // função que executa SQL para UPDATE
@@ -71,13 +71,13 @@
         	if(!mysql_query($sql, LINK)){
         		throw new Exception(mysql_error(LINK));
         	}
+        	return true;
         } catch (Exception $e) {
 			$titulo = 'Erro no banco de dados!';
     		$mensagem = str_replace('\'', '´', $e->getMessage());
 	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
 	    	return false;
         }
-        return true;
     }
 
     // função que executa SQL para SELECT com WHERE
@@ -96,7 +96,17 @@
         $sql .= ' LIMIT 1;';
         // var_dump($sql);
         $resultado = mysql_query($sql, LINK);
-        return mysql_fetch_assoc($resultado);        
+        try {
+        	if(!$resultado){
+        		throw new Exception(mysql_error(LINK));
+        	}
+        	return mysql_fetch_assoc($resultado);
+        } catch (Exception $e) {
+        	$titulo = 'Erro no banco de dados!';
+    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+	    	return false;
+        }
     }
 
     // função que executa SQL para SELECT
@@ -115,11 +125,21 @@
         $sql .= ';';
         // var_dump($sql);
         $resultado = mysql_query($sql, LINK);
-        if(!$resultado) return array();
-        $objetos = array();
-        while($row = mysql_fetch_assoc($resultado)){
-            $objetos[] = $row;
+        try {
+        	if(!$resultado){
+        		throw new Exception(mysql_error(LINK));
+        	}
+        	$objetos = array();
+	        while($row = mysql_fetch_assoc($resultado)){
+	            $objetos[] = $row;
+	        }
+	        return $objetos;
+        } catch (Exception $e) {
+        	$titulo = 'Erro no banco de dados!';
+    		$mensagem = str_replace('\'', '´', $e->getMessage());
+	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+	    	return array();
         }
-        return $objetos;
+        
     }
 ?>
