@@ -182,4 +182,20 @@
 		}
 		return $bool;
 	}
+
+	function cadastrar_hospital_setor($id_hospital){
+		$bool = true;
+
+		$dados = array();
+    	$dados[0]['id_setor'] = 1;
+    	$dados[0]['id_hospital'] = $id_hospital;
+
+    	$dados[1]['id_setor'] = 2;
+    	$dados[1]['id_hospital'] = $id_hospital;
+
+    	foreach ($dados as $num => $hospital_setor) {
+    		$bool = $bool && insert($hospital_setor, 'hospital_setor');
+    	}
+    	return $bool;
+	}
 ?>
