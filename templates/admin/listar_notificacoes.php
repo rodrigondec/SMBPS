@@ -85,6 +85,7 @@
 				<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
 				<th>Usuário</th>
 				<th>Notificação</th>
+				<th>Status</th>
 				<th class='col-lg-1 col-md-1 col-sm-1'></th>
 			</tr>
 		</thead>
@@ -104,6 +105,20 @@
 				<td>
 					<?php 
 						echo select('título', 'notificação', 'id', $usuario_notificacoes[$key]['id_notificação'])['título']; 
+					?>
+				</td>
+				<td>
+					<?php 
+						if($usuario_notificacoes[$key]['ativa'] == '1'){
+							echo 'Ativa';
+						}
+						else if($usuario_notificacoes[$key]['ativa'] == '0'){
+							echo 'Inativa';
+						}
+						else{
+							exit('Status Inesperado');
+						}
+						
 					?>
 				</td>
 				<td class='col-lg-1 col-md-1 col-sm-1'>
