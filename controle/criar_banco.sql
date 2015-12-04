@@ -136,6 +136,14 @@ CREATE TABLE resposta(
 	FOREIGN KEY (id_formulário) REFERENCES formulário(id)
 );
 
+CREATE TABLE anexo_resposta(
+	id int NOT NULL auto_increment,
+	id_resposta int NOT NULL,
+	nome varchar(60) NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id_resposta) REFERENCES resposta(id)
+);
+
 CREATE TABLE prontuario(
 	id int NOT NULL auto_increment,
 	id_resposta int NOT NULL,
