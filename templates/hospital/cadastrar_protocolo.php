@@ -3,16 +3,16 @@
     $data_limite[0] = ''.(intval($data_limite[0])-2); // 2 = quantidade de anos. 2 anos.
     $data_limite = implode('-', $data_limite);   
 ?>
-<div class='text-center centered-30'>
+<div class='container col-lg-5 center'>
 	<form enctype="multipart/form-data" action="<?php echo htmlentities($_SERVER['PHP_SELF']).'?id='.$indicador['id'];?>" method="post">
-		<div class='form-group text-left'>
+		<div class='form-group'>
 			<label for="data">Data</label>
 			<!-- <span class="input-group-addon" id="basic-addon1">Data</span>			 -->
 			<input class='form-control' type='date' name='data' required/>
 		</div>
-		<div class='form-group text-left'>
+		<div class='form-group'>
 			<label for="imagem">Imagem</label>
-		<input id="input-1" type="file" class="file" name='imagem' enctype="multipart/form-data" required />
+			<input id="input-1" type="file" class="file" name='imagem' enctype="multipart/form-data" required />
 		<!-- <input class='btn btn-primary' type='submit' value='Enviar' /> -->
 		</div>
 	</form>

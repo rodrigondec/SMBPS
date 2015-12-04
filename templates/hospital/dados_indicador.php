@@ -28,8 +28,8 @@
 	<h2>Dados Indicador <?php echo $indicador['nome']; ?></h2>
 	<hr />
 </div>
-<div class='container'>
-	<form enctype="multipart/form-data" action="<?php echo htmlentities($_SERVER['PHP_SELF']).'?id='.$indicador['id'];?>" method="post">
+<div class='container col-lg-6 center'>
+	<form action="<?php echo '?id='.$indicador['id'];?>" method="post">
 		<p class='obrigatorio'><span class='obrigatorio'>*obrigatorio</span></p>
 		<?php 
 		$contador = 1;
@@ -80,19 +80,18 @@
 		    	}
 			?>
 		</div>
-	
 	<?php
 	    endforeach;
 	?>
 		<div class='text-center'>
-			<input class='btn btn-primary' type='submit' value='Enviar' />
-			<input class='btn btn-danger' type='reset' value='Apagar' />
+			<button class='btn btn-danger' type='reset'>Apagar</button>
+			<button class='btn btn-primary' type='submit'>Enviar</button>
 		</div>	
 	</form>
 </div>
 
 <?php 
     if(count($_POST) > 0){
-    	
+    	var_dump($_POST);
     }
 ?>
