@@ -34,7 +34,7 @@ CREATE TABLE cidade(
 CREATE TABLE indicador(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
-	nome_reduzido varchar(20) NOT NULL,
+	categoria varchar(20) NOT NULL,
 	PRIMARY KEY (id) 
 );
 
@@ -5827,16 +5827,18 @@ INSERT INTO cidade (id, nome, id_estado) VALUES
 
 
 
-insert into indicador (nome, nome_reduzido) values 
+insert into indicador (nome, categoria) values 
 	-- ('Dados', 'dados'), 
-	('Segurança paciente', 'seguranca'), 
-	('Úlcera por pressão', 'ulcera'), 
-	('Higiene das mãos', 'higiene'), 
-	('Infecção respiração', 'infeccao'), 
-	('Cirurgia segura', 'cirurgia'), 
-	('Quedas', 'quedas'), 
-	('Medicação', 'medicacao'), 
-	('Identificação', 'identificacao');
+	('Núcleo de segurança do paciente', 'Segurança'), 
+	('Plano de segurança do paciente', 'Segurança'),
+	('Úlcera por pressão', 'Úlcera'), 
+	('Higiene das mãos', 'Higiene'), 
+	('Infecção por cateter venoso', 'Infecção'), 
+	('Infecção por ventilação mecânica', 'Infecção'), 
+	('Cirurgia segura', 'Cirurgia'), 
+	('Quedas', 'Quedas'), 
+	('Medicação', 'Medicação'), 
+	('Identificação', 'Identificação');
 
 insert into pergunta (id_indicador, obrigatória, texto, observação) values 
 	-- (1, '1', 'Data de avaliação', ''),
