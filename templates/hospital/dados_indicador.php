@@ -1,18 +1,36 @@
+<style type="text/css">
+	
+	h5{
+		color: gray;
+		margin-bottom: 0.3%;
+		margin-top: 0.4%;
+	}
+	p{
+		font-weight: bold;
+		margin-bottom: 0;
+	}
+	p.obrigatorio{
+		margin-bottom: 1%;
+		font-weight: normal;
+	}
+	span.obrigatorio{
+		color: red;
+	}
+	div.input{
+		margin-bottom: 2%;
+	}
+</style>
 <?php 
     $indicador = select('*', 'indicador', 'id', $_GET['id']);
+    $perguntas = select_many('*', 'pergunta', 'id_indicador', $_GET['id']);
 ?>
 <div class='text-center'>
 	<h2>Dados Indicador <?php echo $indicador['nome']; ?></h2>
 	<hr />
 </div>
-<?php 
-    $perguntas = select_many('*', 'pergunta', 'id_indicador', $_GET['id']);
-    // var_dump($perguntas);
-?>
 <div class='container'>
-	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
+	<form enctype="multipart/form-data" action="<?php echo htmlentities($_SERVER['PHP_SELF']).'?id='.$indicador['id'];?>" method="post">
 		<p class='obrigatorio'><span class='obrigatorio'>*obrigatorio</span></p>
-
 		<?php 
 		$contador = 1;
 	    foreach ($perguntas as $key => $value):
