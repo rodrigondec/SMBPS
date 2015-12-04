@@ -26,7 +26,7 @@
                         ?>
                         <li role="separator" class="divider"></li>
                         <?php 
-                            endif;
+                            	endif;
                         ?>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">
@@ -38,16 +38,22 @@
                                         Dados
                                     </a>
                                 </li>
+                        <?php 
+                            	if($indicadores[$key]['nome'] != 'Segurança paciente'):
+                        ?>
                                 <li>
                                     <a href="<?php echo HOSPITAL.'meu_protocolo?id='.$indicadores[$key]['id']; ?>">
                                         Meu Protocolo
                                     </a>
                                 </li>
-                                <li>
+                        <?php 
+                            	endif;
+                        ?>
+                                <!-- <li>
                                     <a href="<?php echo HOSPITAL.'cadastrar_formulario?id='.$indicadores[$key]['id']; ?>">
                                         Cadastrar Formulário
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
                         <?php 
