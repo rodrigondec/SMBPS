@@ -19,36 +19,36 @@
                     <ul class='dropdown-menu'>
                         <?php 
                             $indicadores = select_many('*', 'indicador');
-                            unset($indicadores[0]);
+                            // unset($indicadores[0]);
 
                             foreach ($indicadores as $key => $value):
-                               if($key != 1):
+                               if($key != 0):
                         ?>
                         <li role="separator" class="divider"></li>
-                        <?php 
-                            	endif;
-                        ?>
+                        	<?php endif; ?>
                         <li class="dropdown-submenu">
                             <a tabindex="-1" href="#">
                                 <?php echo $indicadores[$key]['nome']; ?><div class='inline'><i class="fa fa-caret-right"></i></div>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a tabindex="-1" href="<?php echo HOSPITAL.'dados_indicador?id='.$indicadores[$key]['id']; ?>">
+                                	<?php if($indicadores[$key]['nome_reduzido'] == 'seguranca'): ?>
+                                    <a tabindex="-1" href="<?php echo HOSPITAL.'dados_'.$indicadores[$key]['nome_reduzido']; ?>">
                                         Dados
                                     </a>
+                                    <?php else: ?>
+                                	<a tabindex="-1" href="<?php echo HOSPITAL.'dados_indicador?id='.$indicadores[$key]['id']; ?>">
+                                        Dados
+                                    </a>
+                                	<?php endif; ?>
                                 </li>
-                        <?php 
-                            	if($indicadores[$key]['nome'] != 'Segurança paciente'):
-                        ?>
+                        	<?php if($indicadores[$key]['nome_reduzido'] != 'seguranca'): ?>
                                 <li>
                                     <a href="<?php echo HOSPITAL.'meu_protocolo?id='.$indicadores[$key]['id']; ?>">
                                         Meu Protocolo
                                     </a>
                                 </li>
-                        <?php 
-                            	endif;
-                        ?>
+                        	<?php endif; ?>
                                 <!-- <li>
                                     <a href="<?php echo HOSPITAL.'cadastrar_formulario?id='.$indicadores[$key]['id']; ?>">
                                         Cadastrar Formulário
