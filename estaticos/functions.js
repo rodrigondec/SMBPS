@@ -100,6 +100,24 @@ function show_hide_cidade(valor){
 	}
 }
 
+function show_hide_protocolo(valor){
+	for (id = 1; id <= num_indicadores; id++){
+		if(id == valor){
+			// HIDE TODOS OS SELECTS
+			for (j = 1; j <= num_indicadores; j++) {
+				$('#nav_indicador_'+j).attr('class', 'list-group-item')
+				$('#indicador_'+j).attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center hidden')
+			}
+			// SHOW SELECIONADO
+			$('#nav_indicador_'+id).attr('class', 'list-group-item active')
+			$('#indicador_'+id).attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
+		}
+		else{
+
+		}
+	}
+}
+
 function show_usuario(){
 	$('#usuario').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
 	$('#hospital').attr('class', 'hidden')
