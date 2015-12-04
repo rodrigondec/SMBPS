@@ -34,7 +34,8 @@ CREATE TABLE cidade(
 CREATE TABLE indicador(
 	id int NOT NULL auto_increment,
 	nome varchar(35) NOT NULL,
-	PRIMARY KEY (id)
+	nome_reduzido varchar(20) NOT NULL,
+	PRIMARY KEY (id) 
 );
 
 CREATE TABLE imagem(
