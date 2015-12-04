@@ -14,6 +14,7 @@
 			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
 			<th>Hospital</th>
 			<th class='col-lg-2 col-md-2 col-sm-2'>Indicador</th>
+			<th>Nome</th>
 			<th class='col-lg-2 col-md-2 col-sm-2'>Imagem</th>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Ativo</th>
 			<th>Data</th>
@@ -39,6 +40,9 @@
 					$nome_indicador = select('nome', 'indicador', 'id', $protocolos[$key]['id_indicador'])['nome'];
 					echo ' ('.$nome_indicador.')';
 				?>
+			</td>
+			<td>
+				<?php echo $protocolos[$key]['nome']; ?>
 			</td>
 			<td class='col-lg-2 col-md-2 col-sm-2'>
 				<?php 
