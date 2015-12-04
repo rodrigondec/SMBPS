@@ -77,23 +77,16 @@ CREATE TABLE hospital_setor(
 
 CREATE TABLE protocolo(
 	id int NOT NULL auto_increment,
+	id_indicador int NOT NULL,
 	id_imagem int NOT NULL,
 	id_hospital int NOT NULL,
 	nome varchar(50) NOT NULL,
 	ativo varchar(1) NOT NULL DEFAULT '1',
 	data date NOT NULL,
 	PRIMARY KEY (id),
+	FOREIGN KEY (id_indicador) REFERENCES indicador(id),
 	FOREIGN KEY (id_imagem) REFERENCES imagem(id),
 	FOREIGN KEY (id_hospital) REFERENCES hospital(id)
-);
-
-CREATE TABLE indicador_protocolo(
-	id int NOT NULL auto_increment,
-	id_indicador int NOT NULL,
-	id_protocolo int NOT NULL,
-	PRIMARY KEY (id),
-	FOREIGN KEY (id_indicador) REFERENCES indicador(id),
-	FOREIGN KEY (id_protocolo) REFERENCES protocolo(id)
 );
 
 CREATE TABLE pergunta(
