@@ -34,7 +34,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a tabindex="-1" href="<?php echo HOSPITAL.'dados_protocolo?id='.$indicadores[$key]['id']; ?>">
+                                    <a tabindex="-1" href="<?php echo HOSPITAL.'dados_indicador?id='.$indicadores[$key]['id']; ?>">
                                         Dados
                                     </a>
                                 </li>
