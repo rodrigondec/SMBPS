@@ -56,9 +56,7 @@
                                 </li> -->
                             </ul>
                         </li>
-                        <?php 
-                            endforeach;
-                        ?>
+                        <?php endforeach; ?>
                     </ul>
                 </li>
                 <li class='dropdown'>
