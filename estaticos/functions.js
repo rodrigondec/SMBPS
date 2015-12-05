@@ -94,14 +94,11 @@ function show_hide_cidade(valor){
 			$("#div_select_cidade"+id).attr('class', 'form-group')
 			$("#select_cidade"+id).attr('required', true)
 		}
-		else{
-
-		}
 	}
 }
 
 function show_hide_protocolo(valor){
-	for (id = 1; id <= num_indicadores; id++){
+	for(id = 1; id <= num_indicadores; id++){
 		if(id == valor){
 			// HIDE TODOS OS SELECTS
 			for (j = 1; j <= num_indicadores; j++) {
@@ -112,8 +109,20 @@ function show_hide_protocolo(valor){
 			$('#nav_indicador_'+id).attr('class', 'list-group-item active')
 			$('#indicador_'+id).attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
 		}
-		else{
+	}
+}
 
+function show_hide_perguntas_indicador(valor, check){
+	for(id = 1; id <= num_indicadores; id++){
+		if(id == valor){
+			// SHOW SELECIONADO
+			if(check){
+				$('#indicador_'+id).attr('class', '')
+			}
+			else{
+				$('#indicador_'+id).attr('class', 'hidden')
+			}
+			
 		}
 	}
 }
