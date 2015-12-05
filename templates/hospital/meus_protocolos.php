@@ -44,8 +44,10 @@
 					<label for="imagem">Imagem</label>
 					<input id="input-1" type="file" class="file" name='imagem' enctype="multipart/form-data" required />
 				</div>
-				<button class='btn btn-danger' type='reset'>Apagar</button>
-				<button class='btn btn-primary' type='submit'>Cadastrar</button>
+				<div class='text-center'>
+					<button class='btn btn-danger' type='reset'>Apagar</button>
+					<button class='btn btn-primary' type='submit'>Cadastrar</button>
+				</div>
 			</form>
 		<?php
 		else:
@@ -116,8 +118,10 @@
 						<label for="data">imagem</label>
 					<input id="input-1" type="file" class="file" name='imagem' enctype="multipart/form-data" required />
 					</div>
-					<button class='btn btn-danger' type='reset'>Apagar</button>
-					<button class='btn btn-primary' type='submit'>Cadastrar</button>
+					<div class='text-center'>
+						<button class='btn btn-danger' type='reset'>Apagar</button>
+						<button class='btn btn-primary' type='submit'>Cadastrar</button>
+					</div>
 				</form>
 		<?php
 			endif;
