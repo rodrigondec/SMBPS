@@ -83,10 +83,10 @@ function pegar_cidade(){
 
 function show_hide_cidade(valor){
 	// console.log(valor);
-	for (id = 1; id <= num_estados; id++){
+	for(var id = 1; id <= num_estados; id++){
 		if(id == valor){
 			// HIDE TODOS OS SELECTS
-			for (j = 1; j <= num_estados; j++) {
+			for (var j = 1; j <= num_estados; j++) {
 				$("#div_select_cidade"+j).attr('class', 'form-group hidden')
 				$("#select_cidade"+j).attr('required', false)
 			}
@@ -98,7 +98,7 @@ function show_hide_cidade(valor){
 }
 
 function show_hide_protocolo(valor){
-	for(id = 1; id <= num_indicadores; id++){
+	for(var id = 1; id <= num_indicadores; id++){
 		if(id == valor){
 			// HIDE TODOS OS SELECTS
 			for (j = 1; j <= num_indicadores; j++) {
@@ -113,7 +113,7 @@ function show_hide_protocolo(valor){
 }
 
 function show_hide_perguntas_indicador(valor, check){
-	for(id = 1; id <= num_indicadores; id++){
+	for(var id = 1; id <= num_indicadores; id++){
 		if(id == valor){
 			// SHOW SELECIONADO
 			if(check){
