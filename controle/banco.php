@@ -75,6 +75,8 @@
         } catch (Exception $e) {
 			$titulo = 'Erro no banco de dados!';
     		$mensagem = str_replace('\'', '´', $e->getMessage());
+    		$mensagem = str_replace('Duplicate entry', 'Dado duplicado', $mensagem);
+    		$mensagem = str_replace('for key', 'para campo', $mensagem);
 	    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
 	    	return false;
         }
