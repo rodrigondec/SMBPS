@@ -23,8 +23,8 @@
 
 		</div>
 		<div class='text-center'>
-			<input type='reset' value='Apagar' class='btn btn-warning' />
-			<input type='submit' value='Enviar' class='btn btn-primary' />
+			<button class='btn btn-danger' type='reset'>Apagar</button>
+            <button class='btn btn-primary' type='submit'>Enviar</button>
 		</div>
 	</form>
 </div>
@@ -36,10 +36,13 @@
     	$bool = $bool && insert($_POST, 'mensagem');
 
     	$mensagem_id = select('max(id)', 'mensagem')['max(id)'];
+    	$nome = $_POST["nome"];
+    	$data = $_POST["data"];
+    	$email = $_POST["email"];
 
     	$notificacao['título'] = 'Nova mensagem cadastrada';
-    	$notificacao['texto'] = 'A mensagem de id '.$mensagem_id.' foi cadastrada por '.$_POST['nome'].' em '.$_POST['data'].'. O email para contato cadastrado foi '.$_POST['email'].'.';
-    	
+    	$notificacao['texto'] = "A mensagem de id $mensagem_id foi cadastrada por $nome em $data. O email para contato cadastrado foi $email.";
+
     	$seletor['identificador'] = 'id_papel';
     	$seletor['valor'] = '1';
 

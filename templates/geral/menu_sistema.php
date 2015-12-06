@@ -53,9 +53,9 @@
                         <label for='senha'>Senha</label>
                         <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' required />
                     </div>
-                    <div id='buttons'>
-                        <input type='reset' value='Apagar' class='btn btn-warning' />
-                        <input type='submit' value='Entrar' class='btn btn-primary' />
+                    <div>
+                    	<button class='btn btn-danger' type='reset'>Apagar</button>
+                        <button class='btn btn-primary' type='submit'>Entrar</button>
                         ou
                         <a href="<?php echo SISTEMA; ?>cadastro">Registre-se</a>
                     </div>

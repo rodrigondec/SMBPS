@@ -92,7 +92,7 @@
                         <input type='password' name='senha[]' class='form-control' placeholder='Repetir Senha' required />
                     </div>
                     <div>
-                        <input type='reset' value='Apagar' class='btn btn-warning' />
+                        <input type='reset' value='Apagar' class='btn btn-danger' />
                         <input type='submit' value='Alterar' class='btn btn-primary' />
                     </div>
                 </form>

@@ -16,6 +16,9 @@
     				if($key == 'nome_usuario'){
     					$key = 'nome';
     				}
+    				else if($key == 'senha'){
+    					$value = md5($value);
+    				}
     				$dados['usuário'][$key] = $value;
     			}
     			else{
@@ -40,16 +43,16 @@
 	    	}*/
 
 	    	/* EMAIL DUPLICADO */
-	    	$usuario = select('*', 'usuário', 'email', $_POST['email']);
+	    	/*$usuario = select('*', 'usuário', 'email', $_POST['email']);
 	    	if($usuario){
 	    		throw new Exception('O email ´'.$_POST['email'].'´ já está em uso', 102);
-	    	}
+	    	}*/
 
 	    	/* CNPJ DUPLICADO */
-	    	$hospital = select('*', 'hospital', 'cnpj', $dados['hospital']['cnpj']);
+	    	/*$hospital = select('*', 'hospital', 'cnpj', $dados['hospital']['cnpj']);
 	    	if($hospital){
 	    		throw new Exception('O CNPJ ´'.$_POST['cnpj'].'´ já está em uso', 101);
-	    	}
+	    	}*/
 
 	    	/* MYSQL INSERT USUÁRIO E HOSPITAL */
 	    	foreach ($dados as $key => $value) {
@@ -66,9 +69,10 @@
     			$bool = true;
 
     			$bool = $bool && cadastrar_hospital_setor($dados['id_hospital']);
+    			$id_hospital = $dados['id_hospital'];
 
     			$notificacao['título'] = 'Novo cadastro no sistema';
-    			$notificacao['texto'] = 'O usuário de id '.$id_usuario.' solicitou seu cadastro e o cadastro do hospital de id '.$dados['id_hospital'].' no sistema. Favor verificar o status desse usuário e desse hospital e ativar os registros.';
+    			$notificacao['texto'] = "O usuário de id $id_usuario solicitou seu cadastro e o cadastro do hospital de id $id_hospital no sistema. Favor verificar o status desse usuário e desse hospital e ativar os registros.";
 
     			$seletor['identificador'] = 'id_papel';
     			$seletor['valor'] = '1';
@@ -96,8 +100,8 @@
     			$titulo = 'Email duplicado!';
 	    		$mensagem = $e->getMessage();
 	    	}
-	    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
-	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
+	    	echo "<script type='text/javascript'>var titulo = '$titulo';</script>";
+	    	echo "<script type='text/javascript'>var mensagem = '$mensagem';</script>";
 ?>
 <script type="text/javascript">
 	window.onload = function(){
@@ -136,7 +140,8 @@
 	foreach ($estados as $key => $estado){
 		$estados[$key]['cidades'] = select_many('id, nome', 'cidade', 'id_estado', $estado['id']);
 	}
-	echo '<script type="text/javascript">var num_estados = '.count($estados).';</script>';
+	$num_estados = count($estados);
+	echo "<script type='text/javascript'>var num_estados = $num_estados;</script>";
 ?>
 <div class='container col-md-6 col-lg-6 col-sm-6 col-xs-7 center' method='post'>
 	<div class="alert alert-success alert-dismissible text-center <?php if(!isset($_GET['success'])){ echo 'hidden'; } ?>" role="alert">
@@ -243,8 +248,8 @@
 			</div>
 		</div>
 		<div class='text-center'>
-			<input type='reset' value='Apagar' class='btn btn-warning' />
-			<input type='submit' value='Enviar' class='btn btn-primary' />
+			<button class='btn btn-danger' type='reset'>Apagar</button>
+            <button class='btn btn-primary' type='submit'>Entrar</button>
 		</div>
 	</form>
 </div>
