@@ -76,14 +76,17 @@
 	$hospital = select('*', 'hospital', 'id', $_SESSION['id_hospital']);
 ?>
 <div class='container'>
+<div class='row'>
 	<!-- MENU DE SELEÇÃO -->
-	<div class="list-group col-lg-2 col-md-2 col-sm-2 col-xs-3">
+	<div class="list-group col-lg-2 col-md-2 col-sm-2 col-xs-4">
 		<a id='nav_usuario' href="#" class="list-group-item active" onclick='show_usuario();'>Usuário</a>
 		<a id='nav_hospital' href="#" class="list-group-item" onclick='show_hospital();'>Hospital</a>
 	</div>
 	<!-- DADOS USUÁRIO -->
-	<div id='usuario' class='col-md-5 col-lg-5 col-sm-5 col-xs-6 center'>
+	<div id='usuario' class='col-lg-10 col-md-10 col-sm-10 col-xs-8'>
 		<!-- FORM DADOS -->
+		<div class='row'>
+		<div class='col-lg-5 col-md-6 col-sm-6'>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Informações do Usuário</h3>
@@ -95,7 +98,7 @@
 	                    <label for='nome'>Nome</label>
 	                    <input type='nome' name='nome' class='form-control' placeholder='Nome' value='<?php echo $usuario['nome']; ?>' required />
 	                </div>
-	                <div class='form-group'>
+	                <div id='div_email' class='form-group'>
 	                    <label for='email'>Email</label>
 	                    <input type='email' name='email' class='form-control' placeholder='Email' value='<?php echo $usuario['email']; ?>' required />
 	                </div>
@@ -105,7 +108,9 @@
 	            </form>
 			</div>
 		</div>
+		</div>
 		<!-- FORM SENHA -->
+		<div class='col-lg-6 col-md-6 col-sm-6'>
         <div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Mudar Senha</h3>
@@ -123,34 +128,39 @@
 					<input class='hidden' type='text' name='form' value='senha' />
 	            	<div class='form-group'>
 	                    <label for='senha[]'>Nova Senha</label>
-	                    <input type='password' name='senha[]' id='senha1' class='form-control' placeholder='Nova Senha' required />
+	                    <input type='password' name='senha[]' class='form-control' placeholder='Nova Senha' required />
 	                </div>
 	                <div class='form-group'>
 	                    <label for='senha[]'>Repita a Senha</label>
 	                    <input type='password' name='senha[]' class='form-control' placeholder='Repetir Senha' required />
 	                </div>
-	                <div>
-	                    <input type='submit' value='Alterar' class='btn btn-primary' onclick="validar()" />
+	                <div id='button_senha'>
+	                    <input type='reset' value='Apagar' class='btn btn-danger' />
+                        <input type='submit' value='Alterar' class='btn btn-primary' />
 	                </div>
 	            </form>
 			</div>
 		</div>
+		</div>
+		</div>
 	</div>
 	<!-- DADOS HOSPITAL -->
-	<div id='hospital' class='hidden'>
+	<div id='hospital' class='col-lg-10 col-md-10 col-sm-10 col-xs-8 hidden'>
 		<!-- FORM HOSPITAL -->
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">Informações do Hospital</h3>
 			</div>
 			<div class="panel-body">
+				<div class='row'>
 				<form method='post'>
 					<input class='hidden' type='text' name='form' value='hospital' />
+					<div class='col-lg-6 col-md-6 col-sm-6'>
 					<div class='form-group'>
 	                    <label for='nome'>Nome</label>
 	                    <input type='nome' name='nome' class='form-control' placeholder='Nome' value='<?php echo $hospital['nome']; ?>' required />
 	                </div>
-	                <div class='form-group'>
+	                <div id='div_cnpj' class='form-group'>
 	                    <label for='cnpj'>CNPJ</label>
 	                    <input type='cnpj' name='cnpj' class='form-control' placeholder='CNPJ' value='<?php echo $hospital['cnpj']; ?>'  data-mask='00.000.000/0000-00' required />
 	                </div>
@@ -158,6 +168,8 @@
 	                    <label for='telefone'>Telefone</label>
 	                    <input type='telefone' name='telefone' class='form-control' placeholder='Telefone' value='<?php echo $hospital['telefone']; ?>' data-mask='(00) 0000-0000' required />
 	                </div>
+	                </div>
+	                <div class='col-lg-6 col-md-6 col-sm-6'>
 	                <div class='form-group'>
 	                    <label for='endereço'>Endereço</label>
 	                    <input type='endereço' name='endereço' class='form-control' placeholder='Enedereço' value='<?php echo $hospital['endereço']; ?>' required />
@@ -170,11 +182,14 @@
 	                    <label for='cep'>CEP</label>
 	                    <input type='cep' name='cep' class='form-control' placeholder='CEP' value='<?php echo $hospital['cep']; ?>' data-mask='00.000-000' required />
 	                </div>
-	                <div id='buttons'>
+	                </div>
+	                <div class='text-center'>
 	                    <input type='submit' value='Alterar' class='btn btn-primary' />
 	                </div>
 	            </form>
+	            </div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>

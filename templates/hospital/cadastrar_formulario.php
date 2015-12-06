@@ -36,24 +36,51 @@
     // $perguntas = select_many('*', 'pergunta', 'id_indicador', $_GET['id']);
     // var_dump($perguntas);
 ?>
-<div class='container col-lg-4 col-md-4 col-sm-5 center'>
+<div class='container col-lg-5 col-md-6 col-sm-6 center'>
+<div class='row'>
 	<div class="panel panel-primary">
 		<div class="panel-heading">
 			<h3 class="panel-title">Selecionar Indicadores</h3>
 		</div>
 		<div class="panel-body">
-			<div class='col-lg-11'>
+			<div class='row'>
+			<div class='col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1'>
+			<div class='row'>
 			<?php
+				$metade = ceil((count($indicadores)/2));
 				foreach ($indicadores as $num => $indicador):
+					// echo $num;
+					if($num != 0 && ($num%$metade) == 0){
 			?>
+				</div>
+			<?php
+					}
+					if(($num%$metade) == 0){
+			?>
+				<div class='col-lg-6 col-md-6 col-sm-6'>
+			<?php
+					}
+			?>
+			<!-- <div class='col-lg-6 col-md-6 col-sm-6'> -->
 				<label class="checkbox">
 					<input type="checkbox" <?php echo "onclick='show_hide_perguntas_indicador(".$indicador['id'].", $(this).is(\":checked\"))'"; ?> checked>
 					<?php echo $indicador['nome']; ?>
 				</label>
-			<?php endforeach; ?>
+			<!-- </div> -->
+			<?php 
+					if($num == (count($indicadores)-1)){
+			?>
+				</div>
+			<?php
+					}
+				endforeach; 
+			?>
+			</div>
+			</div>
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <div class='container col-lg-5 center'>
 	<form method='post'>
