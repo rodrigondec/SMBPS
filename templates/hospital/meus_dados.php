@@ -26,11 +26,12 @@
 ?>
 <!-- DAR SCROLL PARA O FORM DA SENHA COM A MENSAGEM DE ERRO -->
 <script type="text/javascript">
-	window.onload = function(){
+	$(document).ready(function(){
 		$('html, body').animate({
-        	'scrollTop' : $("#form_senha").position().top
+        	'scrollTop' : $("#button_senha").position().top
     	})
-	}
+    	$('#form_senha').addClass('has-error')
+	})
 </script>
 <?php
 				$senha_inconsistente = true;
@@ -54,20 +55,35 @@
 				}
 			}
 			
-			try {
-				if(!update($dados, $update['banco'], 'id', $update['id'])){
-					throw new Exception(mysql_error(LINK), 113);
-				}
+
+			if(update($dados, $update['banco'], 'id', $update['id'])){
 				ob_clean();
     			header('LOCATION: '.HOSPITAL.'meus_dados');
-			} catch (Exception $e) {
-				if($e->getCode() == 113){
-	    			$titulo = 'Erro no banco de dados!';
-		    		$mensagem = str_replace('\'', '´', $e->getMessage());
-		    	}
-		    	echo '<script type="text/javascript">var titulo = \''.$titulo.'\';</script>';
-		    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
-		    	swal($titulo, $mensagem, 'error', '', 'btn-danger');
+			}
+			else{
+				$string_erro = mysql_error(LINK);
+				$string_erro = explode("'", $string_erro);
+				$campo_erro = $string_erro[3];
+				if($campo_erro == 'cnpj'){
+				?>
+					<!-- DAR SCROLL PARA O FORM DA SENHA COM A MENSAGEM DE ERRO -->
+					<script type="text/javascript">
+				    	$(document).ready(function(){
+							$('#div_cnpj').addClass('has-error')
+						})
+					</script>
+				<?php
+				}
+				else if($campo_erro == 'email'){
+				?>
+					<!-- DAR SCROLL PARA O FORM DA SENHA COM A MENSAGEM DE ERRO -->
+					<script type="text/javascript">
+						$(document).ready(function(){
+							$('#div_email').addClass('has-error')
+						})
+					</script>
+				<?php
+				}
 			}
 		}
 	endif;
