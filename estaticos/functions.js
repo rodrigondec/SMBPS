@@ -87,11 +87,11 @@ function show_hide_cidade(valor){
 		if(id == valor){
 			// HIDE TODOS OS SELECTS
 			for (var j = 1; j <= num_estados; j++) {
-				$("#div_select_cidade"+j).attr('class', 'form-group hidden')
+				$("#div_select_cidade"+j).addClass('hidden')
 				$("#select_cidade"+j).attr('required', false)
 			}
 			// SHOW SELECIONADO
-			$("#div_select_cidade"+id).attr('class', 'form-group')
+			$("#div_select_cidade"+id).removeClass('hidden')
 			$("#select_cidade"+id).attr('required', true)
 		}
 	}
@@ -101,13 +101,13 @@ function show_hide_protocolo(valor){
 	for(var id = 1; id <= num_indicadores; id++){
 		if(id == valor){
 			// HIDE TODOS OS SELECTS
-			for (j = 1; j <= num_indicadores; j++) {
-				$('#nav_indicador_'+j).attr('class', 'list-group-item')
-				$('#indicador_'+j).attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center hidden')
+			for (var j = 1; j <= num_indicadores; j++) {
+				$('#nav_indicador_'+j).removeClass('active')
+				$('#indicador_'+j).addClass('hidden')
 			}
 			// SHOW SELECIONADO
-			$('#nav_indicador_'+id).attr('class', 'list-group-item active')
-			$('#indicador_'+id).attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
+			$('#nav_indicador_'+id).addClass('active')
+			$('#indicador_'+id).removeClass('hidden')
 		}
 	}
 }
@@ -117,10 +117,10 @@ function show_hide_perguntas_indicador(valor, check){
 		if(id == valor){
 			// SHOW SELECIONADO
 			if(check){
-				$('#indicador_'+id).attr('class', '')
+				$('#indicador_'+id).removeClass('hidden')
 			}
 			else{
-				$('#indicador_'+id).attr('class', 'hidden')
+				$('#indicador_'+id).addClass('hidden')
 			}
 			
 		}
@@ -128,33 +128,33 @@ function show_hide_perguntas_indicador(valor, check){
 }
 
 function show_usuario(){
-	$('#usuario').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
-	$('#hospital').attr('class', 'hidden')
+	$('#usuario').removeClass('hidden')
+	$('#hospital').addClass('hidden')
 
-	$('#nav_usuario').attr('class', 'list-group-item active')
-	$('#nav_hospital').attr('class', 'list-group-item')
+	$('#nav_usuario').addClass('active')
+	$('#nav_hospital').removeClass('active')
 }
 
 function show_hospital(){
-	$('#usuario').attr('class', 'hidden')
-	$('#hospital').attr('class', 'col-md-5 col-lg-5 col-sm-5 col-xs-6 center')
+	$('#usuario').addClass('hidden')
+	$('#hospital').removeClass('hidden')
 
-	$('#nav_usuario').attr('class', 'list-group-item')
-	$('#nav_hospital').attr('class', 'list-group-item active')
+	$('#nav_usuario').removeClass('active')
+	$('#nav_hospital').addClass('active')
 }
 
 function show_notificacoes(){
-	$('#notificacoes').attr('class', 'table-responsive col-lg-9 center')
-	$('#usuario_notificacoes').attr('class', 'hidden')
+	$('#notificacoes').removeClass('hiden')
+	$('#usuario_notificacoes').addClass('hidden')
 
-	$('#nav_notificacoes').attr('class', 'list-group-item active')
-	$('#nav_usuario_notificacoes').attr('class', 'list-group-item')
+	$('#nav_notificacoes').addClass('active')
+	$('#nav_usuario_notificacoes').removeClass('active')
 }
 
 function show_usuario_notificacoes(){
-	$('#notificacoes').attr('class', 'hidden')
-	$('#usuario_notificacoes').attr('class', 'table-responsive col-lg-9 center')
+	$('#notificacoes').addClass('hiden')
+	$('#usuario_notificacoes').removeClass('hidden')
 
-	$('#nav_notificacoes').attr('class', 'list-group-item')
-	$('#nav_usuario_notificacoes').attr('class', 'list-group-item active')
+	$('#nav_notificacoes').removeClass('active')
+	$('#nav_usuario_notificacoes').addClass('active')
 }
