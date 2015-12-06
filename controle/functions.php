@@ -16,9 +16,9 @@
 	function swal($title, $text, $type = '', $location = '', $btn = ''){
 		echo "<button class='hidden' id='clickButton' onClick='sa(\"".$title."\", \"".$text."\", \"".$type."\", \"".$location."\", \"".$btn."\");'>button</button>
 	    		<script type='text/javascript'>
-	    			window.onload = function(){
-	    				document.getElementById('clickButton').click();
-	    			}
+	    			$(window).load(function(){
+	    				$('#clickButton').click()
+	    			})
     			</script>";
 	}
 
