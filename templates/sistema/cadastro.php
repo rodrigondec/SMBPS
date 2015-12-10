@@ -156,7 +156,7 @@
 			<div class="panel-body">
 			    <div class='form-group'>
 				    <label for='nome'>Nome</label>
-				    <input type='text' name='nome_usuario' class='form-control' placeholder='Nome' value='<?php if(count($_POST) > 0){echo $_POST['nome_usuario'];} ?>'  required />
+				    <input type='text' name='nome_usuario' class='form-control' placeholder='Digite seu nome' value='<?php if(count($_POST) > 0){echo $_POST['nome_usuario'];} ?>'  required />
 				</div>
 				<div class='form-group'>
 					<div id='erro_email' class="alert alert-danger alert-dismissible hidden" role="alert">
@@ -166,11 +166,25 @@
 						<div><strong id='titulo_erro_email'></strong></div>Verifique o email e tente novamente.
 					</div>
 				    <label for='email'>Email</label>
-				    <input type='email' name='email' class='form-control' placeholder='Email' value='<?php if(count($_POST) > 0){echo $_POST['email'];} ?>' required />
+				    <input type='email' name='email' class='form-control' placeholder='Digite seu email' value='<?php if(count($_POST) > 0){echo $_POST['email'];} ?>' required />
 				</div>
-				<div class='form-group'>
+				<div class='form-group' id='group_senha1'>
 				    <label for='senha'>Senha</label>
-				    <input type='password' name='senha' class='form-control' placeholder='Senha' value='<?php if(count($_POST) > 0){echo $_POST['senha'];} ?>' required />
+				    <div class='input-group'>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-minus" id='glyp_senha1'></span>
+						</span>
+				    	<input type='password' id='senha1' name='senha' class='form-control' placeholder='Digite sua senha' onkeyup="validar_senha()" required />
+			    	</div>
+				</div>
+				<div class='form-group' id='group_senha2'>
+				    <label for='senha'>Confirmar senha</label>
+				    <div class='input-group'>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-minus" id='glyp_senha2'></span>
+						</span>
+				    	<input type='password' id='senha2' class='form-control' placeholder='Confirme sua senha' onkeyup="validar_senha()" required />
+				    </div>
 				</div>
 			</div>
 		</div>
@@ -185,7 +199,7 @@
 				</div>
 				<div class='form-group'>
 					<label for='nome'>Nome</label>
-					<input class='form-control' type='text' name='nome_hospital' placeholder='Nome' value='<?php if(count($_POST) > 0){echo $_POST['nome_hospital'];} ?>' required />
+					<input class='form-control' type='text' name='nome_hospital' placeholder='Digite o nome do hospital' value='<?php if(count($_POST) > 0){echo $_POST['nome_hospital'];} ?>' required />
 				</div>
 				<div class='form-group hidden'>
 					<label for='select_estado'>Estado</label>
@@ -223,7 +237,7 @@
 				<?php 
 				    endforeach;
 				?>
-				<div class='form-group'>
+				<div class='form-group' id='group_cpnj'>
 					<label for='cnpj'>CNPJ</label>
 					<div id='erro_cnpj' class="alert alert-danger alert-dismissible hidden" role="alert">
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -231,7 +245,12 @@
 						</button>
 						<div><strong id='titulo_erro_cnpj'></strong></div>Verifique o CNPJ e tente novamente.
 					</div>
-					<input class='form-control' type='text' name='cnpj' data-mask='00.000.000/0000-00' placeholder='CNPJ' value='<?php if(count($_POST) > 0){echo $_POST['cnpj'];} ?>' pattern='^[0-9]{2}\.[0-9]{3}\.[0-9]{3}/[0-9]{4}-[0-9]{2}' title='xx.xxx.xxx/xxxx-xx' required />
+					<div class='input-group'>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-minus" id='glyp_cnpj'></span>
+						</span>
+						<input class='form-control' type='text' id='cnpj' name='cnpj' data-mask='00.000.000/0000-00' placeholder='Digite o CNPJ do hospital' value='<?php if(count($_POST) > 0){echo $_POST['cnpj'];} ?>' pattern='^[0-9]{2}\.[0-9]{3}\.[0-9]{3}/[0-9]{4}-[0-9]{2}' title='xx.xxx.xxx/xxxx-xx' required />
+					</div>
 				</div>
 				<div class='form-group'>
 					<label for='telefone'>Telefone</label>
@@ -239,17 +258,17 @@
 				</div>
 				<div class='form-group'>
 					<label for='endereço'>Endereço</label>
-					<input class='form-control' type='text' name='endereço' placeholder='Endereço' value='<?php if(count($_POST) > 0){echo $_POST['endereço'];} ?>' required />
+					<input class='form-control' type='text' name='endereço' placeholder='Digite o endereço do hospital' value='<?php if(count($_POST) > 0){echo $_POST['endereço'];} ?>' required />
 				</div>
 				<div class='form-group'>
 					<label for='cep'>CEP</label>
-					<input class='form-control' type='text' name='cep' data-mask='00.000-000' placeholder='CEP' value='<?php if(count($_POST) > 0){echo $_POST['cep'];} ?>' pattern="^[0-9]{2}\.[0-9]{3}-[0-9]{3}" title='xx.xxx-xxx' required />
+					<input class='form-control' type='text' name='cep' data-mask='00.000-000' placeholder='Digite o CEP do hospital' value='<?php if(count($_POST) > 0){echo $_POST['cep'];} ?>' pattern="^[0-9]{2}\.[0-9]{3}-[0-9]{3}" title='xx.xxx-xxx' required />
 				</div>
 			</div>
 		</div>
 		<div class='text-center'>
 			<button class='btn btn-danger' type='reset'>Apagar</button>
-            <button class='btn btn-primary' type='submit'>Entrar</button>
+            <button class='btn btn-primary' type='submit' id='button_form'>Cadstrar</button>
 		</div>
 	</form>
 </div>

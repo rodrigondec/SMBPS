@@ -158,3 +158,102 @@ function show_usuario_notificacoes(){
 	$('#nav_notificacoes').removeClass('active')
 	$('#nav_usuario_notificacoes').addClass('active')
 }
+
+function validar_senha(){
+	if($('#senha1').val() == '' || $('#senha2').val() == ''){
+		return;
+	}
+	if($('#senha1').val() == $('#senha2').val()){
+		$('#group_senha1').removeClass('has-error')
+		$('#group_senha1').addClass('has-success')
+		
+		$('#group_senha2').removeClass('has-error')
+		$('#group_senha2').addClass('has-success')
+
+		$('#glyp_senha1').removeClass('glyphicon-minus')
+		$('#glyp_senha1').removeClass('glyphicon-remove')
+		$('#glyp_senha1').addClass('glyphicon-ok')
+
+		$('#glyp_senha2').removeClass('glyphicon-minus')
+		$('#glyp_senha2').removeClass('glyphicon-remove')
+		$('#glyp_senha2').addClass('glyphicon-ok')
+	}
+	else if($('#senha1').val() != $('#senha2').val()){
+		$('#group_senha1').removeClass('has-success')
+		$('#group_senha1').addClass('has-error')
+
+		$('#group_senha2').removeClass('has-success')
+		$('#group_senha2').addClass('has-error')
+
+		$('#glyp_senha1').removeClass('glyphicon-minus')
+		$('#glyp_senha1').removeClass('glyphicon-ok')
+		$('#glyp_senha1').addClass('glyphicon-remove')
+
+		$('#glyp_senha2').removeClass('glyphicon-minus')
+		$('#glyp_senha2').removeClass('glyphicon-ok')
+		$('#glyp_senha2').addClass('glyphicon-remove')
+	}
+}
+
+function validarCNPJ() {
+ 	
+	var cnpj = $('#cnpj').val()
+
+    cnpj = cnpj.replace(/[^\d]+/g,'');
+ 
+    if(cnpj == ''){
+    	$('#group_cnpj').removeClass('has-success')
+		$('#group_cnpj').addClass('has-error')
+    } return false;
+     
+    if (cnpj.length != 14){
+
+        return false;
+    }
+ 
+    // Elimina CNPJs invalidos conhecidos
+    if (cnpj == "00000000000000" || 
+        cnpj == "11111111111111" || 
+        cnpj == "22222222222222" || 
+        cnpj == "33333333333333" || 
+        cnpj == "44444444444444" || 
+        cnpj == "55555555555555" || 
+        cnpj == "66666666666666" || 
+        cnpj == "77777777777777" || 
+        cnpj == "88888888888888" || 
+        cnpj == "99999999999999"){
+
+    }
+        return false;
+         
+    // Valida DVs
+    tamanho = cnpj.length - 2
+    numeros = cnpj.substring(0,tamanho);
+    digitos = cnpj.substring(tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+      soma += numeros.charAt(tamanho - i) * pos--;
+      if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(0))
+        return false;
+         
+    tamanho = tamanho + 1;
+    numeros = cnpj.substring(0,tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+      soma += numeros.charAt(tamanho - i) * pos--;
+      if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(1))
+          return false;
+           
+    return true;
+    
+}

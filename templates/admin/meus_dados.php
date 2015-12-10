@@ -13,17 +13,7 @@
                 $update['status'] = true;
                 $_POST['senha'] = md5($_POST['senha'][0]);
             else:
-?>
-<!-- DAR SCROLL PARA O FORM DA SENHA COM A MENSAGEM DE ERRO -->
-<script type="text/javascript">
-	$(document).ready(function(){
-		$('html, body').animate({
-            'scrollTop' : $("#form_senha").position().top
-        })
-	})
-</script>
-<?php
-                $senha_inconsistente = true;
+                swal('Senhas não batem!', 'Sua senha não foi alterada pois a confirmação da senha falhou', 'error', '', 'btn-primary');
             endif;
         else:
             exit("ERROR!");
@@ -73,23 +63,25 @@
                 <h3 class="panel-title">Mudar Senha</h3>
             </div>
             <div class="panel-body">
-                <?php if($senha_inconsistente): ?>
-                <div class="alert alert-danger alert-dismissible text-center" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <p><strong>Senhas não coincidem!</strong></p>Tente novamente
-                </div>
-                <?php endif; ?>
                 <form method='post' id='form_senha'>
                     <input class='hidden' type='text' name='form' value='senha' />
-                    <div class='form-group'>
+                    <div class='form-group' id='group_senha1'>
                         <label for='senha[]'>Nova Senha</label>
-                        <input type='password' name='senha[]' id='senha1' class='form-control' placeholder='Nova Senha' required />
+                        <div class='input-group'>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-minus" id='glyp_senha1'></span>
+						</span>
+                        	<input type='password' name='senha[]' id='senha1' class='form-control' placeholder='Digite sua nova senha' onkeyup="validar_senha()" required />
+                        </div>
                     </div>
-                    <div class='form-group'>
-                        <label for='senha[]'>Repita a Senha</label>
-                        <input type='password' name='senha[]' class='form-control' placeholder='Repetir Senha' required />
+                    <div class='form-group' id='group_senha2'>
+                        <label for='senha[]'>Confirmar Senha</label>
+                        <div class='input-group'>
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-minus" id='glyp_senha2'></span>
+						</span>
+                        	<input type='password' name='senha[]' id='senha2' class='form-control' placeholder='Repeta sua senha' onkeyup="validar_senha()" required />
+                        </div>
                     </div>
                     <div>
                         <input type='reset' value='Apagar' class='btn btn-danger' />
