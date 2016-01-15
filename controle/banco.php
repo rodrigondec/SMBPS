@@ -96,7 +96,7 @@
             }
         }
         $sql .= ' LIMIT 1;';
-        // var_dump($sql);
+        // var_dump($sql);echo '<br /><br />';
         $resultado = mysql_query($sql, LINK);
         try {
         	if(!$resultado){

@@ -73,7 +73,7 @@ CREATE TABLE hospital(
 	UNIQUE (CNPJ)
 );
 
-CREATE TABLE setor_hospital(
+CREATE TABLE hospital_setor(
 	id int NOT NULL auto_increment,
 	id_hospital int NOT NULL,
 	id_setor int NOT NULL,
@@ -126,16 +126,17 @@ CREATE TABLE pergunta_input(
 
 CREATE TABLE formulário(
 	id int NOT NULL auto_increment,
-	id_setor_hospital int NOT NULL,
+	id_hospital_setor int NOT NULL,
 	id_mês int NOT NULL,
 	ano varchar(5) NOT NULL,
-	concluido varchar(1) NOT NULL DEFAULT '0',
-	data_recebimento date NOT NULL, 
+	concluído varchar(1) NOT NULL DEFAULT '0',
+	-- data_recebimento date NOT NULL, 
 	nome_responsável varchar(35) NOT NULL,
 	email_responsável varchar(35) NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id_setor_hospital) REFERENCES setor_hospital(id),
-	FOREIGN KEY (id_mês) REFERENCES mês(id)
+	FOREIGN KEY (id_hospital_setor) REFERENCES hospital_setor(id),
+	FOREIGN KEY (id_mês) REFERENCES mês(id),
+	CONSTRAINT formulário_id UNIQUE (id_hospital_setor, id_mês, ano)
 );
 
 CREATE TABLE resposta(
@@ -5961,7 +5962,7 @@ insert into hospital (nome, cnpj, telefone, endereço, complemento, cep, id_cida
 	('Hospital Teste', '11111111111111', '8432085798', 'R. Teste BLA BLA BLA', 'nº 200', '59152250', 3770, 1),
 	('Hospital Teste2', '22222222222222', '8432085798', 'R. Teste BLA2 BLA2 BL2A', 'nº 2200', '59152250', 3770, 1);
 
-insert into setor_hospital (id_hospital, id_setor) values
+insert into hospital_setor (id_hospital, id_setor) values
 	(1, 1),
 	(1, 2),
 	(2, 1),

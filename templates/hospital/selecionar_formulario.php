@@ -4,9 +4,9 @@
 </div>
 <?php 
     $meses = select_many('id, nome', 'mês');
-    $setores_hospital = select_many('*', 'setor_hospital', 'id_hospital', $_SESSION['id_hospital']);
-    var_dump($setores_hospital);echo '<br /><br />';
-    var_dump($meses);
+    $hospital_setores = select_many('*', 'hospital_setor', 'id_hospital', $_SESSION['id_hospital']);
+    // var_dump($hospital_setores);echo '<br /><br />';
+    // var_dump($meses);
 ?>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -28,16 +28,16 @@
 	})
 </script>
 <div class='container'>
-	<form class='col-lg-3 col-md-3 col-sm-4 center' id='selecter' method='post' action='<?php echo HOSPITAL.$_GET['action']; ?>_formulario?unst=1'>
+	<form class='col-lg-3 col-md-3 col-sm-4 center' id='selecter' method='get' action='<?php echo HOSPITAL.$_GET['action']; ?>_formulario'>
 		<div class='form-group'>
 			<label for='select_setor'>Setor</label>
 			<select id='select_setor' name='id_setor' class='form-control selectpicker' data-style="btn-info">
 				<option disabled selected value=''>Selecione um setor</option>
 				<?php 
-				    foreach ($setores_hospital as $key => $setor_hospital):
+				    foreach ($hospital_setores as $key => $hospital_setor):
 				?>
-				<option value='<?php echo $setor_hospital['id_setor']; ?>'>
-					<?php echo select('nome', 'setor', 'id', $setor_hospital['id_setor'])['nome'];?>
+				<option value='<?php echo $hospital_setor['id_setor']; ?>'>
+					<?php echo select('nome', 'setor', 'id', $hospital_setor['id_setor'])['nome'];?>
 				</option>
 				<?php
 				    endforeach;
