@@ -5,6 +5,11 @@
 <?php 
     $perguntas = select_many('*', 'pergunta');
     $formulario = select('*', 'formulário');
+    if($_GET['unst'] == 1){
+    	$get = $_POST;
+    	$_POST = array();
+    }
+    var_dump($get);
 ?>
 <div container>
 	<form method='post' class='col-lg-6 center'>
