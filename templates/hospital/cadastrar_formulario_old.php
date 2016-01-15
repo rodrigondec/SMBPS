@@ -19,80 +19,100 @@
 		margin-bottom: 2%;
 	}
 </style>
-<?php 
-    $perguntas = select_many('*', 'pergunta', 'id_indicador', $_GET['id']);
-    // var_dump($perguntas);
-?>
 <div class='text-center'>
 	<h2>MONITORAMENTO DOS INDICADORES DE BOAS PRÁTICAS</h2>
 	<hr />
 </div>
-<div class='container'>
-	<form action='<?php echo $_SERVER['PHP_SELF']?>' method='post'>
-		<p class='obrigatorio'><span class='obrigatorio'>*obrigatorio</span></p>
+<?php 
+	$indicadores = select_many('id, nome', 'indicador');
+	echo "<script type='text/javascript'>var num_indicadores = ".count($indicadores).";</script>";
+	// var_dump($indicadores);echo '<br /><br />';
 
-		<?php 
-		$contador = 1;
-	    foreach ($perguntas as $key => $value):
-	    	$pergunta_inputs = select_many('*', 'pergunta_input', 'id_pergunta', $perguntas[$key]['id']);
-	    	// var_dump($pergunta_inputs);echo '<br /><br />';
-	    	foreach ($pergunta_inputs as $key2 => $value) {
-	    		$inputs[$key2] = select('*', 'input', 'id', $pergunta_inputs[$key2]['id_input']);
-	    	}
-	    	// var_dump($inputs);
-		?>
-		<div class='input'>
-			<p>
-				<?php 
-				    echo $contador.' - '.$perguntas[$key]['texto'];
-				    $contador++;
-				    if($perguntas[$key]['obrigatória'] == '1'){echo " <span class='obrigatorio'>*</span>";}
-				    if($perguntas[$key]['observação'] != ''):
-				?>
-				<h5>
-					<?php 
-				    	echo $perguntas[$key]['observação'];
-				    ?>
-				</h5>
-				<?php endif; ?>
-			</p>
-			<?php 
-			    foreach ($pergunta_inputs as $key2 => $value) {
-			    	echo "<div>";
+	$setores_hospital = select_many('id, id_setor', 'setor_hospital', 'id_hospital', $_SESSION['id_hospital']);
+	// var_dump($setores_hospital);echo '<br /><br />';
 
-		    		echo "<input ";
-		    		if($inputs[$key2]['type'] != 'radio'){
-		    			echo "class='form-control'";
-		    		}
-		    		echo "type='".$inputs[$key2]['type']."' ";
-		    		echo "name='".$pergunta_inputs[$key2]["name"]."' ";
-		    		echo "value='".$inputs[$key2]["value"]."'";
-		    		if($perguntas[$key]['obrigatória'] == '1'){
-		    			echo " required";
-		    		}
-		    		echo " />";
-
-		    		if($inputs[$key2]['type'] == 'radio'){
-		    			echo " ".$inputs[$key2]["value"];
-		    		}
-
-		    		echo "</div>";
-		    	}
-			?>
+	$meses = select_many('id, nome', 'mês');
+	// var_dump($meses);echo '<br /><br />';
+    // $perguntas = select_many('*', 'pergunta', 'id_indicador', $_GET['id']);
+    // var_dump($perguntas);
+?>
+<div class='container col-lg-5 col-md-6 col-sm-6 center'>
+<div class='row'>
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h3 class="panel-title">Selecionar Indicadores</h3>
 		</div>
-	
-	<?php
-	    endforeach;
-	?>
+		<div class="panel-body">
+			<div class='row'>
+			<div class='col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1'>
+			<div class='row'>
+			<?php
+				$metade = ceil((count($indicadores)/2));
+				foreach ($indicadores as $num => $indicador):
+					// echo $num;
+					if($num != 0 && ($num%$metade) == 0){
+			?>
+				</div>
+			<?php
+					}
+					if(($num%$metade) == 0){
+			?>
+				<div class='col-lg-6 col-md-6 col-sm-6'>
+			<?php
+					}
+			?>
+			<!-- <div class='col-lg-6 col-md-6 col-sm-6'> -->
+				<label class="checkbox">
+					<input type="checkbox" <?php echo "onclick='show_hide_perguntas_indicador(".$indicador['id'].", $(this).is(\":checked\"))'"; ?> checked>
+					<?php echo $indicador['nome']; ?>
+				</label>
+			<!-- </div> -->
+			<?php 
+					if($num == (count($indicadores)-1)){
+			?>
+				</div>
+			<?php
+					}
+				endforeach; 
+			?>
+			</div>
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class='container col-lg-5 center'>
+	<form method='post'>
+		<div class='form-group'>
+			<label for='id_setor_hospital'>Setor Hospitalar</label>
+			<select name='id_setor_hospital' class="form-control selectpicker" data-style="btn-info" required>
+				<option disabled selected>Selecione o setor hospital</option>
+			<?php foreach ($setores_hospital as $num => $setor_hospital): ?>
+				<option value='<?php echo $setor_hospital['id']; ?>'><?php echo select('nome', 'setor', 'id', $setor_hospital['id_setor'])['nome']; ?></option>
+			<?php endforeach; ?>
+			</select>
+		</div>
+		<div class='form-group'>
+			<label for='id_mês'>Mês Avaliado</label>
+			<select name='id_mês' class="form-control selectpicker" data-style="btn-info" required>
+				<option disabled selected>Selecione o mês a ser avaliado</option>
+			<?php foreach ($meses as $num => $mês): ?>
+				<option value='<?php echo $mês['id']; ?>'><?php echo $mês['nome']; ?></option>
+			<?php endforeach; ?>
+			</select>
+		</div>
+		<?php foreach ($indicadores as $num => $indicador): ?>
+		<div id='indicador_<?php echo $indicador["id"]; ?>'>
+			<?php echo 'Perguntas do indicador '.$indicador["nome"]; ?>
+		</div>
+
+
+
+		<?php endforeach; ?>
 		<div class='text-center'>
-			<input class='btn btn-primary' type='submit' value='Enviar' />
-			<input class='btn btn-danger' type='reset' value='Apagar' />
-		</div>	
+			<button class='btn btn-danger' type='reset'>Apagar</button>
+			<button class='btn btn-primary' type='submit'>Cadastrar</button>
+		</div>
 	</form>
 </div>
-
-<?php 
-    if(count($_POST) > 0){
-    	
-    }
-?>
