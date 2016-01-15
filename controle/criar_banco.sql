@@ -146,7 +146,8 @@ CREATE TABLE resposta(
 	texto varchar(30) NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_pergunta) REFERENCES pergunta(id),
-	FOREIGN KEY (id_formulário) REFERENCES formulário(id)
+	FOREIGN KEY (id_formulário) REFERENCES formulário(id),
+	CONSTRAINT resposta_id UNIQUE (id_pergunta, id_formulário)
 );
 
 CREATE TABLE prontuario(
