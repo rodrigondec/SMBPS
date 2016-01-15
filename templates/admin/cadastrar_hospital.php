@@ -2,6 +2,13 @@
 	<h2>Cadastrar Hospital</h2>
 	<hr />
 </div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#select_estado').change(function(){
+			show_hide_cidade($(this).selectpicker("val"))			
+		})
+	})
+</script>
 <?php 
     if(count($_POST) > 0){
     	//var_dump($_POST);
@@ -57,7 +64,7 @@
 	    	echo '<script type="text/javascript">var mensagem = \''.$mensagem.'\';</script>';
 ?>
 <script type="text/javascript">
-	window.onload = function(){
+	$(window).load(function(){
 		swal({
 			title: titulo,
 			text: mensagem,
@@ -69,7 +76,20 @@
 			$('#erro_cnpj').attr('class', 'alert alert-danger alert-dismissible')
 			$('#titulo_erro_cnpj').html(titulo)
 		});
-	}
+	})
+	/*window.onload = function(){
+		swal({
+			title: titulo,
+			text: mensagem,
+			type: 'error',
+			confirmButtonClass: 'btn-danger',
+			html: false
+		}, 
+		function(){
+			$('#erro_cnpj').attr('class', 'alert alert-danger alert-dismissible')
+			$('#titulo_erro_cnpj').html(titulo)
+		});
+	}*/
 </script>
 <?php
     	}
@@ -88,7 +108,6 @@
 		</div>
 		<div class='form-group'>
 			<label for='select_estado'>Estado</label>
-			<div onclick='show_hide_cidade($("#select_estado").selectpicker("val"))'>
 			<select id='select_estado' class='form-control selectpicker' data-style="btn-info" data-live-search='true' required>
 				<option disabled selected value=''>Selecione um estado</option>
 				<?php 
@@ -101,7 +120,6 @@
 				    endforeach;
 				?>
 			</select>
-			</div>
 		</div>
 		<?php
 		    foreach ($estados as $key => $estado):

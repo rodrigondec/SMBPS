@@ -170,13 +170,13 @@ function validar_senha(){
 		$('#group_senha2').removeClass('has-error')
 		$('#group_senha2').addClass('has-success')
 
-		$('#glyp_senha1').removeClass('glyphicon-minus')
-		$('#glyp_senha1').removeClass('glyphicon-remove')
-		$('#glyp_senha1').addClass('glyphicon-ok')
+		$('#icon_senha1').removeClass('fa-minus')
+		$('#icon_senha1').removeClass('fa-times')
+		$('#icon_senha1').addClass('fa-check')
 
-		$('#glyp_senha2').removeClass('glyphicon-minus')
-		$('#glyp_senha2').removeClass('glyphicon-remove')
-		$('#glyp_senha2').addClass('glyphicon-ok')
+		$('#icon_senha2').removeClass('fa-minus')
+		$('#icon_senha2').removeClass('fa-times')
+		$('#icon_senha2').addClass('fa-check')
 	}
 	else if($('#senha1').val() != $('#senha2').val()){
 		$('#group_senha1').removeClass('has-success')

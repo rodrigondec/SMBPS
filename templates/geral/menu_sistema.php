@@ -47,11 +47,11 @@
                 <form action="/<?php echo BASE; ?>index.php/login" method='post'>
                     <div class='form-group'>
                         <label for='email'>Email</label>
-                        <input type='email' name='email' class='form-control' id='input_email' placeholder='Email'  required />
+                        <input type='email' name='email' class='form-control' id='input_email' placeholder='Digite seu email'  required />
                     </div>
                     <div class='form-group'>
                         <label for='senha'>Senha</label>
-                        <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Senha' required />
+                        <input type='password' name='senha' class='form-control' id='input_senha' placeholder='Digite sua senha' required />
                     </div>
                     <div>
                     	<button class='btn btn-danger' type='reset'>Apagar</button>
