@@ -185,75 +185,90 @@ function validar_senha(){
 		$('#group_senha2').removeClass('has-success')
 		$('#group_senha2').addClass('has-error')
 
-		$('#glyp_senha1').removeClass('glyphicon-minus')
-		$('#glyp_senha1').removeClass('glyphicon-ok')
-		$('#glyp_senha1').addClass('glyphicon-remove')
+		$('#icon_senha1').removeClass('fa-minus')
+		$('#icon_senha1').removeClass('fa-check')
+		$('#icon_senha1').addClass('fa-times')
 
-		$('#glyp_senha2').removeClass('glyphicon-minus')
-		$('#glyp_senha2').removeClass('glyphicon-ok')
-		$('#glyp_senha2').addClass('glyphicon-remove')
+		$('#icon_senha2').removeClass('fa-minus')
+		$('#icon_senha2').removeClass('fa-check')
+		$('#icon_senha2').addClass('fa-times')
 	}
 }
 
-function validarCNPJ() {
+function validar_cnpj() {
  	
 	var cnpj = $('#cnpj').val()
 
     cnpj = cnpj.replace(/[^\d]+/g,'');
  
     if(cnpj == ''){
-    	$('#group_cnpj').removeClass('has-success')
-		$('#group_cnpj').addClass('has-error')
-    } return false;
-     
-    if (cnpj.length != 14){
-
-        return false;
-    }
- 
-    // Elimina CNPJs invalidos conhecidos
-    if (cnpj == "00000000000000" || 
-        cnpj == "11111111111111" || 
-        cnpj == "22222222222222" || 
-        cnpj == "33333333333333" || 
-        cnpj == "44444444444444" || 
-        cnpj == "55555555555555" || 
-        cnpj == "66666666666666" || 
-        cnpj == "77777777777777" || 
-        cnpj == "88888888888888" || 
-        cnpj == "99999999999999"){
-
-    }
-        return false;
-         
-    // Valida DVs
-    tamanho = cnpj.length - 2
-    numeros = cnpj.substring(0,tamanho);
-    digitos = cnpj.substring(tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-      soma += numeros.charAt(tamanho - i) * pos--;
-      if (pos < 2)
-            pos = 9;
-    }
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if (resultado != digitos.charAt(0))
-        return false;
-         
-    tamanho = tamanho + 1;
-    numeros = cnpj.substring(0,tamanho);
-    soma = 0;
-    pos = tamanho - 7;
-    for (i = tamanho; i >= 1; i--) {
-      soma += numeros.charAt(tamanho - i) * pos--;
-      if (pos < 2)
-            pos = 9;
-    }
-    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-    if (resultado != digitos.charAt(1))
-          return false;
-           
-    return true;
+    	return false;
+    } 
     
+    try {
+	    if (cnpj.length != 14){
+	        throw "CNPJ inválido";
+	    }
+
+        tamanho = cnpj.length - 2
+	    numeros = cnpj.substring(0,tamanho);
+	    digitos = cnpj.substring(tamanho);
+	    soma = 0;
+	    pos = tamanho - 7;
+	    for (i = tamanho; i >= 1; i--) {
+			soma += numeros.charAt(tamanho - i) * pos--;
+			if (pos < 2){
+				pos = 9;
+			}
+	    }
+	    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+	    if (resultado != digitos.charAt(0)){
+	        throw "CNPJ inválido";
+	    }
+	         
+	    tamanho = tamanho + 1;
+	    numeros = cnpj.substring(0,tamanho);
+	    soma = 0;
+	    pos = tamanho - 7;
+	    for (i = tamanho; i >= 1; i--) {
+			soma += numeros.charAt(tamanho - i) * pos--;
+			if (pos < 2){
+				pos = 9;
+			}
+	    }
+	    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+	    if (resultado != digitos.charAt(1)){
+	    	throw "CNPJ inválido";
+	    }	     
+
+	    $('#group_cnpj').removeClass('has-error')
+		$('#group_cnpj').addClass('has-success')
+
+		$('#icon_cnpj').removeClass('fa-minus')
+		$('#icon_cnpj').removeClass('fa-times')
+		$('#icon_cnpj').addClass('fa-check')
+
+	    return true;
+	}
+	catch(err){
+		$('#group_cnpj').removeClass('has-success')
+		$('#group_cnpj').addClass('has-error')
+
+		$('#icon_cnpj').removeClass('fa-minus')
+		$('#icon_cnpj').removeClass('fa-check')
+		$('#icon_cnpj').addClass('fa-times')
+
+		return false;
+	}
+}
+
+function alert_cnpj_invalido(){
+	if(!validar_cnpj()){
+		swal({
+			title: 'CNPJ inválido!',
+			text: 'Favor verificar o CNPJ inserido',
+			type: 'error',
+			confirmButtonClass: 'btn-danger'
+		});
+	}
 }
