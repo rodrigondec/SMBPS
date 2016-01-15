@@ -129,6 +129,7 @@ CREATE TABLE formulário(
 	id_setor_hospital int NOT NULL,
 	id_mês int NOT NULL,
 	ano varchar(5) NOT NULL,
+	concluido varchar(1) NOT NULL DEFAULT '0',
 	data_recebimento date NOT NULL, 
 	nome_responsável varchar(35) NOT NULL,
 	email_responsável varchar(35) NOT NULL,
