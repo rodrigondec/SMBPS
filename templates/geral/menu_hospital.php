@@ -19,8 +19,8 @@
                 <li class='dropdown'>
                     <a href="#" class='dropdown-toggle' data-toggle='dropdown'>Formulário<span class="caret"></span></a>
                     <ul class='dropdown-menu'>
+                    	<li><a href="<?php echo HOSPITAL; ?>selecionar_formulario?action=cadastrar">Cadastrar</a></li>
                     	<li><a href="<?php echo HOSPITAL; ?>selecionar_formulario?action=visualizar">Visualizar</a></li>
-                        <li><a href="<?php echo HOSPITAL; ?>selecionar_formulario?action=cadastrar">Cadastrar</a></li>
                     </ul>
                 </li>
                 <li class='dropdown'>
