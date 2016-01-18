@@ -10,9 +10,8 @@
 	<thead>
 		<tr>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
-			<th class='col-lg-1 col-md-1 col-sm-1'>Id hospital</th>
 			<th>Nome Hospital</th>
-			<th>Data de Recebimento</th>
+			<!-- <th>Data de Recebimento</th> -->
 			<th>Mês da Avaliação</th>
 			<th>Nome Responsável</th>
 			<th>Email Responsável</th>
@@ -22,35 +21,37 @@
 	</thead>
 	<tbody>
 	<?php 
-	    foreach ($formularios as $key => $value):
+		var_dump($formularios);
+	    foreach ($formularios as $key => $formulario):
+	    	$id_hospital = select('id_hospital', 'hospital_setor', 'id', $formulario['id_hospital_setor'])['id_hospital'];
+	    	$hospital = select('*', 'hospital', 'id', $id_hospital);
 	?>
 		<tr>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<?php echo $formularios[$key]['id']; ?>
+				<?php echo $formulario['id']; ?>
 			</td>
-			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<?php echo $formularios[$key]['id_hospital']; ?>
-			</td>
-			<td>NOME HOSPITAL X</td>
 			<td>
+				<?php echo $hospital['nome']; ?>
+			</td>
+			<!-- <td>
 				<?php echo $formularios[$key]['data_recebimento']; ?>
+			</td> -->
+			<td>
+				<?php echo select('nome', 'mês', 'id', $formulario['id_mês'])['nome']; ?>
 			</td>
 			<td>
-				<?php echo $formularios[$key]['mes_avaliacao']; ?>
+				<?php echo $formulario['nome_responsável']; ?>
 			</td>
 			<td>
-				<?php echo $formularios[$key]['nome_responsavel']; ?>
-			</td>
-			<td>
-				<?php echo $formularios[$key]['email_responsavel']; ?>
+				<?php echo $formulario['email_responsável']; ?>
 			</td>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<a class='btn btn-info' href="<?php echo ADMIN; ?>ver_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
+				<a class='btn btn-info' href='<?php echo ADMIN."vizualizar_formulario?id=".$formulario["id"].""; ?>'>
 					Visualizar
 				</a>
 			</td>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<a class='btn btn-primary' href="<?php echo ADMIN; ?>alterar_formulario?id='<?php echo $formularios[$key]["id"]; ?>'">
+				<a class='btn btn-primary' href="#">
 					Alterar
 				</a>
 			</td>
