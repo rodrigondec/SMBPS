@@ -8,12 +8,12 @@
     $formulario = select('*', 'formulário', '(id_hospital_setor, id_mês, ano)', '('.$id_hospital_setor.', '.$_GET['id_mês'].', \''.'2016'.'\')', false);
     if($formulario){
     	if($formulario['concluído'] == 1){
-    		swal('Erro', 'Esse formulário já foi concluído!', 'error', HOSPITAL.'selecionar_formulario?action=cadastrar');
+    		swal('Formulário indisponível!', 'Esse formulário já foi concluído!', 'error', HOSPITAL.'selecionar_formulario?action=cadastrar');
     	}
     }
     // var_dump($formulario);
 ?>
-<div container>
+<div class='container'>
 	<form method='post' class='col-lg-6 center'>
 	<?php 
 		foreach ($perguntas as $key => $pergunta): 
@@ -24,7 +24,7 @@
 			}
 	?>
 		<div class='form-group'>
-			<label for=''><?php echo $pergunta['texto']; ?></label>
+			<label><?php echo $pergunta['id'].'. '.$pergunta['texto']; ?></label>
 		<?php 
 		    $pergunta_inputs = select_many('*', 'pergunta_input', 'id_pergunta', $pergunta['id']);
 		    foreach($pergunta_inputs as $key => $pergunta_input):
@@ -44,7 +44,7 @@
 		</div>
 	<?php endforeach; ?>
 		<button type='reset' class='btn btn-danger'>Apagar</button>
-		<button type='submit' class='btn btn-primary'>Enviar</button>
+		<button type='submit' class='btn btn-primary'>Cadastrar</button>
 	</form>
 </div>
 <?php 
