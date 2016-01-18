@@ -14,7 +14,7 @@
 			<th class='col-lg-2 col-md-2 col-sm-2'>Id Formulário</th>
 			<th>Pergunta</th>
 			<th class='col-lg-2 col-md-2 col-sm-2'>Texto</th>
-			<th class='col-lg-1 col-md-1 col-sm-1'></th>
+			<!-- <th class='col-lg-1 col-md-1 col-sm-1'></th> -->
 		</tr>
 	</thead>
 	<tbody>
@@ -39,14 +39,14 @@
 			<td>
 				<?php echo $resposta['texto']; ?>
 			</td>
-			<td class='col-lg-1 col-md-1 col-sm-1'>
+			<!-- <td class='col-lg-1 col-md-1 col-sm-1'>
 				<a class='btn btn-info' data-toggle="modal" data-target="#myModal<?php echo $resposta['id']; ?>">
 					Alterar
 				</a>
-				<!-- Modal -->
+				Modal
 				<div id="myModal<?php echo $resposta['id']; ?>" class="modal fade" role="dialog">
 			  		<div class="modal-dialog modal-sm">
-					    <!-- Modal content-->
+					     Modal content
 					    <div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -65,7 +65,7 @@
 					    </div>
 				  </div>
 				</div>
-			</td>
+			</td> -->
 		</tr>
 	<?php
 	    endforeach;
