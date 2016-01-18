@@ -11,24 +11,44 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#enviar').click(function(){
+			acao = $('#select_acao').selectpicker('val');
 			setor = $("#select_setor").selectpicker("val");
 			mes = $("#select_mes").selectpicker("val");
-			console.log(setor);
-			console.log(mes);
-			if(mes != null && setor != null){
+			if(mes != null && setor != null && acao != null){
 				$('#selecter').submit()
 			}
+			else if(acao == null){
+				sa('Operação não disponível', 'Selecione a ação desejada!', 'error', '', 'btn-danger');
+			}
 			else if(setor == null){
-				sa('Erro', 'Selecione o setor desejado', 'error', '', 'btn-danger');
+				sa('Operação não disponível', 'Selecione o setor desejado!', 'error', '', 'btn-danger');
 			}
 			else if(mes == null){
-				sa('Erro', 'Selecione o mês desejado', 'error', '', 'btn-danger');
+				sa('Operação não disponível', 'Selecione o mês desejado!', 'error', '', 'btn-danger');
 			}	
+		})
+		$('#select_acao').change(function(){
+			acao = $(this).selectpicker('val');
+			$('#selecter').attr('action', acao+'_formulario');
 		})
 	})
 </script>
 <div class='container'>
 	<form class='col-lg-3 col-md-3 col-sm-4 center' id='selecter' method='get' action='<?php echo HOSPITAL.$_GET['action']; ?>_formulario'>
+		<div class='form-group'>
+			<label for='select_acao'>Ação</label>
+			<select id='select_acao' class='form-control selectpicker' data-style="btn-info">
+				<option disabled <?php if(!isset($_GET['action'])){ echo 'selected'; } ?> value=''>
+					Selecione uma ação
+				</option>
+				<option <?php if(isset($_GET['action'])){ if($_GET['action'] == 'cadastrar'){ echo 'selected'; } } ?> value='cadastrar'>
+					Cadastrar
+				</option>
+				<option <?php if(isset($_GET['action'])){ if($_GET['action'] == 'visualizar'){ echo 'selected'; } } ?> value='visualizar'>
+					Visualizar
+				</option>
+			</select>
+		</div>
 		<div class='form-group'>
 			<label for='select_setor'>Setor</label>
 			<select id='select_setor' name='id_setor' class='form-control selectpicker' data-style="btn-info">
