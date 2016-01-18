@@ -11,6 +11,7 @@
 		<tr>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
 			<th>Nome Hospital</th>
+			<th>Setor</th>
 			<!-- <th>Data de Recebimento</th> -->
 			<th>Mês da Avaliação</th>
 			<th>Nome Responsável</th>
@@ -21,9 +22,10 @@
 	</thead>
 	<tbody>
 	<?php 
-		var_dump($formularios);
+		// var_dump($formularios);
 	    foreach ($formularios as $key => $formulario):
 	    	$id_hospital = select('id_hospital', 'hospital_setor', 'id', $formulario['id_hospital_setor'])['id_hospital'];
+	   		$id_setor = select('id_setor', 'hospital_setor', 'id', $formulario['id_hospital_setor'])['id_setor'];
 	    	$hospital = select('*', 'hospital', 'id', $id_hospital);
 	?>
 		<tr>
@@ -32,6 +34,9 @@
 			</td>
 			<td>
 				<?php echo $hospital['nome']; ?>
+			</td>
+			<td>
+				<?php echo select('nome', 'setor', 'id', $id_setor)['nome']; ?>
 			</td>
 			<!-- <td>
 				<?php echo $formularios[$key]['data_recebimento']; ?>
