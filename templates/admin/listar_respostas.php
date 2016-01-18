@@ -10,46 +10,41 @@
 	<thead>
 		<tr>
 			<th class='col-lg-1 col-md-1 col-sm-1'>Id</th>
-			<th class='col-lg-1 col-md-1 col-sm-1'>Id Hospital</th>
 			<th>Hospital</th>
-			<th class='col-lg-2 col-md-2 col-sm-2'>Id Pergunta</th>
 			<th class='col-lg-2 col-md-2 col-sm-2'>Id Formulário</th>
-			<th>Texto</th>
+			<th>Pergunta</th>
+			<th class='col-lg-2 col-md-2 col-sm-2'>Texto</th>
 			<th class='col-lg-1 col-md-1 col-sm-1'></th>
 		</tr>
 	</thead>
 	<tbody>
 	<?php 
-	    foreach ($respostas as $key => $value):
+	    foreach ($respostas as $key => $resposta):
 	?>
 		<tr>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<?php echo $respostas[$key]['id']; ?>
-			</td>
-			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<?php echo $respostas[$key]['id_hospital']; ?>
+				<?php echo $resposta['id']; ?>
 			</td>
 			<td>
 				<?php 
-					$hospital = select('nome', 'hospital', 'id', $protocolos[$key]['id_hospital'])['nome'];
-					echo $hospital;
+					echo select('nome', 'hospital', 'id', select('id_hospital', 'hospital_setor', 'id', select('id_hospital_setor', 'formulário', 'id', $resposta['id_formulário'])['id_hospital_setor'])['id_hospital'])['nome'];
 				?>
 			</td>
 			<td class='col-lg-2 col-md-2 col-sm-2'>
-				<?php echo $respostas[$key]['id_pergunta']; ?>
-			</td>
-			<td class='col-lg-2 col-md-2 col-sm-2'>
-				<?php echo $respostas[$key]['id_formulario']; ?>
+				<?php echo $resposta['id_formulário']; ?>
 			</td>
 			<td>
-				<?php echo $respostas[$key]['texto']; ?>
+				<?php echo select('texto', 'pergunta', 'id', $resposta['id_pergunta'])['texto']; ?>
+			</td>
+			<td>
+				<?php echo $resposta['texto']; ?>
 			</td>
 			<td class='col-lg-1 col-md-1 col-sm-1'>
-				<a class='btn btn-info' data-toggle="modal"  data-target="#myModal<?php echo $respostas[$key]['id']; ?>">
+				<a class='btn btn-info' data-toggle="modal" data-target="#myModal<?php echo $resposta['id']; ?>">
 					Alterar
 				</a>
 				<!-- Modal -->
-				<div id="myModal<?php echo $respostas[$key]['id']; ?>" class="modal fade" role="dialog">
+				<div id="myModal<?php echo $resposta['id']; ?>" class="modal fade" role="dialog">
 			  		<div class="modal-dialog modal-sm">
 					    <!-- Modal content-->
 					    <div class="modal-content">
@@ -59,10 +54,10 @@
 							</div>
 							<div class="modal-body text-center">
 								<form method='post'>
-									<input type='number' name='id' value="<?php echo $respostas[$key]['id']; ?>" hidden required />
+									<input type='number' name='id' value="<?php echo $resposta['id']; ?>" hidden required />
 									<div class='form-group'>
                         				<label for='texto'>Texto</label>
-										<textarea class='form-control' name='texto' required><?php echo $respostas[$key]['texto']; ?></textarea>
+										<textarea class='form-control' name='texto' required><?php echo $resposta['texto']; ?></textarea>
 									</div>
 									<input type='submit' value='Alterar' class='btn btn-primary' />
 								</form>
@@ -83,7 +78,7 @@
     	var_dump($_POST);
     	foreach ($_POST as $key => $value){
     		if($key != 'id'){
-    			$dados[$key] = $value;
+    			$dado = $value;
     		}
     	}
     	//update($dados, 'resposta', 'id', $_POST['id']);
