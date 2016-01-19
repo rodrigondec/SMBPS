@@ -79,7 +79,8 @@ CREATE TABLE hospital_setor(
 	id_setor int NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id_hospital) REFERENCES hospital(id),
-	FOREIGN KEY (id_setor) REFERENCES setor(id)
+	FOREIGN KEY (id_setor) REFERENCES setor(id),
+	CONSTRAINT id_hospital_setor UNIQUE (id_hospital, id_setor)
 );
 
 CREATE TABLE protocolo(
