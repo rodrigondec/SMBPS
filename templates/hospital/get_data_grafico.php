@@ -5,24 +5,25 @@
 	header("Content-Type: application/json");
 
 	if(isset ($_GET['callback'])){
-		$data = array();
+		$dados = array();
 
-		$meses = array('', '', '', '', '', '');
+		$datas = array('', '', '', '', '', '');
 
 		$indicadores = select_many('*', 'indicador');
 		// var_dump($indicadores);echo '<br /><br /><br />';
 
-		foreach ($meses as $key => $mes){
-			$meses[$key] = date('M', strtotime(date('Y-m-1')." -".$key." month"));
+		foreach ($datas as $key => $data){
+			$datas[$key]['mes'] = date('M', strtotime(date('Y-m-1')." -".$key." month"));
+			$datas[$key]['ano'] = date('Y', strtotime(date('Y-m-1')." -".$key." month"));
 		}
-		// var_dump($meses);echo '<br /><br />';
+		// var_dump($datas);echo '<br /><br />';
 
 		$formularios = array();
 
-		foreach ($meses as $key => $abrev_mes){
+		foreach ($datas as $key => $data){
 			$row = array();
 
-			$mes = select('*', 'mês', 'abreviação', $abrev_mes);
+			$mes = select('*', 'mês', 'abreviação', $data['mes']);
 			// var_dump($mes);echo '<br /><br />';
 			array_push($row, $mes['nome']);
 
@@ -36,7 +37,7 @@
 			$id_hospital_setor = select('id', 'hospital_setor', '(id_hospital, id_setor)', '('.$_SESSION['id_hospital'].', '.$_GET['id_setor'].')', false)['id']; // ID PARA O HOSPITAL DO SETOR DE ENFERMAGEM
 			// var_dump($id_hospital_setor);echo '<br /><br />';
 
-			$formulario = select('*', 'formulário', '(id_hospital_setor, id_mês, ano)', '('.$id_hospital_setor.', '.$mes['id'].', '.date('Y').')', false);
+			$formulario = select('*', 'formulário', '(id_hospital_setor, id_mês, ano)', '('.$id_hospital_setor.', '.$mes['id'].', '.$data['ano'].')', false);
 			// var_dump($formulario);echo '<br /><br />';
 			$respostas = array();
 			$respostas_conformes = 0;
@@ -72,9 +73,9 @@
 			array_push($row, $limite_inferior);
 			// var_dump($row); echo '<br /><br />';
 
-			array_push($data, $row);
+			array_push($dados, $row);
 			// break;
 		}
-	    echo $_GET['callback']."(".json_encode($data).")";
+	    echo $_GET['callback']."(".json_encode($dados).")";
 	}
 ?>
