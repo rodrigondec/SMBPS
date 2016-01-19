@@ -33,7 +33,7 @@
 
 			$limite_inferior = 3;			
 
-			$id_hospital_setor = select('id', 'hospital_setor', '(id_hospital, id_setor)', '('.$_SESSION['id_hospital'].', 1)', false)['id']; // ID PARA O HOSPITAL DO SETOR DE ENFERMAGEM
+			$id_hospital_setor = select('id', 'hospital_setor', '(id_hospital, id_setor)', '('.$_SESSION['id_hospital'].', '.$_GET['id_setor'].')', false)['id']; // ID PARA O HOSPITAL DO SETOR DE ENFERMAGEM
 			// var_dump($id_hospital_setor);echo '<br /><br />';
 
 			$formulario = select('*', 'formulário', '(id_hospital_setor, id_mês, ano)', '('.$id_hospital_setor.', '.$mes['id'].', '.date('Y').')', false);
