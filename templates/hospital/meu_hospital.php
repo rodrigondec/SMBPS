@@ -14,14 +14,34 @@
 	// draws it.
 	function drawChart() {
 		// Create the data table.
-		var data = google.visualization.arrayToDataTable([
-			['Mês', 'Ótimo', 'Real', 'Ruim'],
-			['Janeiro', 12, 7, 3],
+		var array_data = new Array();
+		var row_head = ['Mês', 'Ótimo', 'Real', 'Ruim'];
+		array_data.push(row_head);
+
+
+		var rows_body = new Array();
+		// console.log(rows_body);
+		rows_body.push(['Janeiro', 12, 7, 3]);
+		// console.log(rows_body);
+		rows_body = [['Janeiro', 12, 7, 3],
 			['Fevereiro', 12, 2, 3],
 			['Abril', 12, 13, 3],
 			['Maio', 12, 8, 3],
-			['Abril', 12, 5, 3]
-        ]);
+			['Abril', 12, 5, 3]];
+		// console.log(rows_body);
+
+
+
+		for (var i = 0; i <= rows_body.length - 1; i++) {
+			array_data.push(rows_body[i]);
+		};
+
+
+
+
+
+		// console.log(array_data);
+		var data = google.visualization.arrayToDataTable(array_data);
 
 		// Set chart options
 		var options = {
