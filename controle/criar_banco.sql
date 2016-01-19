@@ -5837,18 +5837,18 @@ INSERT INTO cidade (id, nome, id_estado) VALUES
 
 
 insert into mês (nome, abreviação) values
-	('Janeiro', 'jan'),
-	('Fevereiro', 'fev'),
-	('Março', 'mar'),
-	('Abril', 'abr'),
-	('Maio', 'mai'),
-	('Junho', 'jun'),
-	('Julho', 'jul'),
-	('Agosto', 'ago'),
-	('Setembro', 'set'),
-	('Outubro', 'out'),
-	('Novembro', 'nov'),
-	('Dezembro', 'dez');
+	('Janeiro', 'Jan'),
+	('Fevereiro', 'Feb'),
+	('Março', 'Mar'),
+	('Abril', 'Apr'),
+	('Maio', 'May'),
+	('Junho', 'Jun'),
+	('Julho', 'Jul'),
+	('Agosto', 'Aug'),
+	('Setembro', 'Sep'),
+	('Outubro', 'Oct'),
+	('Novembro', 'Nov'),
+	('Dezembro', 'Dec');
 
 
 insert into indicador (nome, categoria) values 
