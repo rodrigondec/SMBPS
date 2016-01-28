@@ -97,11 +97,11 @@ function show_hide_cidade(valor){
 	}
 }
 
-function show_hide_protocolo(valor){
-	for(var id = 1; id <= num_indicadores; id++){
+function show_hide_indicador(valor){
+	for(var id = 0; id <= num_indicadores; id++){
 		if(id == valor){
 			// HIDE TODOS OS SELECTS
-			for (var j = 1; j <= num_indicadores; j++) {
+			for (var j = 0; j <= num_indicadores; j++) {
 				$('#nav_indicador_'+j).removeClass('active')
 				$('#indicador_'+j).addClass('hidden')
 			}

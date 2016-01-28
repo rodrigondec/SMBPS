@@ -16,7 +16,7 @@
 	<?php 
 	    foreach ($indicadores as $num => $indicador):
 	?>
-		<a id='nav_indicador_<?php echo $indicador['id']; ?>' class="list-group-item <?php if($num == 0){ echo 'active'; } ?>" <?php echo "onclick='show_hide_protocolo(".$indicador['id'].")'" ?> href="#">
+		<a id='nav_indicador_<?php echo $indicador['id']; ?>' class="list-group-item <?php if($num == 0){ echo 'active'; } ?>" <?php echo "onclick='show_hide_indicador(".$indicador['id'].")'" ?> href="#">
 			<?php echo $indicador['nome']; ?>
 		</a>
 	<?php 
