@@ -8,9 +8,15 @@
 		$dados = array();
 
 		$datas = array('', '', '', '', '', '');
-
-		$indicadores = select_many('*', 'indicador');
-		// var_dump($indicadores);echo '<br /><br /><br />';
+		$indicadores = array();
+		if($_GET['id_indicador'] == 0){
+			$indicadores = select_many('*', 'indicador');
+		}
+		else{
+			$indicadores = select('*', 'indicador', 'id', $_GET['id_indicador']);
+		}
+		
+		// var_dump($indicadores['id']);echo '<br /><br /><br />';
 
 		foreach ($datas as $key => $data){
 			$datas[$key]['mes'] = date('M', strtotime(date('Y-m-1')." -".$key." month"));
@@ -38,15 +44,37 @@
 			// var_dump($id_hospital_setor);echo '<br /><br />';
 
 			$formulario = select('*', 'formulário', '(id_hospital_setor, id_mês, ano)', '('.$id_hospital_setor.', '.$mes['id'].', '.$data['ano'].')', false);
-			// var_dump($formulario);echo '<br /><br />';
+			// var_dump($formulario);echo "\n";
+
 			$respostas = array();
 			$respostas_conformes = 0;
+			$perguntas = array();
+			// echo '<br />formulário';var_dump($formulario);echo '<br /><br />';
 			if($formulario){
+				$perguntas = array();
+				if($_GET['id_indicador'] == 0){
+					$perguntas = select_many('*', 'pergunta');
+				}
+				else{
+					// echo "select: \n";
+					$perguntas = select_many('*', 'pergunta', 'id_indicador', $indicadores['id']);echo "\n";
+					// var_dump($perguntas);echo "\n";
+				}
+				foreach($perguntas as $key => $pergunta) {
+					$respostas[] = select('*', 'resposta', 'id_pergunta', $pergunta['id']);
+				}
+			}
+			if(!$respostas){
+				$respostas = array();
+			}
+
+			/*if($formulario){
+				$perguntas = select_many('*', 'perguntas', 'id_indicador', $indicador['id']);
 				$respostas = select_many('*', 'resposta', 'id_formulário', $formulario['id']);
 				if(!$respostas){
 					$respostas = array();
 				}
-			}
+			}*/
 			// var_dump($respostas);echo '<br /><br />';
 			foreach($respostas as $key => $resposta) {
 				if($resposta['texto'] == 'Sim'){
@@ -58,12 +86,26 @@
 			$nota += $respostas_conformes;
 
 			$protocolos_conformes = 0;
-			foreach($indicadores as $key => $indicador) {
-				$protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$indicador['id'].', 1)', false);
+			if($_GET['id_indicador'] == 0){
+				foreach($indicadores as $key => $indicador) {
+					$protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$indicador['id'].', 1)', false);
+					if($protocolo){
+						$protocolos_conformes++;
+					}
+				}
+			}
+			else{
+				$protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$indicadores['id'].', 1)', false);
 				if($protocolo){
 					$protocolos_conformes++;
 				}
 			}
+			/*foreach($indicadores as $key => $indicador) {
+				$protocolo = select('*', 'protocolo', '(id_hospital, id_indicador, ativo)', '('.$_SESSION['id_hospital'].', '.$indicador['id'].', 1)', false);
+				if($protocolo){
+					$protocolos_conformes++;
+				}
+			}*/
 			// var_dump($protocolos_conformes);echo '<br /><br />';
 
 			$nota += $protocolos_conformes;
