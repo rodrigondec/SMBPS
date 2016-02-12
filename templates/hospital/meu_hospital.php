@@ -14,9 +14,9 @@
 	// Set a callback to run when the Google Visualization API is loaded.
 	google.setOnLoadCallback(drawCharts);
 
-	endereco = window.location.protocol+'//'+window.location.host+'/'+base+'templates/hospital/get_data_grafico.php';
-	// endereco = 'http:localhost/smbps/templates/hospital/get_data_grafico.php';
-	// endereco = 'http://localhost/smbps/templates/hospital/get_data_grafico.php';
+	var endereco = window.location.protocol+'//'+window.location.host+'/'+base+'templates/hospital/get_data_grafico.php/';
+	// var endereco = 'http:localhost/smbps/templates/hospital/get_data_grafico.php';
+	// var endereco = 'http://localhost/smbps/templates/hospital/get_data_grafico.php';
 
 	function drawChart(indicador){
 		// Create the data table.
