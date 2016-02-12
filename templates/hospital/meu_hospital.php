@@ -5,7 +5,7 @@
 <?php 
     $indicadores = select_many('id, nome', 'indicador'); 
     echo "<script type='text/javascript'>var num_indicadores = ".count($indicadores).";</script>";
-    echo "<script type='text/javascript'>var endereco = 'https://smbps-rodrigondec.c9users.io/templates/hospital/get_data_grafico.php';</script>";
+    echo "<script type='text/javascript'>var base = '".BASE."';</script>";
 ?>
 <script type="text/javascript">
 	// Load the Visualization API and the piechart package.
@@ -14,6 +14,9 @@
 	// Set a callback to run when the Google Visualization API is loaded.
 	google.setOnLoadCallback(drawCharts);
 
+	endereco = window.location.protocol+'//'+window.location.host+'/'+base+'templates/hospital/get_data_grafico.php';
+	// endereco = 'http:localhost/smbps/templates/hospital/get_data_grafico.php';
+	// endereco = 'http://localhost/smbps/templates/hospital/get_data_grafico.php';
 
 	function drawChart(indicador){
 		// Create the data table.
