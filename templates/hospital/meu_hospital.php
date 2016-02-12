@@ -4,7 +4,8 @@
 </div>
 <?php 
     $indicadores = select_many('id, nome', 'indicador'); 
-    echo "<script type='text/javascript'>var num_indicadores = ".count($indicadores).";</script>"
+    echo "<script type='text/javascript'>var num_indicadores = ".count($indicadores).";</script>";
+    echo "<script type='text/javascript'>var templates = ".TEMPLATES.";</script>";
 ?>
 <script type="text/javascript">
 	// Load the Visualization API and the piechart package.
@@ -20,7 +21,7 @@
 
 		$.ajax({
 		    type: "GET",
-		    url: 'http://localhost/smbps/templates/hospital/get_data_grafico.php',
+		    url: templates+'hospital/get_data_grafico.php',
 		    data: {id_setor: 1, id_indicador: indicador},
 		    dataType: "jsonp",
 		    success: function(data){
