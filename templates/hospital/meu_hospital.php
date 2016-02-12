@@ -5,7 +5,7 @@
 <?php 
     $indicadores = select_many('id, nome', 'indicador'); 
     echo "<script type='text/javascript'>var num_indicadores = ".count($indicadores).";</script>";
-    echo "<script type='text/javascript'>var templates = ".TEMPLATES.";</script>";
+    echo "<script type='text/javascript'>var endereco = '/".BASE."templates/hospital/get_data_grafico.php';</script>";
 ?>
 <script type="text/javascript">
 	// Load the Visualization API and the piechart package.
@@ -21,7 +21,7 @@
 
 		$.ajax({
 		    type: "GET",
-		    url: templates+'hospital/get_data_grafico.php',
+		    url: endereco,
 		    data: {id_setor: 1, id_indicador: indicador},
 		    dataType: "jsonp",
 		    success: function(data){
