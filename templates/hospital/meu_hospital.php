@@ -5,7 +5,7 @@
 <?php 
     $indicadores = select_many('id, nome', 'indicador'); 
     echo "<script type='text/javascript'>var num_indicadores = ".count($indicadores).";</script>";
-    echo "<script type='text/javascript'>var endereco = '/".BASE."templates/hospital/get_data_grafico.php';</script>";
+    echo "<script type='text/javascript'>var endereco = 'https://smbps-rodrigondec.c9users.io/templates/hospital/get_data_grafico.php';</script>";
 ?>
 <script type="text/javascript">
 	// Load the Visualization API and the piechart package.
